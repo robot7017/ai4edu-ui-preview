@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="学生">
+<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+<circle cx="100" cy="100" r="100" fill="#E5E7E2"/>
+<g clip-path="url(#c)">
+<path d="M10 200 C12 170 32 154 66 148 L89 142 Q100 152 111 142 L134 148 C168 154 188 170 190 200 Z" fill="#A8B9CA"/>
+<path d="M10 200 C12 174 24 160 46 152 C41 168 40 184 42 200 Z" fill="#96A9BC"/><path d="M190 200 C188 174 176 160 154 152 C159 168 160 184 158 200 Z" fill="#96A9BC"/>
+<path d="M89 116 L89 146 Q100 153 111 146 L111 116 Z" fill="#EECDB3"/><path d="M89 118 Q100 134 111 118 L111 131 Q100 141 89 131 Z" fill="#D7AC8E"/>
+<path d="M84 144 Q100 161 116 144 L120 147 Q100 168 80 147 Z" fill="#BECBD9"/>
+<ellipse cx="66.5" cy="89" rx="5.5" ry="8.5" fill="#E5BFA2"/><ellipse cx="133.5" cy="89" rx="5.5" ry="8.5" fill="#E5BFA2"/>
+<path d="M100 46 C123 46 134 63 134 86 C134 111 119 128 100 128 C81 128 66 111 66 86 C66 63 77 46 100 46 Z" fill="#EECDB3"/>
+<path d="M117 53 C129 61 134 75 134 88 C134 110 122 126 104 128 C117 118 125 104 125 88 C125 73 122 62 117 53 Z" fill="#E5BFA2"/>
+<path d="M64 90 C60 58 80 38 102 38 C125 38 141 54 137 84 C134 74 129 68 123 65 C121 71 116 74 110 72 C106 77 98 78 92 74 C86 78 78 78 74 74 C70 79 67 84 66 92 Z" fill="#3A2F29"/>
+<path d="M110 72 C116 74 121 71 123 65 C129 68 134 74 137 84 C138 70 134 58 126 50 C122 58 117 66 110 72 Z" fill="#2C231E"/>
+<path d="M84 48 C94 43 110 43 121 50" stroke="#56473E" stroke-width="2" fill="none" stroke-linecap="round"/>
+</g>
+</svg>

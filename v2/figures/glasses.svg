@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="戴智能眼镜、穿实验服的操作者">
+<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+<circle cx="100" cy="100" r="100" fill="#E5E7E2"/>
+<g clip-path="url(#c)">
+<path d="M60 122 C54 70 72 37 100 37 C128 37 146 70 140 122 C134 128 126 127 122 121 L122 86 L78 86 L78 121 C74 127 66 128 60 122 Z" fill="#2B2522"/>
+<path d="M10 200 C12 170 32 154 66 148 L89 142 Q100 152 111 142 L134 148 C168 154 188 170 190 200 Z" fill="#F6F7F4" stroke="#D3D7CF" stroke-width="1.5"/>
+<path d="M10 200 C12 174 24 160 46 152 C41 168 40 184 42 200 Z" fill="#E6E9E3"/><path d="M190 200 C188 174 176 160 154 152 C159 168 160 184 158 200 Z" fill="#E6E9E3"/>
+<path d="M89 116 L89 146 Q100 153 111 146 L111 116 Z" fill="#F2D5C0"/><path d="M89 118 Q100 134 111 118 L111 131 Q100 141 89 131 Z" fill="#DCB49A"/>
+<path d="M87 142 L100 176 L113 142 Q100 154 87 142 Z" fill="#8EA6B3"/>
+<path d="M87 142 L100 179 L94 200 L72 200 L75 156 Z" fill="#E8EBE5" stroke="#D3D7CF" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M113 142 L100 179 L106 200 L128 200 L125 156 Z" fill="#E8EBE5" stroke="#D3D7CF" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M138 174 L160 174" stroke="#D0D4CC" stroke-width="2" stroke-linecap="round"/>
+<rect x="144" y="164" width="3.2" height="11" rx="1.4" fill="#3E5C76"/>
+<path d="M100 46 C123 46 134 63 134 86 C134 111 119 128 100 128 C81 128 66 111 66 86 C66 63 77 46 100 46 Z" fill="#F2D5C0"/>
+<path d="M117 53 C129 61 134 75 134 88 C134 110 122 126 104 128 C117 118 125 104 125 88 C125 73 122 62 117 53 Z" fill="#E9C8AF"/>
+<path d="M65 88 C66 58 84 44 102 44 C122 44 135 58 135 80 C124 68 108 62 90 66 C79 69 70 77 65 88 Z" fill="#2B2522"/>
+<path d="M90 66 C104 62 120 66 131 74" stroke="#463D38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<rect x="71" y="82" width="23" height="15" rx="5" fill="#DCE8EC" fill-opacity="0.35" stroke="#2B2F33" stroke-width="2.4"/>
+<rect x="106" y="82" width="23" height="15" rx="5" fill="#DCE8EC" fill-opacity="0.35" stroke="#2B2F33" stroke-width="2.4"/>
+<path d="M94 88 Q100 85 106 88" stroke="#2B2F33" stroke-width="2.4" fill="none"/>
+<path d="M71 87 L66 86 M129 87 L134 86" stroke="#2B2F33" stroke-width="2.4" stroke-linecap="round"/>
+<rect x="126" y="80.5" width="8" height="10" rx="2.2" fill="#2B2F33"/>
+</g>
+</svg>
