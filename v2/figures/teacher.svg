@@ -1,22 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="教师">
-<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
-<circle cx="100" cy="100" r="100" fill="#E5E7E2"/>
-<g clip-path="url(#c)">
-<path d="M10 200 C12 170 32 154 66 148 L89 142 Q100 152 111 142 L134 148 C168 154 188 170 190 200 Z" fill="#404B5C"/>
-<path d="M10 200 C12 174 24 160 46 152 C41 168 40 184 42 200 Z" fill="#364050"/><path d="M190 200 C188 174 176 160 154 152 C159 168 160 184 158 200 Z" fill="#364050"/>
-<path d="M89 116 L89 146 Q100 153 111 146 L111 116 Z" fill="#E4BFA1"/><path d="M89 118 Q100 134 111 118 L111 131 Q100 141 89 131 Z" fill="#CA9E7F"/>
-<path d="M85 141 L100 186 L115 141 Q100 153 85 141 Z" fill="#F2F4F6"/>
-<path d="M85 141 L93 167 L100 156 L91 137 Z" fill="#FFFFFF" stroke="#D3D9DF" stroke-width="1.1" stroke-linejoin="round"/>
-<path d="M115 141 L107 167 L100 156 L109 137 Z" fill="#FFFFFF" stroke="#D3D9DF" stroke-width="1.1" stroke-linejoin="round"/>
-<path d="M84 146 L100 192 L94 200 L66 200 L71 158 Z" fill="#4B5769"/>
-<path d="M116 146 L100 192 L106 200 L134 200 L129 158 Z" fill="#4B5769"/>
-<ellipse cx="66.5" cy="89" rx="5.5" ry="8.5" fill="#D9B293"/><ellipse cx="133.5" cy="89" rx="5.5" ry="8.5" fill="#D9B293"/>
-<path d="M100 46 C123 46 134 63 134 86 C134 111 119 128 100 128 C81 128 66 111 66 86 C66 63 77 46 100 46 Z" fill="#E4BFA1"/>
-<path d="M117 53 C129 61 134 75 134 88 C134 110 122 126 104 128 C117 118 125 104 125 88 C125 73 122 62 117 53 Z" fill="#D9B293"/>
-<path d="M65 88 C61 58 80 42 101 42 C124 42 138 56 136 82 C132 70 124 62 112 58 C104 63 90 63 80 60 C73 67 68 76 66 90 Z" fill="#46413D"/>
-<path d="M80 60 C90 63 104 63 112 58 C106 56 101 52 98 46 C92 53 86 57 80 60 Z" fill="#383430"/>
-<path d="M98 46 C102 52 107 56 113 58" stroke="#77716B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<path d="M66.5 90 C66.3 85 67 80.5 68.6 77 L69.6 88.5 Z" fill="#9A958F"/>
-<path d="M135.6 83 C135.4 79.5 134.6 76.5 133.4 74 L132.6 84.5 Z" fill="#9A958F"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 260" role="img" aria-label="教师">
+<path d="M18 260 C18 216 34 194 74 184 L104 176 Q120 188 136 176 L166 184 C206 194 222 216 222 260 Z" fill="#3D4B62"/>
+<path d="M18 260 C18 222 28 200 54 190 C60 214 63 238 64 260 Z" fill="#34415A"/><path d="M222 260 C222 222 212 200 186 190 C180 214 177 238 176 260 Z" fill="#34415A"/>
+<path d="M102 138 L102 184 Q120 196 138 184 L138 138 Z" fill="#F3CBAD"/><path d="M102 144 Q120 166 138 144 L138 158 Q120 176 102 158 Z" fill="#DDA98A"/>
+<path d="M100 176 L120 250 L140 176 Q120 192 100 176 Z" fill="#F6F8FA"/>
+<path d="M100 176 L110 210 L120 196 L108 170 Z" fill="#FFFFFF" stroke="#DDE2E8" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M140 176 L130 210 L120 196 L132 170 Z" fill="#FFFFFF" stroke="#DDE2E8" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M98 182 L120 254 L114 260 L72 260 L78 214 L92 204 L82 194 Z" fill="#4B5B75"/>
+<path d="M142 182 L120 254 L126 260 L168 260 L162 214 L148 204 L158 194 Z" fill="#4B5B75"/>
+<path d="M82 194 L92 204 L78 214 M158 194 L148 204 L162 214" stroke="#2F3B50" stroke-width="2" fill="none" stroke-linejoin="round"/>
+<path d="M66 98 C58 54 88 30 122 30 C156 30 182 54 174 98 Z" fill="#4A443F"/>
+<ellipse cx="70" cy="104" rx="9" ry="14" fill="#EABD9D"/><ellipse cx="170" cy="104" rx="9" ry="14" fill="#EABD9D"/>
+<path d="M120 52 C152 52 170 74 170 102 C170 138 148 160 120 160 C92 160 70 138 70 102 C70 74 88 52 120 52 Z" fill="#F3CBAD"/>
+<path d="M84 74 C92 52 116 40 140 42 C162 46 176 62 176 84 C166 70 150 62 132 62 C124 70 110 76 98 76 C92 76 88 75 84 74 Z" fill="#3A3531"/>
 </svg>

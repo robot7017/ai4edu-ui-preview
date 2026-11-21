@@ -1,24 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="戴智能眼镜、穿实验服的操作者">
-<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
-<circle cx="100" cy="100" r="100" fill="#E5E7E2"/>
-<g clip-path="url(#c)">
-<path d="M60 122 C54 70 72 37 100 37 C128 37 146 70 140 122 C134 128 126 127 122 121 L122 86 L78 86 L78 121 C74 127 66 128 60 122 Z" fill="#2B2522"/>
-<path d="M10 200 C12 170 32 154 66 148 L89 142 Q100 152 111 142 L134 148 C168 154 188 170 190 200 Z" fill="#F6F7F4" stroke="#D3D7CF" stroke-width="1.5"/>
-<path d="M10 200 C12 174 24 160 46 152 C41 168 40 184 42 200 Z" fill="#E6E9E3"/><path d="M190 200 C188 174 176 160 154 152 C159 168 160 184 158 200 Z" fill="#E6E9E3"/>
-<path d="M89 116 L89 146 Q100 153 111 146 L111 116 Z" fill="#F2D5C0"/><path d="M89 118 Q100 134 111 118 L111 131 Q100 141 89 131 Z" fill="#DCB49A"/>
-<path d="M87 142 L100 176 L113 142 Q100 154 87 142 Z" fill="#8EA6B3"/>
-<path d="M87 142 L100 179 L94 200 L72 200 L75 156 Z" fill="#E8EBE5" stroke="#D3D7CF" stroke-width="1.2" stroke-linejoin="round"/>
-<path d="M113 142 L100 179 L106 200 L128 200 L125 156 Z" fill="#E8EBE5" stroke="#D3D7CF" stroke-width="1.2" stroke-linejoin="round"/>
-<path d="M138 174 L160 174" stroke="#D0D4CC" stroke-width="2" stroke-linecap="round"/>
-<rect x="144" y="164" width="3.2" height="11" rx="1.4" fill="#3E5C76"/>
-<path d="M100 46 C123 46 134 63 134 86 C134 111 119 128 100 128 C81 128 66 111 66 86 C66 63 77 46 100 46 Z" fill="#F2D5C0"/>
-<path d="M117 53 C129 61 134 75 134 88 C134 110 122 126 104 128 C117 118 125 104 125 88 C125 73 122 62 117 53 Z" fill="#E9C8AF"/>
-<path d="M65 88 C66 58 84 44 102 44 C122 44 135 58 135 80 C124 68 108 62 90 66 C79 69 70 77 65 88 Z" fill="#2B2522"/>
-<path d="M90 66 C104 62 120 66 131 74" stroke="#463D38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<rect x="71" y="82" width="23" height="15" rx="5" fill="#DCE8EC" fill-opacity="0.35" stroke="#2B2F33" stroke-width="2.4"/>
-<rect x="106" y="82" width="23" height="15" rx="5" fill="#DCE8EC" fill-opacity="0.35" stroke="#2B2F33" stroke-width="2.4"/>
-<path d="M94 88 Q100 85 106 88" stroke="#2B2F33" stroke-width="2.4" fill="none"/>
-<path d="M71 87 L66 86 M129 87 L134 86" stroke="#2B2F33" stroke-width="2.4" stroke-linecap="round"/>
-<rect x="126" y="80.5" width="8" height="10" rx="2.2" fill="#2B2F33"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 260" role="img" aria-label="戴眼镜、穿实验服的操作者">
+<circle cx="121" cy="26" r="24" fill="#8A552A"/>
+<path d="M108 14 C116 6 132 6 140 16 C132 12 118 12 108 20 Z" fill="#6E4120"/>
+<path d="M18 260 C18 216 34 194 74 184 L104 176 Q120 188 136 176 L166 184 C206 194 222 216 222 260 Z" fill="#F7F9FC"/>
+<path d="M18 260 C18 222 28 200 54 190 C60 214 63 238 64 260 Z" fill="#EBEFF5"/><path d="M222 260 C222 222 212 200 186 190 C180 214 177 238 176 260 Z" fill="#EBEFF5"/>
+<path d="M102 138 L102 184 Q120 196 138 184 L138 138 Z" fill="#F9D7C1"/><path d="M102 144 Q120 166 138 144 L138 158 Q120 176 102 158 Z" fill="#E7B99C"/>
+<path d="M100 178 L120 236 L140 178 Q120 194 100 178 Z" fill="#ABDAF8"/>
+<path d="M100 178 Q120 194 140 178 L142 182 Q120 200 98 182 Z" fill="#C9E8FC"/>
+<path d="M96 180 L120 244 L110 260 L74 260 L78 214 L92 206 L80 196 Z" fill="#FFFFFF" stroke="#D6DCE5" stroke-width="2" stroke-linejoin="round"/>
+<path d="M144 180 L120 244 L130 260 L166 260 L162 214 L148 206 L160 196 Z" fill="#FFFFFF" stroke="#D6DCE5" stroke-width="2" stroke-linejoin="round"/>
+<rect x="150" y="230" width="40" height="30" rx="3" fill="#E4E9F0"/>
+<rect x="160" y="212" width="7" height="22" rx="3" fill="#3B74B4"/>
+<rect x="171" y="206" width="7" height="28" rx="3" fill="#5A9BE2"/>
+<ellipse cx="70" cy="104" rx="9" ry="14" fill="#F1C9AE"/><ellipse cx="170" cy="104" rx="9" ry="14" fill="#F1C9AE"/>
+<path d="M64 112 C58 56 86 30 121 30 C156 30 184 56 176 112 Z" fill="#8F5A2B"/>
+<path d="M70 104 C64 130 66 152 78 168 C74 146 75 126 78 110 Z" fill="#8F5A2B"/>
+<path d="M170 104 C176 130 174 152 162 168 C166 146 165 126 162 110 Z" fill="#8F5A2B"/>
+<path d="M120 52 C152 52 170 74 170 102 C170 138 148 160 120 160 C92 160 70 138 70 102 C70 74 88 52 120 52 Z" fill="#F9D7C1"/>
+<path d="M70 98 C70 66 94 44 126 44 C150 46 168 62 174 90 C160 70 140 60 118 62 C98 64 82 76 70 98 Z" fill="#8F5A2B"/>
+<path d="M126 44 C150 46 168 62 174 90 C162 74 146 64 128 62 C134 56 132 50 126 44 Z" fill="#744620"/>
+<rect x="80" y="96" width="36" height="25" rx="9" fill="none" stroke="#4C5363" stroke-width="5"/>
+<rect x="124" y="96" width="36" height="25" rx="9" fill="none" stroke="#4C5363" stroke-width="5"/>
+<path d="M116 104 Q120 100 124 104" fill="none" stroke="#4C5363" stroke-width="5"/>
+<path d="M80 104 L72 102 M160 104 L168 102" stroke="#4C5363" stroke-width="5" stroke-linecap="round"/>
 </svg>
