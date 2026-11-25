@@ -301,7 +301,56 @@
     secs.forEach((s) => rio.observe(s));
   }
 
+  /* ---------- pinned journey: scroll -> scene / sub-step ---------- */
+  function journey(sec) {
+    const stage = sec.querySelector(".xj-stage");
+    const caps = [...sec.querySelectorAll("[data-cap]")];
+    const counts = caps.map((c) => c.querySelectorAll("[data-step]").length || 1);
+    if (reduce || matchMedia("(max-width: 760px) and (max-height: 600px)").matches) {
+      sec.classList.add("xj-static");
+      return;
+    }
+    sec.classList.add("xj-live");
+    let last = "";
+    const tick = () => {
+      const r = sec.getBoundingClientRect();
+      const span = r.height - innerHeight;
+      const p = Math.min(1, Math.max(0, -r.top / (span || 1)));
+      const sp = p * 4;
+      const s = Math.min(3, Math.floor(sp));
+      const q = Math.min(1, sp - s);
+      /* the first 15% of each scene is the transition, the rest steps through */
+      const k = Math.min(counts[s] - 1, Math.max(0, Math.floor(((q - 0.15) / 0.8) * counts[s])));
+      stage.style.setProperty("--p", p.toFixed(4));
+      stage.style.setProperty("--q", q.toFixed(4));
+      const key = s + ":" + k;
+      if (key !== last) {
+        last = key;
+        stage.dataset.scene = s;
+        stage.dataset.k = k;
+        caps.forEach((c, i) => {
+          c.classList.toggle("on", i === s);
+          c.querySelectorAll("[data-step]").forEach((li, j) => {
+            li.classList.toggle("on", i === s && j === k);
+            li.classList.toggle("done", i === s && j < k);
+          });
+        });
+      }
+    };
+    let raf = 0;
+    addEventListener("scroll", () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    }, { passive: true });
+    addEventListener("resize", tick);
+    tick();
+  }
+
   function init() {
+    document.querySelectorAll("[data-journey]:not([data-xm])").forEach((b) => {
+      b.dataset.xm = "1";
+      journey(b);
+    });
     document.querySelectorAll("[data-tabs]:not([data-xm])").forEach((b) => {
       b.dataset.xm = "1";
       tabs(b);
