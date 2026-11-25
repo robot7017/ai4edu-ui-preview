@@ -248,7 +248,7 @@ function mount(host) {
     if (variant === "hero") {
       camera.position.z = 30 * Math.max(1, Math.pow(1.6 / camera.aspect, 0.95));
     } else {
-      camera.position.z = 31 * Math.max(1, Math.pow(2.4 / camera.aspect, 0.85));
+      camera.position.z = 24 * Math.max(1, Math.pow(1.8 / camera.aspect, 0.85));
     }
     vw = w; vh = h;
     camera.updateProjectionMatrix();
@@ -284,16 +284,16 @@ function mount(host) {
     const d = ease(Math.min(sp / 0.75, 1));
     glasses.rotation.y = (yaw * intro + (1 - intro) * -1.2 + px * 0.18) * (1 - d);
     glasses.rotation.x = glasses.rotation.x * (1 - d);
-    glasses.position.x = (vw < 700 ? -1.6 : 0) * (1 - d) - LX * d;
+    glasses.position.x = (vw < 700 ? -2.3 : 0) * (1 - d) - LX * d;
     glasses.position.y = glasses.position.y * (1 - d) - LY * d;
     glasses.position.z = (camera.position.z - 9) * d;
     if (variant === "hero") camera.setViewOffset(vw, vh, 0, vh * (vw < 700 ? 0.14 : 0.125) * (1 - d), vw, vh);
-    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.46) / 0.1, 0), 1));
+    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.44) / 0.08, 0), 1));
     glasses.rotation.x = 0.16 + py * 0.06 + (1 - intro) * 0.3;
     glasses.position.y = Math.sin(t * 0.9) * 0.18 - (1 - intro) * 1.2;
     shadow.material.opacity = 0.7 - Math.sin(t * 0.9) * 0.12;
     led.material.color.setHex(Math.sin(t * 3) > 0.2 ? 0x3ddc97 : 0x0f3a29);
-    if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.28) / 0.12, 0), 1);
+    if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.36) / 0.1, 0), 1);
     if (hud) {
       const on = ease((t - 1.6) / 0.8);
       const flicker = t < 2.6 && !reduce ? (Math.sin(t * 60) > 0 ? 1 : 0.6) : 1;
