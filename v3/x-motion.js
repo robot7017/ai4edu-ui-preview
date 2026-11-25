@@ -309,6 +309,9 @@
     const stage = sec.querySelector(".xj-stage");
     const caps = [...sec.querySelectorAll("[data-cap]")];
     const counts = caps.map((c) => c.querySelectorAll("[data-step]").length || 1);
+    const bench = sec.querySelector(".xj-bench");
+    const fcard = sec.querySelector(".xj-fcard");
+    const view = sec.querySelector(".xj-view");
     if (reduce) {
       sec.classList.add("xj-static");
       return;
@@ -337,11 +340,32 @@
       while (s < 3 && p >= B[s + 1]) s++;
       const q = clamp((p - B[s]) / W[s]);
       const st = clamp((q - lead[s] - 0.04) / (1 - lead[s] - 0.1));
-      const k = Math.min(counts[s] - 1, Math.floor(st * counts[s]));
+      const k =
+        q < lead[s] ? -1 : Math.min(counts[s] - 1, Math.floor(st * counts[s]));
       stage.style.setProperty("--p", p.toFixed(4));
       stage.style.setProperty("--q", q.toFixed(4));
       for (let i = 1; i <= 3; i++) {
         stage.style.setProperty("--x" + i, clamp((p - (B[i] - T)) / (2 * T)).toFixed(4));
+      }
+      for (let i = 0; i < 4; i++) {
+        stage.style.setProperty("--b" + i, clamp((p - B[i]) / W[i]).toFixed(4));
+      }
+      /* bench -> flagged card on the teacher screen, measured */
+      if (bench && fcard && view && s >= 2) {
+        const v = view.getBoundingClientRect();
+        const bw = bench.offsetWidth;
+        const bh = bench.offsetHeight;
+        const bx = v.left + bench.offsetLeft + bw / 2;
+        const by = v.top + bench.offsetTop;
+        const f = fcard.getBoundingClientRect();
+        const sc = f.width / bw;
+        stage.style.setProperty("--tx", (f.left + f.width / 2 - bx).toFixed(1) + "px");
+        stage.style.setProperty("--ty", (f.top + f.height / 2 - by).toFixed(1) + "px");
+        stage.style.setProperty("--ts", sc.toFixed(4));
+        stage.style.setProperty(
+          "--tc",
+          Math.max(0, ((1 - f.height / (bh * sc)) / 2) * 100).toFixed(2) + "%",
+        );
       }
       stage.dataset.g3d =
         (s === 1 && p > B[2] - T) || (s === 2 && q < 0.5) ? "on" : "off";
