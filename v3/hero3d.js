@@ -101,7 +101,7 @@ function mount(host) {
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
   } catch { return; }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
@@ -114,20 +114,20 @@ function mount(host) {
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
-  const camera = new THREE.PerspectiveCamera(variant === "hero" ? 24 : 26, 1, 0.1, 100);
+  const camera = new THREE.PerspectiveCamera(variant === "hero" ? 24 : 26, 1, 0.1, 500);
   camera.position.set(0, 0.6, variant === "hero" ? 23 : 31);
   camera.lookAt(0, 0, 0);
 
   // ---------- materials
   const acetate = new THREE.MeshPhysicalMaterial({
-    color: 0x14171b, roughness: 0.38, metalness: 0.05,
-    clearcoat: 1, clearcoatRoughness: 0.06, sheen: 0.2, sheenColor: 0x3a5566,
+    color: 0x0c0e11, roughness: 0.3, metalness: 0.05,
+    clearcoat: 1, clearcoatRoughness: 0.04, sheen: 0.35, sheenColor: 0x2f4f63, envMapIntensity: 1.25,
   });
   const satin = new THREE.MeshPhysicalMaterial({ color: 0x23282f, roughness: 0.55, metalness: 0.2, clearcoat: 0.4 });
   const metal = new THREE.MeshStandardMaterial({ color: 0xc4ccd6, roughness: 0.22, metalness: 1 });
   const glass = new THREE.MeshPhysicalMaterial({
-    color: 0xcfe6f2, roughness: 0.05, metalness: 0, transparent: true, opacity: 0.22,
-    clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 1.6, depthWrite: false,
+    color: 0x2a3a46, roughness: 0.04, metalness: 0.1, transparent: true, opacity: 0.38,
+    clearcoat: 1, clearcoatRoughness: 0.02, envMapIntensity: 2.2, depthWrite: false,
   });
   const camGlass = new THREE.MeshPhysicalMaterial({ color: 0x050709, roughness: 0.05, metalness: 0.3, clearcoat: 1 });
 
@@ -212,11 +212,12 @@ function mount(host) {
   });
 
   // HUD (projected inside the right lens, the left lens shows the step bar)
-  let hud;
+  let hud, hudMat;
   if (variant === "hero") {
     hud = hudTexture(lang);
     hud.draw(0, 0);
     const mat = new THREE.MeshBasicMaterial({ map: hud.tex, transparent: true, depthWrite: false, toneMapped: false, blending: THREE.AdditiveBlending });
+    hudMat = mat;
     const plane = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 2.55), mat);
     plane.position.set(LX + 0.55, LY + 0.25, 0.16);
     front.add(plane);
@@ -245,7 +246,7 @@ function mount(host) {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     if (variant === "hero") {
-      camera.position.z = 30 * Math.max(1, Math.pow(1.6 / camera.aspect, 1));
+      camera.position.z = 30 * Math.max(1, Math.pow(1.6 / camera.aspect, 0.95));
     } else {
       camera.position.z = 31 * Math.max(1, Math.pow(2.4 / camera.aspect, 0.85));
     }
@@ -283,15 +284,16 @@ function mount(host) {
     const d = ease(Math.min(sp / 0.75, 1));
     glasses.rotation.y = (yaw * intro + (1 - intro) * -1.2 + px * 0.18) * (1 - d);
     glasses.rotation.x = glasses.rotation.x * (1 - d);
-    glasses.position.x = -LX * d;
+    glasses.position.x = (vw < 700 ? -1.6 : 0) * (1 - d) - LX * d;
     glasses.position.y = glasses.position.y * (1 - d) - LY * d;
     glasses.position.z = (camera.position.z - 9) * d;
-    if (variant === "hero") camera.setViewOffset(vw, vh, 0, vh * (vw < 700 ? 0.17 : 0.1) * (1 - d), vw, vh);
-    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.5) / 0.22, 0), 1));
+    if (variant === "hero") camera.setViewOffset(vw, vh, 0, vh * (vw < 700 ? 0.14 : 0.125) * (1 - d), vw, vh);
+    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.46) / 0.1, 0), 1));
     glasses.rotation.x = 0.16 + py * 0.06 + (1 - intro) * 0.3;
     glasses.position.y = Math.sin(t * 0.9) * 0.18 - (1 - intro) * 1.2;
     shadow.material.opacity = 0.7 - Math.sin(t * 0.9) * 0.12;
     led.material.color.setHex(Math.sin(t * 3) > 0.2 ? 0x3ddc97 : 0x0f3a29);
+    if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.28) / 0.12, 0), 1);
     if (hud) {
       const on = ease((t - 1.6) / 0.8);
       const flicker = t < 2.6 && !reduce ? (Math.sin(t * 60) > 0 ? 1 : 0.6) : 1;
