@@ -317,14 +317,14 @@
       return;
     }
     sec.classList.add("xj-live");
-    /* scene 03 gets extra length for the glasses hold and the dive */
-    const extra = [1.4, 1.4, 3.2, 1.6];
+    /* the lab overview and the AR scene get extra length for their camera moves */
+    const extra = [2, 1.4, 1.4, 3.2, 2];
     const total = counts.reduce((a, b) => a + b, 0) + extra.reduce((a, b) => a + b, 0);
-    const W = [0.25, 0.19, 0.34, 0.22];
+    const W = [0.16, 0.19, 0.17, 0.29, 0.19];
     const B = [0];
     W.forEach((w, i) => B.push(B[i] + w));
     const T = 0.035; /* half-width of each scene change, in p */
-    const lead = [0, 0, 0.36, 0.08]; /* part of a scene before its steps start */
+    const lead = [0, 0, 0, 0.36, 0.08]; /* part of a scene before its steps start */
     const size = () => {
       const per = innerWidth < 860 ? 200 : 260;
       sec.style.height = Math.round(innerHeight + total * per) + "px";
@@ -336,21 +336,21 @@
       const span = r.height - innerHeight;
       const p = clamp(-r.top / (span || 1));
       let s = 0;
-      while (s < 3 && p >= B[s + 1]) s++;
+      while (s < W.length - 1 && p >= B[s + 1]) s++;
       const q = clamp((p - B[s]) / W[s]);
       const st = clamp((q - lead[s] - 0.04) / (1 - lead[s] - 0.1));
       const k =
         q < lead[s] ? -1 : Math.min(counts[s] - 1, Math.floor(st * counts[s]));
       stage.style.setProperty("--p", p.toFixed(4));
       stage.style.setProperty("--q", q.toFixed(4));
-      for (let i = 1; i <= 3; i++) {
+      for (let i = 1; i < W.length; i++) {
         stage.style.setProperty("--x" + i, clamp((p - (B[i] - T)) / (2 * T)).toFixed(4));
       }
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < W.length; i++) {
         stage.style.setProperty("--b" + i, clamp((p - B[i]) / W[i]).toFixed(4));
       }
       /* bench -> flagged card on the teacher screen, measured */
-      if (bench && fcard && view && s >= 2) {
+      if (bench && fcard && view && s >= 3) {
         const v = view.getBoundingClientRect();
         const bw = bench.offsetWidth;
         const bh = bench.offsetHeight;
@@ -367,7 +367,7 @@
         );
       }
       stage.dataset.g3d =
-        (s === 1 && p > B[2] - T) || (s === 2 && q < 0.5) ? "on" : "off";
+        (s === 2 && p > B[3] - T) || (s === 3 && q < 0.5) ? "on" : "off";
       const key = s + ":" + k;
       if (key !== last) {
         last = key;
