@@ -252,7 +252,64 @@
     ).observe(box);
   }
 
+  /* ---------- simple tabs (work without React too) ---------- */
+  function tabs(box) {
+    const btns = [...box.querySelectorAll("[data-tab]")];
+    const panels = [...box.querySelectorAll("[data-panel]")];
+    btns.forEach((b) =>
+      b.addEventListener("click", () => {
+        const k = b.dataset.tab;
+        btns.forEach((x) => {
+          const on = x === b;
+          x.classList.toggle("on", on);
+          x.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        panels.forEach((p) => (p.hidden = p.dataset.panel !== k));
+      }),
+    );
+  }
+
+  /* ---------- journey progress rail ---------- */
+  function rail(nav) {
+    const links = [...nav.querySelectorAll("[data-rail-for]")];
+    const scope = nav.closest(".view") || document;
+    const secs = links
+      .map((a) => {
+        const id = a.dataset.railFor;
+        const el =
+          scope.querySelector(`[id="${id}"]`) ||
+          scope.querySelector(`[id$="--${id}"]`);
+        if (el) a.dataset.railFor = el.id;
+        return el;
+      })
+      .filter(Boolean);
+    const seen = new Set();
+    const rio = new IntersectionObserver(
+      (ents) => {
+        for (const e of ents) {
+          if (e.isIntersecting) seen.add(e.target.id);
+          else seen.delete(e.target.id);
+        }
+        nav.classList.toggle("show", seen.size > 0);
+        const cur = secs.find((s) => seen.has(s.id));
+        links.forEach((a) =>
+          a.classList.toggle("on", !!cur && a.dataset.railFor === cur.id),
+        );
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    secs.forEach((s) => rio.observe(s));
+  }
+
   function init() {
+    document.querySelectorAll("[data-tabs]:not([data-xm])").forEach((b) => {
+      b.dataset.xm = "1";
+      tabs(b);
+    });
+    document.querySelectorAll("[data-rail]:not([data-xm])").forEach((b) => {
+      b.dataset.xm = "1";
+      rail(b);
+    });
     document.querySelectorAll("[data-inview]:not([data-xm])").forEach((el) => {
       el.dataset.xm = "1";
       io.observe(el);

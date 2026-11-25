@@ -248,7 +248,7 @@ function mount(host) {
     if (variant === "hero") {
       camera.position.z = 30 * Math.max(1, Math.pow(1.6 / camera.aspect, 1));
     } else {
-      camera.position.z = 24 * Math.max(1, Math.pow(1.8 / camera.aspect, 0.85));
+      camera.position.z = 31 * Math.max(1, Math.pow(1.8 / camera.aspect, 0.85));
     }
     vw = w; vh = h;
     camera.updateProjectionMatrix();
