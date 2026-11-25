@@ -319,13 +319,12 @@
     sec.classList.add("xj-live");
     /* scene 03 gets extra length for the glasses hold and the dive */
     const extra = [1.4, 1.4, 3.2, 1.6];
-    const units = counts.map((n, i) => n + extra[i]);
-    const total = units.reduce((a, b) => a + b, 0);
-    const W = units.map((u) => u / total);
+    const total = counts.reduce((a, b) => a + b, 0) + extra.reduce((a, b) => a + b, 0);
+    const W = [0.26, 0.2, 0.3, 0.24];
     const B = [0];
     W.forEach((w, i) => B.push(B[i] + w));
     const T = 0.035; /* half-width of each scene change, in p */
-    const lead = [0, 0, 0.3, 0]; /* part of a scene before its steps start */
+    const lead = [0, 0, 0.36, 0.08]; /* part of a scene before its steps start */
     const size = () => {
       const per = innerWidth < 860 ? 200 : 260;
       sec.style.height = Math.round(innerHeight + total * per) + "px";
