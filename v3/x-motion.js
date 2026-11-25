@@ -70,9 +70,9 @@
       lb.className = "xm-lb";
       lb.innerHTML =
         '<button class="xm-lb-x" aria-label="Close">×</button>' +
-        '<button class="xm-lb-p" aria-label="Previous">‹</button>' +
+        '<button class="xm-lb-p" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
         '<figure><img alt=""><figcaption></figcaption></figure>' +
-        '<button class="xm-lb-n" aria-label="Next">›</button>';
+        '<button class="xm-lb-n" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>';
       document.body.appendChild(lb);
     }
     let i = start;
@@ -97,9 +97,9 @@
       if (e.key === "ArrowLeft") go(-1);
     };
     lb.onclick = (e) => {
-      if (e.target === lb || e.target.classList.contains("xm-lb-x")) close();
-      if (e.target.classList.contains("xm-lb-p")) go(-1);
-      if (e.target.classList.contains("xm-lb-n")) go(1);
+      if (e.target === lb || e.target.closest(".xm-lb-x")) close();
+      if (e.target.closest(".xm-lb-p")) go(-1);
+      if (e.target.closest(".xm-lb-n")) go(1);
     };
     document.addEventListener("keydown", key);
     show();
