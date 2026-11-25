@@ -293,6 +293,22 @@ function mount(host) {
     glasses.rotation.x = 0.16 + py * 0.06 + (1 - intro) * 0.3;
     glasses.position.y = Math.sin(t * 0.9) * 0.18 - (1 - intro) * 1.2;
     shadow.material.opacity = 0.7 - Math.sin(t * 0.9) * 0.12;
+    /* journey scene 04: the student picks the glasses up, turns them round
+     * (now seen from behind, as the wearer), and the camera goes in through
+     * the right lens. Driven by the scene's own scroll progress --q. */
+    if (variant === "mini" && jStage) {
+      const sc = +jStage.dataset.scene || 0;
+      const q = parseFloat(jStage.style.getPropertyValue("--q")) || 0;
+      const a = sc === 3 ? q : sc > 3 ? 1 : 0;
+      const put = ease((a - 0.03) / 0.15);
+      const dive = ease((a - 0.17) / 0.12);
+      glasses.rotation.y = glasses.rotation.y * (1 - put) - Math.PI * put;
+      glasses.rotation.x = glasses.rotation.x * (1 - put) - 0.05 * put * (1 - dive);
+      glasses.position.x = glasses.position.x * (1 - dive) + LX * dive;
+      glasses.position.y = glasses.position.y * (1 - put) + 0.6 * put * (1 - dive) - LY * dive;
+      glasses.position.z = 4 * put * (1 - dive) + (camera.position.z - 7.2) * dive;
+      shadow.material.opacity *= 1 - put;
+    }
     led.material.color.setHex(Math.sin(t * 3) > 0.2 ? 0x3ddc97 : 0x0f3a29);
     if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.41) / 0.05, 0), 1);
     if (hud) {
