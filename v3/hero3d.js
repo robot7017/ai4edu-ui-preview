@@ -266,6 +266,7 @@ function mount(host) {
   new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible) loop(); }).observe(host);
 
   const track = host.closest("[data-hero-track]");
+  const jStage = host.closest(".xj-stage");
   const t0 = performance.now();
   let raf = 0;
   const ease = (x) => 1 - Math.pow(1 - Math.min(Math.max(x, 0), 1), 3);
@@ -308,7 +309,7 @@ function mount(host) {
   function loop() {
     cancelAnimationFrame(raf);
     const step = (now) => {
-      frame(now);
+      if (!jStage || jStage.dataset.g3d === "on") frame(now);
       if (visible && !reduce) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);

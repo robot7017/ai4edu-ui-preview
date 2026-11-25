@@ -301,28 +301,50 @@
     secs.forEach((s) => rio.observe(s));
   }
 
-  /* ---------- pinned journey: scroll -> scene / sub-step ---------- */
+  /* ---------- pinned journey: scroll -> scene / sub-step ----------
+   * Scenes get scroll length in proportion to their content. Around each
+   * boundary a shared variable --xN (0..1) drives the camera move from one
+   * scene to the next, so every change is scrubbed by the scroll itself. */
   function journey(sec) {
     const stage = sec.querySelector(".xj-stage");
     const caps = [...sec.querySelectorAll("[data-cap]")];
     const counts = caps.map((c) => c.querySelectorAll("[data-step]").length || 1);
-    if (reduce || matchMedia("(max-width: 760px) and (max-height: 600px)").matches) {
+    if (reduce) {
       sec.classList.add("xj-static");
       return;
     }
     sec.classList.add("xj-live");
+    /* scene 03 gets extra length for the glasses hold and the dive */
+    const extra = [1.4, 1.4, 3.2, 1.6];
+    const units = counts.map((n, i) => n + extra[i]);
+    const total = units.reduce((a, b) => a + b, 0);
+    const W = units.map((u) => u / total);
+    const B = [0];
+    W.forEach((w, i) => B.push(B[i] + w));
+    const T = 0.035; /* half-width of each scene change, in p */
+    const lead = [0, 0, 0.3, 0]; /* part of a scene before its steps start */
+    const size = () => {
+      const per = innerWidth < 860 ? 200 : 260;
+      sec.style.height = Math.round(innerHeight + total * per) + "px";
+    };
     let last = "";
+    const clamp = (v) => Math.min(1, Math.max(0, v));
     const tick = () => {
       const r = sec.getBoundingClientRect();
       const span = r.height - innerHeight;
-      const p = Math.min(1, Math.max(0, -r.top / (span || 1)));
-      const sp = p * 4;
-      const s = Math.min(3, Math.floor(sp));
-      const q = Math.min(1, sp - s);
-      /* the first 15% of each scene is the transition, the rest steps through */
-      const k = Math.min(counts[s] - 1, Math.max(0, Math.floor(((q - 0.15) / 0.8) * counts[s])));
+      const p = clamp(-r.top / (span || 1));
+      let s = 0;
+      while (s < 3 && p >= B[s + 1]) s++;
+      const q = clamp((p - B[s]) / W[s]);
+      const st = clamp((q - lead[s] - 0.04) / (1 - lead[s] - 0.1));
+      const k = Math.min(counts[s] - 1, Math.floor(st * counts[s]));
       stage.style.setProperty("--p", p.toFixed(4));
       stage.style.setProperty("--q", q.toFixed(4));
+      for (let i = 1; i <= 3; i++) {
+        stage.style.setProperty("--x" + i, clamp((p - (B[i] - T)) / (2 * T)).toFixed(4));
+      }
+      stage.dataset.g3d =
+        (s === 1 && p > B[2] - T) || (s === 2 && q < 0.5) ? "on" : "off";
       const key = s + ":" + k;
       if (key !== last) {
         last = key;
@@ -338,11 +360,16 @@
       }
     };
     let raf = 0;
-    addEventListener("scroll", () => {
+    const req = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(tick);
-    }, { passive: true });
-    addEventListener("resize", tick);
+    };
+    addEventListener("scroll", req, { passive: true });
+    addEventListener("resize", () => {
+      size();
+      req();
+    });
+    size();
     tick();
   }
 
