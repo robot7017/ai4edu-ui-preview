@@ -320,7 +320,7 @@
     /* scene 03 gets extra length for the glasses hold and the dive */
     const extra = [1.4, 1.4, 3.2, 1.6];
     const total = counts.reduce((a, b) => a + b, 0) + extra.reduce((a, b) => a + b, 0);
-    const W = [0.26, 0.2, 0.3, 0.24];
+    const W = [0.25, 0.19, 0.34, 0.22];
     const B = [0];
     W.forEach((w, i) => B.push(B[i] + w));
     const T = 0.035; /* half-width of each scene change, in p */
