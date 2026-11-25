@@ -288,12 +288,12 @@ function mount(host) {
     glasses.position.y = glasses.position.y * (1 - d) - LY * d;
     glasses.position.z = (camera.position.z - 9) * d;
     if (variant === "hero") camera.setViewOffset(vw, vh, 0, vh * (vw < 700 ? 0.15 : 0.14) * (1 - d), vw, vh);
-    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.48) / 0.05, 0), 1));
+    canvas.style.opacity = String(1 - Math.min(Math.max((sp - 0.5) / 0.06, 0), 1));
     glasses.rotation.x = 0.16 + py * 0.06 + (1 - intro) * 0.3;
     glasses.position.y = Math.sin(t * 0.9) * 0.18 - (1 - intro) * 1.2;
     shadow.material.opacity = 0.7 - Math.sin(t * 0.9) * 0.12;
     led.material.color.setHex(Math.sin(t * 3) > 0.2 ? 0x3ddc97 : 0x0f3a29);
-    if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.36) / 0.1, 0), 1);
+    if (hudMat) hudMat.opacity = 1 - Math.min(Math.max((sp - 0.41) / 0.05, 0), 1);
     if (hud) {
       const on = ease((t - 1.6) / 0.8);
       const flicker = t < 2.6 && !reduce ? (Math.sin(t * 60) > 0 ? 1 : 0.6) : 1;
