@@ -320,7 +320,7 @@
     /* the lab overview and the AR scene get extra length for their camera moves */
     const extra = [2, 1.4, 1.4, 3.2, 2];
     const total = counts.reduce((a, b) => a + b, 0) + extra.reduce((a, b) => a + b, 0);
-    const W = [0.16, 0.19, 0.17, 0.29, 0.19];
+    const W = [0.18, 0.18, 0.16, 0.28, 0.2];
     const B = [0];
     W.forEach((w, i) => B.push(B[i] + w));
     const T = 0.035; /* half-width of each scene change, in p */
