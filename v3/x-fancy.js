@@ -225,6 +225,72 @@
     const meta = el("div", "fx-meta", deck);
     const mScene = el("b", "", meta);
     const mStep = el("span", "", meta);
+    const flash = el("div", "fx-flash", deck);
+    /* AR view: a HUD inside the lens */
+    const bench = stage.querySelector(".xj-bench");
+    if (bench && !bench.querySelector(".fx-ar")) {
+      const zh =
+        (stage.closest("[lang]") || root).getAttribute("lang") !== "en" &&
+        !(
+          stage.closest("[data-lang]") &&
+          stage.closest("[data-lang]").dataset.lang === "en"
+        );
+      const ar = el("div", "fx-ar", bench);
+      ar.setAttribute("aria-hidden", "true");
+      for (const c of ["tl", "tr", "bl", "br"]) el("i", "fx-c fx-c-" + c, ar);
+      el("i", "fx-ar-grid", ar);
+      el("i", "fx-scan", ar);
+      const top = el("div", "fx-ar-top", ar);
+      el("b", "fx-rec", top).textContent = "AR";
+      el("span", "", top).textContent = zh
+        ? "LabMate · PCR 第 1/9 项"
+        : "LabMate · PCR item 1/9";
+      const clk = el("span", "fx-clock", top);
+      clocks.add(clk);
+      new IntersectionObserver(
+        (e) => (clk.__vis = e[0].isIntersecting),
+      ).observe(bench);
+      const side = el("div", "fx-ar-side", ar);
+      for (const [k, v] of zh
+        ? [
+            ["对象", "移液器"],
+            ["置信度", "0.97"],
+            ["目标", "20 µL"],
+          ]
+        : [
+            ["Object", "Pipette"],
+            ["Conf.", "0.97"],
+            ["Target", "20 µL"],
+          ]) {
+        const r = el("p", "", side);
+        el("span", "", r).textContent = k;
+        el("b", "", r).textContent = v;
+      }
+      const tick = el("div", "fx-ar-ticks", ar);
+      for (let i = 0; i < 21; i++) el("i", i % 5 ? "" : "big", tick);
+    }
+    /* screens tilt toward the pointer */
+    let vx = 0,
+      vy = 0;
+    const tilt = () => {
+      const ay = -7 + vx * 6,
+        ax = 4 - vy * 5;
+      const a = Math.hypot(ax, ay) || 1;
+      stage.style.setProperty(
+        "--fx-rot",
+        `${(ax / a).toFixed(3)} ${(ay / a).toFixed(3)} 0 ${a.toFixed(2)}deg`,
+      );
+      stage.style.setProperty("--fx-gx", 50 + vx * 40 + "%");
+      stage.style.setProperty("--fx-gy", 50 + vy * 40 + "%");
+    };
+    tilt();
+    if (!reduce)
+      view.addEventListener("pointermove", (e) => {
+        const r = view.getBoundingClientRect();
+        vx = ((e.clientX - r.left) / r.width) * 2 - 1;
+        vy = ((e.clientY - r.top) / r.height) * 2 - 1;
+        tilt();
+      });
     const sub = el("div", "fx-sub", deck);
     const subT = el("span", "", sub);
     el("i", "fx-sub-bar", sub);
@@ -261,6 +327,11 @@
           card.classList.remove("is-play");
           void card.offsetWidth;
           card.classList.add("is-play");
+          flash.classList.remove("is-play");
+          view.classList.remove("fx-cut");
+          void flash.offsetWidth;
+          flash.classList.add("is-play");
+          view.classList.add("fx-cut");
         }
         lastScene = s;
         stage.dataset.fxScene = s;
