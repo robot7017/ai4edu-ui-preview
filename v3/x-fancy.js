@@ -210,6 +210,87 @@
     ).observe(lb);
   }
 
+  /* ---------- story: chapter card, subtitle, step counter ---------- */
+  function story(stage) {
+    if (stage.__xf) return;
+    stage.__xf = true;
+    const view = stage.querySelector(".xj-view");
+    if (!view) return;
+    const deck = el("div", "fx-story", view);
+    deck.setAttribute("aria-hidden", "true");
+    const card = el("div", "fx-chapter", deck);
+    const cn = el("b", "", card);
+    const ct = el("span", "", card);
+    el("i", "fx-chapter-sweep", card);
+    const meta = el("div", "fx-meta", deck);
+    const mScene = el("b", "", meta);
+    const mStep = el("span", "", meta);
+    const sub = el("div", "fx-sub", deck);
+    const subT = el("span", "", sub);
+    el("i", "fx-sub-bar", sub);
+    let lastScene = null,
+      lastKey = "",
+      typer = 0;
+    const type = (txt) => {
+      clearInterval(typer);
+      if (reduce) {
+        subT.textContent = txt;
+        return;
+      }
+      let i = 0;
+      subT.textContent = "";
+      typer = setInterval(() => {
+        i += 1;
+        subT.textContent = txt.slice(0, i);
+        if (i >= txt.length) clearInterval(typer);
+      }, 28);
+    };
+    const update = () => {
+      const s = stage.dataset.scene,
+        k = +stage.dataset.k;
+      if (s == null) return;
+      const cap = stage.querySelector(`.xj-cap[data-cap="${s}"]`);
+      if (!cap) return;
+      const steps = cap.querySelectorAll("[data-step]");
+      const num = (cap.querySelector(".x-chap b") || {}).textContent || "";
+      const title = (cap.querySelector("h2") || {}).textContent || "";
+      if (s !== lastScene) {
+        if (lastScene !== null && !reduce) {
+          cn.textContent = num;
+          ct.textContent = title;
+          card.classList.remove("is-play");
+          void card.offsetWidth;
+          card.classList.add("is-play");
+        }
+        lastScene = s;
+        stage.dataset.fxScene = s;
+      }
+      mScene.textContent = num;
+      mStep.textContent =
+        k >= 0
+          ? `${String(k + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`
+          : `00 / ${String(steps.length).padStart(2, "0")}`;
+      const key = s + ":" + k;
+      if (key !== lastKey) {
+        lastKey = key;
+        const li = k >= 0 ? steps[k] : null;
+        sub.classList.toggle("is-on", !!li);
+        if (li) type(li.textContent.trim());
+        const ol = cap.querySelector(".xj-steps");
+        if (ol)
+          ol.style.setProperty(
+            "--fx-k",
+            Math.max(0, k) / Math.max(1, steps.length - 1),
+          );
+      }
+    };
+    new MutationObserver(update).observe(stage, {
+      attributes: true,
+      attributeFilter: ["data-scene", "data-k"],
+    });
+    update();
+  }
+
   /* ---------- magnetic buttons ---------- */
   function magnet(b) {
     if (b.__xf) return;
@@ -267,6 +348,7 @@
       .querySelectorAll(".x-hero h1")
       .forEach((h) => h.classList.add("fx-sheen"));
     document.querySelectorAll(".lb").forEach(hud);
+    document.querySelectorAll(".xj-stage").forEach(story);
     document
       .querySelectorAll(".x-btn, .site-cta")
       .forEach((b) => !reduce && magnet(b));
