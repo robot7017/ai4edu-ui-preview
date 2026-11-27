@@ -5001,14 +5001,6 @@ html:lang(zh) .xj-cap h2 {
     filter: none;
   }
 }
-@media (pointer: fine) {
-  .xf:not(.xf-reduce) body,
-  .xf:not(.xf-reduce) a,
-  .xf:not(.xf-reduce) button {
-    cursor: none;
-  }
-}
-
 /* ============================== round 15: storytelling stage ============================== */
 /* wider, more cinematic stage */
 .xj.xj-live .xj-stage {
