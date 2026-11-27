@@ -5809,3 +5809,9 @@ html:lang(zh) .xj-cap h2 {
   .xj-steps li.on::after { display: none; }
   .xj-steps li.on::before { content: "0" attr(data-num); }
 }
+
+/* ===================== plainer type: no rainbow gradients on text ===================== */
+.x-hero h1 { background: none; -webkit-text-fill-color: currentColor; color: #f2f4f7; text-shadow: none; animation: none; }
+.x-chap b, .fx-chapter b { background: none; -webkit-text-fill-color: currentColor; filter: none; }
+.x-chap b { color: var(--x-cyan); }
+.fx-chapter b { color: #f2f4f7; }

@@ -291,10 +291,7 @@
   );
 
   function scan() {
-    document.querySelectorAll(".x-hero").forEach((h) => !reduce && plexus(h));
-    document
-      .querySelectorAll(".x-hero h1")
-      .forEach((h) => h.classList.add("fx-sheen"));
+    /* hero particle network and rainbow title sheen removed: too busy */
     document.querySelectorAll(".lb").forEach(hud);
     document.querySelectorAll(".xj-stage").forEach(story);
     document
