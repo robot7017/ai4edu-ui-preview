@@ -6051,3 +6051,10 @@ html:lang(zh) .xj-cap h2 {
   .xj .xj-copy { min-height: 200px; }
   .xj .xj-steps li.on { font-size: 16px; padding: 8px 12px; }
 }
+
+/* r19: teacher screen redrawn — C is the flagged table, B corrected */
+.xj-fpulse { left: calc(12px + (100% - 24px) * 0.0322); top: calc(12px + (100% - 24px) * 0.6186); width: calc((100% - 24px) * 0.2545); height: calc((100% - 24px) * 0.1398); }
+.xj-fcard { left: calc(12px + (100% - 24px) * 0.0178); top: calc(12px + (100% - 24px) * 0.375); width: calc((100% - 24px) * 0.5473); aspect-ratio: 798 / 530; }
+.xj-stage[data-scene="4"][data-k="0"] .xj-mscreen { transform-origin: 16% 69%; }
+.xj-stage[data-scene="4"][data-k="1"] .xj-mscreen { transform-origin: 82% 68%; }
+.xj-stage[data-scene="4"][data-k="2"] .xj-mscreen { transform-origin: 70% 18%; }
