@@ -1,7 +1,6 @@
 /* LabMate version C — "fancy" layer (no framework, decorative only).
- * - scroll progress line, pointer spotlight, film grain, trailing cursor ring
- * - hero: particle network that follows the pointer, title sheen
- * - magnetic buttons, spotlight + tilt cards, blur-up reveals
+ * - scroll progress line, film grain, blur-up reveals
+ * - hero: decorative particle network and title sheen
  * - lab illustration: camera HUD (corners, scan line, live timecode)
  * Everything is optional and is skipped with prefers-reduced-motion. */
 (() => {
@@ -22,44 +21,8 @@
 
   /* ---------- global overlays ---------- */
   const bar = el("div", "fx-progress", document.body);
-  el("div", "fx-spot", document.body);
   el("div", "fx-grain", document.body);
   bar.setAttribute("aria-hidden", "true");
-
-  let mx = innerWidth / 2,
-    my = innerHeight / 3,
-    rx = mx,
-    ry = my,
-    hoverish = false;
-  const ring = fine && !reduce ? el("div", "fx-cursor", document.body) : null;
-  const dot = ring ? el("div", "fx-cursor-dot", document.body) : null;
-
-  addEventListener(
-    "pointermove",
-    (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      root.style.setProperty("--mx", mx + "px");
-      root.style.setProperty("--my", my + "px");
-      if (ring) {
-        const t = e.target;
-        hoverish = !!(
-          t &&
-          t.closest &&
-          t.closest("a,button,[role=tab],.fx-card,.xj-steps li")
-        );
-        dot.style.transform = `translate(${mx}px,${my}px)`;
-      }
-    },
-    { passive: true },
-  );
-  addEventListener("pointerdown", () => ring && ring.classList.add("is-down"));
-  addEventListener("pointerup", () => ring && ring.classList.remove("is-down"));
-  addEventListener("pointerleave", () => ring && ring.classList.add("is-out"));
-  addEventListener(
-    "pointerenter",
-    () => ring && ring.classList.remove("is-out"),
-  );
 
   const onScroll = () => {
     const h = root.scrollHeight - innerHeight;
@@ -68,16 +31,10 @@
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- frame loop (cursor ring + hud clocks) ---------- */
+  /* ---------- frame loop (hud clocks) ---------- */
   const clocks = new Set();
   let t0 = performance.now();
   function loop(t) {
-    if (ring) {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px,${ry}px) scale(${hoverish ? 1.9 : 1})`;
-      ring.classList.toggle("is-hover", hoverish);
-    }
     if (t - t0 > 80) {
       t0 = t;
       const d = new Date();
@@ -127,18 +84,9 @@
     function frame() {
       if (!run) return;
       const r = cv.getBoundingClientRect();
-      const px = mx - r.left,
-        py = my - r.top;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
       for (const p of pts) {
-        const dx = px - p.x,
-          dy = py - p.y,
-          d2 = dx * dx + dy * dy;
-        if (d2 < 220 * 220) {
-          p.vx += dx * 0.00002 * 6;
-          p.vy += dy * 0.00002 * 6;
-        }
         p.vx *= 0.995;
         p.vy *= 0.995;
         p.x += p.vx;
@@ -161,16 +109,6 @@
             ctx.lineTo(b.x, b.y);
             ctx.stroke();
           }
-        }
-        const dx = a.x - px,
-          dy = a.y - py,
-          d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 180) {
-          ctx.strokeStyle = `rgba(140,225,255,${0.45 * (1 - d / 180)})`;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(px, py);
-          ctx.stroke();
         }
         ctx.fillStyle = "rgba(190,236,255,.95)";
         ctx.beginPath();
@@ -269,28 +207,6 @@
       const tick = el("div", "fx-ar-ticks", ar);
       for (let i = 0; i < 21; i++) el("i", i % 5 ? "" : "big", tick);
     }
-    /* screens tilt toward the pointer */
-    let vx = 0,
-      vy = 0;
-    const tilt = () => {
-      const ay = -7 + vx * 6,
-        ax = 4 - vy * 5;
-      const a = Math.hypot(ax, ay) || 1;
-      stage.style.setProperty(
-        "--fx-rot",
-        `${(ax / a).toFixed(3)} ${(ay / a).toFixed(3)} 0 ${a.toFixed(2)}deg`,
-      );
-      stage.style.setProperty("--fx-gx", 50 + vx * 40 + "%");
-      stage.style.setProperty("--fx-gy", 50 + vy * 40 + "%");
-    };
-    tilt();
-    if (!reduce)
-      view.addEventListener("pointermove", (e) => {
-        const r = view.getBoundingClientRect();
-        vx = ((e.clientX - r.left) / r.width) * 2 - 1;
-        vy = ((e.clientY - r.top) / r.height) * 2 - 1;
-        tilt();
-      });
     const sub = el("div", "fx-sub", deck);
     const subT = el("span", "", sub);
     el("i", "fx-sub-bar", sub);
@@ -362,45 +278,6 @@
     update();
   }
 
-  /* ---------- magnetic buttons ---------- */
-  function magnet(b) {
-    if (b.__xf) return;
-    b.__xf = true;
-    b.classList.add("fx-mag");
-    b.addEventListener("pointermove", (e) => {
-      const r = b.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2,
-        y = e.clientY - r.top - r.height / 2;
-      b.style.setProperty("--tx", x * 0.25 + "px");
-      b.style.setProperty("--ty", y * 0.35 + "px");
-      b.style.setProperty("--bx", ((e.clientX - r.left) / r.width) * 100 + "%");
-    });
-    b.addEventListener("pointerleave", () => {
-      b.style.setProperty("--tx", "0px");
-      b.style.setProperty("--ty", "0px");
-    });
-  }
-
-  /* ---------- spotlight + tilt cards ---------- */
-  function card(c) {
-    if (c.__xf) return;
-    c.__xf = true;
-    c.classList.add("fx-card");
-    c.addEventListener("pointermove", (e) => {
-      const r = c.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width,
-        y = (e.clientY - r.top) / r.height;
-      c.style.setProperty("--gx", x * 100 + "%");
-      c.style.setProperty("--gy", y * 100 + "%");
-      c.style.setProperty("--ry", (x - 0.5) * 8 + "deg");
-      c.style.setProperty("--rx", (0.5 - y) * 6 + "deg");
-    });
-    c.addEventListener("pointerleave", () => {
-      c.style.setProperty("--ry", "0deg");
-      c.style.setProperty("--rx", "0deg");
-    });
-  }
-
   /* ---------- reveals ---------- */
   const rio = new IntersectionObserver(
     (ents) => {
@@ -420,14 +297,6 @@
       .forEach((h) => h.classList.add("fx-sheen"));
     document.querySelectorAll(".lb").forEach(hud);
     document.querySelectorAll(".xj-stage").forEach(story);
-    document
-      .querySelectorAll(".x-btn, .site-cta")
-      .forEach((b) => !reduce && magnet(b));
-    document
-      .querySelectorAll(
-        ".x-site, .rc-grid > li, .x-gallery-item, .tm-card, [data-tilt]",
-      )
-      .forEach((c) => !reduce && card(c));
     document
       .querySelectorAll(".x-head, .x-cta-inner, .x-hand-copy, .x-foot")
       .forEach((n) => {

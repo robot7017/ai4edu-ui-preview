@@ -135,51 +135,6 @@
     selectTab(tabs[next]); tabs[next].focus();
   });
 
-  // click burst
-  document.addEventListener("pointerdown", function (e) {
-    if (!window.PREVIEW_FX || reduce.matches || e.button !== 0) return;
-    if (e.target.closest && e.target.closest("input, textarea, select")) return;
-    var root = document.createElement("span");
-    root.className = "fx-burst"; root.setAttribute("aria-hidden", "true");
-    root.style.left = e.clientX + "px"; root.style.top = e.clientY + "px";
-    var ring = document.createElement("i"); ring.className = "fx-burst-ring"; root.appendChild(ring);
-    var n = 7, off = Math.random() * 60;
-    for (var k = 0; k < n; k++) {
-      var p = document.createElement("i");
-      p.className = k % 3 === 0 ? "fx-burst-square" : "fx-burst-tri";
-      p.style.setProperty("--a", off + (360 / n) * k + "deg");
-      p.style.setProperty("--d", 26 + Math.random() * 22 + "px");
-      p.style.setProperty("--r", Math.round(Math.random() * 180) + "deg");
-      root.appendChild(p);
-    }
-    document.body.appendChild(root);
-    setTimeout(function () { root.remove(); }, 700);
-  });
-
-  // pointer tracking for [data-track]
-  var frame = 0, pending = null;
-  document.addEventListener("pointermove", function (e) {
-    if (!window.PREVIEW_FX || reduce.matches || !fine.matches) return;
-    var el = e.target.closest && e.target.closest("[data-track]");
-    if (!el) return;
-    pending = { el: el, x: e.clientX, y: e.clientY };
-    if (frame) return;
-    frame = requestAnimationFrame(function () {
-      frame = 0;
-      var b = pending.el.getBoundingClientRect();
-      pending.el.style.setProperty("--mx", ((pending.x - b.left) / b.width - 0.5).toFixed(3));
-      pending.el.style.setProperty("--my", ((pending.y - b.top) / b.height - 0.5).toFixed(3));
-      pending.el.dataset.tracking = "on";
-    });
-  }, { passive: true });
-  document.addEventListener("pointerout", function (e) {
-    var el = e.target.closest && e.target.closest("[data-track]");
-    if (!el) return;
-    if (e.relatedTarget && el.contains(e.relatedTarget)) return;
-    el.style.setProperty("--mx", "0"); el.style.setProperty("--my", "0");
-    delete el.dataset.tracking;
-  });
-
   // scroll ruler
   function solid() {
     if (!current) return;
@@ -216,21 +171,9 @@
     }, { rootMargin: "-45% 0px -45% 0px" });
     document.querySelectorAll("[data-seq-step]").forEach(function (el) { seqIO.observe(el); });
   }
-  // showcase hotspots follow the list item under the pointer
-  document.addEventListener("pointerover", function (e) {
-    var li = e.target.closest && e.target.closest(".x-show-copy li");
-    if (!li) return;
-    var show = li.closest(".x-show");
-    var i = Array.prototype.indexOf.call(li.parentNode.children, li);
-    show.querySelectorAll(".x-target").forEach(function (t, k) { t.classList.toggle("is-hot", k === i); });
-  });
-  document.addEventListener("pointerout", function (e) {
-    var li = e.target.closest && e.target.closest(".x-show-copy li");
-    if (li) li.closest(".x-show").querySelectorAll(".x-target").forEach(function (t) { t.classList.remove("is-hot"); });
-  });
   route();
 })();
 </script>
-<script src="x-motion.js?v=20261126010235"></script><script src="x-fancy.js?v=20261126103133"></script>
+<script src="x-motion.js?v=20261127193000"></script><script src="x-fancy.js?v=20261127193000"></script>
 </body>
 </html>

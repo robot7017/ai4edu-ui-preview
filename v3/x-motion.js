@@ -2,7 +2,6 @@
  * - [data-inview]   adds .is-in once visible; counts up [data-count]
  * - [data-replay]   replays the nearest [data-inview]
  * - [data-flow]     student-app walkthrough: tabs, prev/next, swipe, keys, lightbox
- * - [data-tilt]     pointer tilt + light on team cards
  * - [data-collab]   collaboration map: area -> people
  * Everything is optional: without this script the page shows its final state. */
 (() => {
@@ -192,24 +191,6 @@
       { threshold: 0.4 },
     ).observe(box);
     set(0);
-  }
-
-  /* ---------- tilt ---------- */
-  function tilt(card) {
-    if (reduce || matchMedia("(hover: none)").matches) return;
-    card.addEventListener("pointermove", (e) => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top) / r.height;
-      card.style.setProperty("--mx", `${x * 100}%`);
-      card.style.setProperty("--my", `${y * 100}%`);
-      card.style.setProperty("--ry", `${(x - 0.5) * 7}deg`);
-      card.style.setProperty("--rx", `${(0.5 - y) * 6}deg`);
-    });
-    card.addEventListener("pointerleave", () => {
-      card.style.setProperty("--ry", "0deg");
-      card.style.setProperty("--rx", "0deg");
-    });
   }
 
   /* ---------- collaboration map ---------- */
@@ -420,10 +401,6 @@
     document.querySelectorAll("[data-flow]:not([data-xm])").forEach((b) => {
       b.dataset.xm = "1";
       flow(b);
-    });
-    document.querySelectorAll("[data-tilt]:not([data-xm])").forEach((b) => {
-      b.dataset.xm = "1";
-      tilt(b);
     });
     document.querySelectorAll("[data-collab]:not([data-xm])").forEach((b) => {
       b.dataset.xm = "1";
