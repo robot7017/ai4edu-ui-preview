@@ -50,3 +50,95 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
   html:has(.subpage) { scroll-behavior: auto; }
   .subpage *, .subpage *::before, .subpage *::after { transition: none !important; }
 }
+
+/* ===================== Subpage visual layer (matches the v3 project page) ===================== */
+/* hero: same glow + grid as the project hero, centred copy, wide media below */
+.subpage .sp-hero { position: relative; isolation: isolate; padding: clamp(80px, 9vw, 128px) 0 clamp(72px, 8vw, 112px); text-align: center; background: radial-gradient(60% 50% at 50% 30%, rgba(127, 219, 255, .1), transparent 70%), var(--x-base); }
+.subpage .sp-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(127, 219, 255, .05) 1px, transparent 0), linear-gradient(90deg, rgba(127, 219, 255, .05) 1px, transparent 0); background-size: 64px 64px; mask-image: radial-gradient(55% 50% at 50% 35%, #000, transparent); pointer-events: none; }
+.subpage .sp-lockup { display: inline-flex; align-items: center; gap: 12px; margin: 0; color: var(--x-cyan); font: 500 14px/1.4 "Geist Mono", ui-monospace, monospace; letter-spacing: .2em; text-transform: uppercase; }
+.subpage .sp-lockup span { padding-left: 12px; border-left: 1px solid rgba(127, 219, 255, .4); letter-spacing: .04em; text-transform: none; font-family: Geist, "PingFang SC", sans-serif; }
+.subpage .sp-hero h1 { max-width: 18em; margin: 20px auto 0; color: #f2f4f7; font-size: clamp(38px, 4.6vw, 68px); font-weight: 700; line-height: 1.12; letter-spacing: -.03em; text-wrap: balance; }
+.subpage .sp-hero h1 em { color: var(--x-cyan); font-style: normal; }
+.subpage .sp-lead { max-width: 36em; margin: 22px auto 0; color: var(--x-mute); font-size: 18px; line-height: 1.75; }
+.subpage .sp-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 28px; margin-top: 34px; }
+.subpage .sp-hero-media, .subpage .cam.sp-hero-media { width: min(1080px, 100%); margin: clamp(48px, 6vw, 72px) auto 0; text-align: left; }
+.subpage .sp-hero > * { animation: x-rise .9s var(--x-ease) both; }
+.subpage .sp-hero > :nth-child(2) { animation-delay: .15s; }
+
+/* camera / AR frame: same treatment as the glasses view on the project page */
+.subpage .cam { position: relative; margin: 0; overflow: hidden; border-radius: 28px; background: #000; box-shadow: 0 0 0 1px rgba(127, 219, 255, .28), 0 0 90px rgba(127, 219, 255, .12), 0 40px 120px rgba(0, 0, 0, .6); }
+.subpage .cam > img, .subpage .cam > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.subpage .cam-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: #c9f1ff; font: 600 clamp(10px, .9vw, 12px)/1 "Geist Mono", ui-monospace, monospace; letter-spacing: .08em; background: radial-gradient(80% 75% at 50% 50%, transparent 60%, rgba(4, 18, 28, .5) 100%), linear-gradient(180deg, rgba(4, 12, 18, .55), transparent 22%, transparent 80%, rgba(4, 12, 18, .5)); }
+.subpage .cam-c { position: absolute; width: 5.5%; aspect-ratio: 1; border: 0 solid rgba(170, 235, 255, .85); }
+.subpage .cam-c.tl { left: 3.2%; top: 5%; border-width: 2px 0 0 2px; }
+.subpage .cam-c.tr { right: 3.2%; top: 5%; border-width: 2px 2px 0 0; }
+.subpage .cam-c.bl { left: 3.2%; bottom: 6%; border-width: 0 0 2px 2px; }
+.subpage .cam-c.br { right: 3.2%; bottom: 6%; border-width: 0 2px 2px 0; }
+.subpage .cam-top { position: absolute; left: 6.5%; right: 6.5%; top: 6.2%; display: flex; align-items: center; gap: 1.2em; text-shadow: 0 0 8px rgba(92, 214, 255, .8); }
+.subpage .cam-top b { display: inline-flex; align-items: center; gap: .5em; padding: .35em .6em; border: 1px solid rgba(92, 214, 255, .7); border-radius: 4px; color: #bff0ff; }
+.subpage .cam-top b::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: #5cd6ff; box-shadow: 0 0 8px #5cd6ff; animation: lm-blink 1.4s infinite; }
+.subpage .cam-top .cam-clock { margin-left: auto; }
+.subpage .cam-scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(127, 219, 255, .6), transparent); opacity: 0; animation: sp-scan 5s linear 1s infinite; }
+@keyframes sp-scan { 0% { top: 4%; opacity: 0 } 8% { opacity: .9 } 70% { opacity: .5 } 100% { top: 96%; opacity: 0 } }
+.subpage .cam-ticks { position: absolute; left: 32%; right: 32%; bottom: 4.5%; display: flex; justify-content: space-between; align-items: flex-end; }
+.subpage .cam-ticks i { width: 1px; height: 6px; background: rgba(170, 235, 255, .6); }
+.subpage .cam-ticks i:nth-child(5n+1) { height: 12px; background: #dff6ff; box-shadow: 0 0 6px #5cd6ff; }
+.subpage .cam-tag { position: absolute; z-index: 3; left: 6.5%; bottom: 9%; display: grid; gap: 4px; padding: 12px 16px; border: 1px solid rgba(127, 219, 255, .35); border-radius: 12px; background: rgba(6, 12, 18, .7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.subpage .cam-tag span { color: var(--x-cyan); font: 600 12px/1.2 "Geist Mono", monospace; letter-spacing: .08em; }
+.subpage .cam-tag b { color: #fff; font-size: clamp(14px, 1.4vw, 18px); font-weight: 650; }
+
+/* tablet bezel: same as the student-app device on the project page */
+.subpage .sp-device { margin: 0; padding: 14px; border-radius: 32px; background: linear-gradient(160deg, #1d2530, #0b0f14); box-shadow: 0 0 0 1px #2c3644, 0 50px 120px rgba(0, 0, 0, .6), 0 0 80px rgba(127, 219, 255, .08); }
+.subpage .sp-device-screen { position: relative; overflow: hidden; border-radius: 20px; background: #f4f3ee; }
+.subpage .sp-device-screen img { display: block; width: 100%; height: auto; }
+
+/* chapter heading: big number + phase chip, as in the project story */
+.subpage .sp-band { position: relative; padding: clamp(88px, 9vw, 140px) 0; border-top: 1px solid var(--x-line); }
+.subpage .sp-band.alt { background: var(--x-panel); }
+.subpage .sp-head { max-width: 860px; margin-bottom: clamp(40px, 5vw, 64px); }
+.subpage .sp-head.split { display: flex; justify-content: space-between; align-items: end; gap: 40px; max-width: none; }
+.subpage .sp-head.split > p { max-width: 26em; margin: 0; color: var(--x-mute); font-size: 15px; line-height: 1.8; }
+.subpage .sp-head h2 { margin: 0; font-size: clamp(30px, 3.4vw, 48px); font-weight: 700; line-height: 1.2; letter-spacing: -.02em; text-wrap: balance; }
+.subpage .sp-head h2 + p { margin-top: 18px; color: var(--x-mute); font-size: 17px; line-height: 1.75; }
+.subpage .sp-chap { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 18px; color: var(--x-cyan); font-size: 15px; font-weight: 600; }
+.subpage .sp-chap b { font: 700 44px/1 Geist, sans-serif; font-variant-numeric: tabular-nums; color: var(--x-cyan); }
+.subpage .sp-chap em { padding: 4px 10px; border: 1px solid rgba(127, 219, 255, .45); border-radius: 999px; font-style: normal; font-size: 13px; white-space: nowrap; }
+.subpage .sp-chap span { color: var(--x-mute); font-weight: 500; }
+
+/* big numbers row */
+.subpage .sp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-block: 1px solid var(--x-line); }
+.subpage .sp-stats li { padding: 32px 32px 30px 0; }
+.subpage .sp-stats li + li { padding-left: 32px; border-left: 1px solid var(--x-line); }
+.subpage .sp-stats strong { display: block; font-size: clamp(44px, 5vw, 72px); font-weight: 700; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.subpage .sp-stats li:first-child strong { color: var(--x-cyan); }
+.subpage .sp-stats span { display: block; margin-top: 14px; color: var(--x-mute); font-size: 15px; }
+
+/* reveal on scroll (same motion as the project page) */
+.subpage [data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity .8s var(--x-ease), transform .9s var(--x-ease); transition-delay: calc(var(--i, 0) * 110ms); }
+.subpage [data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .subpage .sp-head.split { flex-direction: column; align-items: start; gap: 16px; }
+  .subpage .sp-stats { grid-template-columns: 1fr; }
+  .subpage .sp-stats li, .subpage .sp-stats li + li { padding: 24px 0; border-left: 0; }
+  .subpage .sp-stats li + li { border-top: 1px solid var(--x-line); }
+}
+@media (max-width: 600px) {
+  .subpage .sp-lead { font-size: 16px; }
+  .subpage .cam { border-radius: 18px; }
+  .subpage .cam-top span:not(.cam-clock) { display: none; }
+  .subpage .cam-ticks { display: none; }
+  .subpage .cam-tag { left: 4%; bottom: 5%; padding: 8px 12px; }
+  .subpage .sp-device { padding: 7px; border-radius: 18px; }
+  .subpage .sp-device-screen { border-radius: 12px; }
+  .subpage .sp-chap b { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .subpage [data-reveal] { opacity: 1; transform: none; }
+  .subpage .cam-scan, .subpage .cam-top b::before, .subpage .sp-hero > * { animation: none; }
+}
+.subpage .cam-play { position: absolute; z-index: 4; left: 50%; top: 50%; display: grid; place-items: center; width: 68px; height: 68px; translate: -50% -50%; border: 1px solid rgba(127, 219, 255, .6); border-radius: 50%; background: rgba(6, 12, 18, .72); color: var(--x-cyan); cursor: pointer; box-shadow: 0 0 0 8px rgba(127, 219, 255, .1), 0 0 40px rgba(127, 219, 255, .25); transition: transform .3s var(--x-ease), background .3s; }
+.subpage .cam-play svg { width: 26px; height: 26px; margin-left: 4px; fill: currentColor; }
+.subpage .cam-play:hover { transform: scale(1.08); background: rgba(127, 219, 255, .18); }
+.subpage .cam.is-playing .cam-play, .subpage .cam.is-playing .cam-hud { opacity: 0; pointer-events: none; }
+.subpage .cam.is-playing .cam-hud { transition: opacity .3s; }

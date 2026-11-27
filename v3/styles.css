@@ -5700,3 +5700,6 @@ html:lang(zh) .xj-cap h2 {
     rotate: none;
   }
 }
+
+/* gallery: portrait photos fill their slot instead of leaving a gap */
+@media (min-width: 601px) { .x-gallery-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; } }

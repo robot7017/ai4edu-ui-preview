@@ -7,9 +7,9 @@
   <meta name="description" content="LabMate AI 黑客松现场记录：从实验教学问题出发，把想法做成可演示的训练原型。">
   <meta name="theme-color" content="#05070a">
   <link rel="icon" href="../jw-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261127213000">
-  <link rel="stylesheet" href="../site-shell.css?v=20261127-unified-1">
-  <link rel="stylesheet" href="hackathon.css?v=20261127-unified-1">
+  <link rel="stylesheet" href="../styles.css?v=20261127-fx-1">
+  <link rel="stylesheet" href="../site-shell.css?v=20261127-fx-1">
+  <link rel="stylesheet" href="hackathon.css?v=20261127-fx-1">
 </head>
 <body class="site subpage">
   <a class="skip-link" href="#main">跳转到内容</a>
@@ -29,47 +29,100 @@
     </div>
   </header>
   <main class="page-main" id="main">
-    <div class="x-wrap">
-      <section class="page-hero news-hero">
-        <div>
-          <p class="page-kicker">NEWS <span>黑客松 · HACKATHON</span></p>
-          <h1 class="page-title">从一个教学问题，<br><em>到现场运行的原型。</em></h1>
-          <p class="page-lead">把实验课里的真实问题带到黑客松。我们一起拆解操作流程、搭建训练界面，让每一步的目标与反馈都看得见。</p>
-          <div class="page-actions"><a class="x-btn" href="#story">看黑客松现场</a><a class="x-link" href="../product/demo/">查看 Product / Demo</a></div>
-        </div>
-        <figure class="page-media news-cover">
-          <img src="../photos/hackathon-stage.jpg" alt="LabMate 团队在黑客松现场展示项目" fetchpriority="high">
-          <figcaption><span>HACKATHON</span>把实验教学问题带到现场，快速验证。</figcaption>
+    <section class="sp-hero">
+      <div class="x-wrap">
+        <p class="sp-lockup">News <span>黑客松 · 港科大（广州）</span></p>
+        <h1>从一个教学问题，<br><em>到现场运行的原型。</em></h1>
+        <p class="sp-lead">把实验课里的真实问题带到黑客松。我们一起拆解操作流程、搭建训练界面，让每一步的目标与反馈都看得见。</p>
+        <div class="sp-actions"><a class="x-btn" href="#story">看黑客松现场</a><a class="x-link" href="../product/demo/">查看 Product / Demo</a></div>
+      </div>
+      <div class="x-wrap">
+        <figure class="cam sp-hero-media news-cover" data-cam="HKUST(GZ) · 第一届创新创业黑客松">
+          <img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt="LabMate 团队在港科大（广州）第一届创新创业黑客松颁奖现场" fetchpriority="high">
+          <figcaption class="cam-tag"><span>HACKATHON · AWARD</span><b>三等奖</b></figcaption>
         </figure>
-      </section>
-      <section class="page-section news-story" id="story" aria-labelledby="story-title">
-        <figure class="page-media">
-          <img src="../photos/hackathon-team.jpg" alt="黑客松现场的 LabMate 团队合照" loading="lazy">
-          <figcaption>一起讨论、搭建与演示，让想法成为可验证的产品。</figcaption>
-        </figure>
-        <div class="news-story-copy">
-          <p class="page-kicker">FROM IDEA TO PROTOTYPE</p>
-          <h2 class="page-h2" id="story-title">把课堂里的关键动作，<br>一步步跑通。</h2>
-          <p class="page-lead">装吸头、调体积、预润洗、吸液、排液、退吸头、收尾。我们把真实实验课拆成可观察的步骤，为每一步设计目标、反馈和错误状态。</p>
-          <div class="news-facts"><div><strong>7</strong><span>个训练关卡</span></div><div><strong>3</strong><span>段操作录屏</span></div><div><strong>1</strong><span>条完整训练路径</span></div></div>
+      </div>
+    </section>
+
+    <section class="sp-band" id="story" aria-labelledby="story-title">
+      <div class="x-wrap">
+        <header class="sp-head" data-reveal>
+          <p class="sp-chap"><b>01</b><em>现场</em><span>From idea to prototype</span></p>
+          <h2 id="story-title">把课堂里的关键动作，一步步跑通。</h2>
+          <p>装吸头、调体积、预润洗、吸液、排液、退吸头、收尾。我们把真实实验课拆成可观察的步骤，为每一步设计目标、反馈和错误状态。</p>
+        </header>
+        <ul class="sp-stats" data-counts data-reveal>
+          <li><strong data-count="7">7</strong><span>个训练关卡</span></li>
+          <li><strong data-count="3">3</strong><span>段操作录屏</span></li>
+          <li><strong data-count="1">1</strong><span>条完整训练路径</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sp-band alt" aria-labelledby="build-title">
+      <div class="x-wrap">
+        <header class="sp-head" data-reveal>
+          <p class="sp-chap"><b>02</b><em>过程</em><span>The build</span></p>
+          <h2 id="build-title">从发现问题，到验证体验。</h2>
+          <p>一次集中协作，让课堂观察与产品实现接上。</p>
+        </header>
+        <ol class="news-steps">
+          <li data-reveal style="--i:0">
+            <figure class="cam" data-cam="问题 · 实验台"><img src="../photos/lab-glasses-1.jpg" width="1050" height="1400" alt="在实验台前戴上原型眼镜" loading="lazy"></figure>
+            <span class="news-step-k">01 · Problem</span>
+            <h3>看见课堂里的困难</h3>
+            <p>老师难以同时盯住每一张实验台；学生需要在操作过程中就知道哪里出了错。</p>
+          </li>
+          <li data-reveal style="--i:1">
+            <div class="sp-device"><div class="sp-device-screen"><img src="../product/demo/media/level-3-rinse.png" alt="预润洗训练界面：操作条件与实时状态" loading="lazy"></div></div>
+            <span class="news-step-k">02 · Prototype</span>
+            <h3>让每一步都有反馈</h3>
+            <p>把操作要求转化为界面、关卡和状态提示，现场走完训练路径。</p>
+          </li>
+          <li data-reveal style="--i:2">
+            <figure class="cam" data-cam="团队 · 现场"><img src="../photos/hackathon-team.jpg" width="1400" height="1050" alt="黑客松现场的 LabMate 团队合照" loading="lazy"></figure>
+            <span class="news-step-k">03 · Next</span>
+            <h3>继续打磨产品</h3>
+            <p>把现场验证带回产品迭代，在 Demo 中展示已实现的训练界面和实际操作。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sp-band news-gallery-band" aria-label="现场照片">
+      <div class="x-wrap">
+        <header class="sp-head" data-reveal>
+          <p class="sp-chap"><b>03</b><em>照片</em><span>On site</span></p>
+          <h2>在实验台前，也在舞台上。</h2>
+        </header>
+      </div>
+      <div class="x-gallery">
+        <div class="x-gallery-track">
+          <figure class="x-gallery-item x-gallery-photo"><img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt="颁奖现场"><figcaption>港科大（广州）第一届创新创业黑客松 · 三等奖</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo"><img src="../photos/lab-glasses-2.jpg" width="1050" height="1400" alt="戴着原型眼镜操作移液器"><figcaption>戴着原型眼镜操作移液器</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo"><img src="../photos/hackathon-team.jpg" width="1400" height="1050" alt="团队合照"><figcaption>黑客松现场的团队</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo"><img src="../photos/lab-cycler-1.jpg" width="1050" height="1400" alt="练习 PCR 仪的虚拟操作"><figcaption>练习 PCR 仪的虚拟操作</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo"><img src="../photos/lab-glasses-1.jpg" width="1050" height="1400" alt="在实验台前戴上眼镜"><figcaption>在实验台前戴上眼镜</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo"><img src="../bp/bench-pov.jpg" width="1200" height="675" alt="眼镜第一视角"><figcaption>眼镜第一视角</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt=""><figcaption>港科大（广州）第一届创新创业黑客松 · 三等奖</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../photos/lab-glasses-2.jpg" width="1050" height="1400" alt=""><figcaption>戴着原型眼镜操作移液器</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../photos/hackathon-team.jpg" width="1400" height="1050" alt=""><figcaption>黑客松现场的团队</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../photos/lab-cycler-1.jpg" width="1050" height="1400" alt=""><figcaption>练习 PCR 仪的虚拟操作</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../photos/lab-glasses-1.jpg" width="1050" height="1400" alt=""><figcaption>在实验台前戴上眼镜</figcaption></figure>
+          <figure class="x-gallery-item x-gallery-photo" aria-hidden="true"><img src="../bp/bench-pov.jpg" width="1200" height="675" alt=""><figcaption>眼镜第一视角</figcaption></figure>
         </div>
-      </section>
-      <section class="page-section" aria-labelledby="build-title">
-        <div class="page-heading"><div><p class="page-kicker">THE BUILD</p><h2 id="build-title">从发现问题，到验证体验。</h2></div><p class="page-note">一次集中协作，让课堂观察与产品实现接上。</p></div>
-        <div class="news-grid">
-          <article class="news-card"><p class="page-kicker">PROBLEM</p><h3>看见课堂里的困难</h3><p>老师难以同时盯住每一张实验台；学生需要在操作过程中就知道哪里出了错。</p></article>
-          <article class="news-card"><p class="page-kicker">PROTOTYPE</p><h3>让每一步都有反馈</h3><p>把操作要求转化为界面、关卡和状态提示，现场走完训练路径。</p></article>
-          <article class="news-card"><p class="page-kicker">NEXT</p><h3>继续打磨产品</h3><p>把现场验证带回产品迭代，在 Demo 中展示已实现的训练界面和实际操作。</p></article>
-        </div>
-      </section>
-      <section class="page-cta">
-        <p class="page-kicker">EXPLORE THE DEMO</p>
-        <h2 class="page-h2">看看这些想法，<br>在产品里是什么样。</h2>
-        <div class="page-actions"><a class="x-btn" href="../product/demo/">查看 Product / Demo</a><a class="x-link" href="../">回到项目介绍</a></div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <section class="x-band x-cta sp-cta">
+      <div class="x-wrap x-cta-inner" data-reveal>
+        <h2>看看这些想法，在产品里是什么样。</h2>
+        <p>七个训练关卡的真实界面，以及三段实际操作录屏。</p>
+        <div class="x-hero-actions"><a class="x-btn" href="../product/demo/">查看 Product / Demo</a><a class="x-link" href="../">回到项目介绍</a></div>
+      </div>
+    </section>
   </main>
   <footer class="page-footer"><div class="x-wrap page-footer-inner"><span>见微科技 · LabMate AI</span><nav aria-label="页脚导航"><a href="../">项目介绍</a><a href="../#zh-team">团队</a><a href="../hackathon/">News</a><a href="../product/demo/">Demo</a></nav><span>Team from HKUST(GZ)</span></div></footer>
-  <script src="../site-shell.js?v=20261127-unified-1" defer></script>
+  <script src="../site-shell.js?v=20261127-fx-1" defer></script>
 </body>
 </html>
