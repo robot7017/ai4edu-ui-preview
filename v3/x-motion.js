@@ -161,6 +161,7 @@
     });
     const screen = box.querySelector("[data-flow-stage]");
     let sx = 0;
+    let lastSwipe = 0;
     screen?.addEventListener(
       "touchstart",
       (e) => (sx = e.touches[0].clientX),
@@ -168,7 +169,11 @@
     );
     screen?.addEventListener("touchend", (e) => {
       const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) set(cur + (dx < 0 ? 1 : -1), true);
+      const now = Date.now();
+      if (Math.abs(dx) > 96 && now - lastSwipe > 650) {
+        lastSwipe = now;
+        set(cur + (dx < 0 ? 1 : -1), true);
+      }
     });
     const labels = tabs.map((t) => t.querySelector("b")?.textContent || "");
     const open = () =>
