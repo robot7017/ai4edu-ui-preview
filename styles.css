@@ -5845,3 +5845,39 @@ html:lang(zh) .xj-cap h2 {
   .hero-actions3 { gap: 16px 28px; }
   .hero-actions3 .x-btn { flex: 1 0 100%; justify-content: center; }
 }
+
+/* ===================== round 13 ===================== */
+/* scenario cards: text only (photo slot returns once clean photos are supplied), five across */
+@media (min-width: 601px) {
+  .x-sites { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+}
+@media (min-width: 601px) and (max-width: 1200px) { .x-sites { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.x-site { padding: 22px 20px 20px; }
+.x-site h3 { margin-top: 0; font-size: 17px; }
+.x-site ul li { font-size: 13.5px; }
+/* the scenario footnote fits on one line */
+#zh-project--partners .x-foot, #en-project--partners .x-foot { max-width: none; }
+/* detection demo: hand box in amber so the two boxes read as separate */
+.rc-box.hand { border-color: #f2b84b; }
+.rc-box.hand i { background: #f2b84b; color: #1a1305; }
+/* lab illustration: no overlay captions; the step list already says it */
+.lb-tag { display: none !important; }
+
+/* photo strip: auto-scrolls, and can be swiped, dragged or stepped with the buttons */
+.x-gallery { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; cursor: grab; -webkit-overflow-scrolling: touch; }
+.x-gallery::-webkit-scrollbar { display: none; }
+.x-gallery.is-drag { cursor: grabbing; user-select: none; }
+.x-gallery .x-gallery-track { animation: none !important; }
+.x-gallery img { pointer-events: none; }
+.gal-ctrl { display: flex; justify-content: flex-end; gap: 10px; max-width: 1240px; margin: 18px auto 0; padding: 0 40px; }
+.gal-ctrl button { all: unset; box-sizing: border-box; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #2a3442; border-radius: 50%; background: var(--x-panel, #0c1117); color: var(--x-text, #e8edf2); cursor: pointer; transition: border-color .2s; }
+.gal-ctrl button:hover { border-color: var(--x-cyan, #7fdbff); }
+.gal-ctrl button:focus-visible { outline: 2px solid var(--x-cyan, #7fdbff); outline-offset: 2px; }
+.gal-ctrl svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 600px) {
+  .x-gallery { mask-image: none; padding: 0; }
+  .x-gallery .x-gallery-track { display: flex !important; grid-template-columns: none; width: max-content; gap: 12px; padding: 0 20px; }
+  .x-gallery .x-gallery-item, .x-gallery .x-gallery-item[aria-hidden="true"], .x-gallery-track > .x-gallery-item:nth-child(7) { display: block !important; width: 72vw; height: auto; aspect-ratio: 4 / 3; }
+  .x-gallery .x-gallery-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .gal-ctrl { padding: 0 20px; }
+}

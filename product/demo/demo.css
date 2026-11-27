@@ -60,3 +60,10 @@
 @media (max-width: 960px) { .dm-recs { grid-template-columns: 1fr; gap: 48px; max-width: 600px; } }
 @media (max-width: 700px) { .dm-chip { display: none; } .dm-steps small { display: none; } }
 @media (prefers-reduced-motion: reduce) { .dm-chip { animation: none; } .dm-screen img { transition: none; } }
+.dm-screen img { cursor: zoom-in; }
+.dm-lb { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(3, 5, 8, .92); opacity: 0; pointer-events: none; transition: opacity .25s; }
+.dm-lb.on { opacity: 1; pointer-events: auto; }
+.dm-lb img { max-width: min(1600px, 96vw); max-height: 90vh; border-radius: 10px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); cursor: zoom-out; }
+.dm-lb-x { all: unset; position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #2a3442; border-radius: 50%; background: #0c1117; color: #e8edf2; font-size: 26px; line-height: 1; cursor: pointer; }
+.dm-lb-x:focus-visible { outline: 2px solid var(--x-cyan); outline-offset: 2px; }
+.dm-hero .sp-device-screen img { aspect-ratio: 16 / 9.4; object-position: 50% 0; }

@@ -2,11 +2,11 @@
   const box = document.querySelector("[data-demo-player]");
   if (!box) return;
   const items = [
-    { kicker: "LEVEL 1 / 7", image: "media/level-1-install.png", alt: "装吸头训练界面截图" },
-    { kicker: "LEVEL 2 / 7", image: "media/level-2-volume.png", alt: "调体积训练界面截图" },
-    { kicker: "LEVEL 3 / 7", image: "media/level-3-rinse.png", alt: "预润洗训练界面截图" },
-    { kicker: "LEVEL 6 / 7", image: "media/level-6-eject.png", alt: "退吸头训练界面截图" },
-    { kicker: "OVERVIEW", image: "media/overview.png", alt: "移液器训练七关总览截图" },
+    { kicker: "LEVEL 1 / 7", image: "media/level-1-install.png?v=20261127", alt: "装吸头教学界面截图" },
+    { kicker: "LEVEL 2 / 7", image: "media/level-2-volume.png?v=20261127", alt: "调体积教学界面截图" },
+    { kicker: "LEVEL 3 / 7", image: "media/level-3-rinse.png?v=20261127", alt: "预润洗教学界面截图" },
+    { kicker: "LEVEL 6 / 7", image: "media/level-6-eject.png?v=20261127", alt: "退吸头教学界面截图" },
+    { kicker: "OVERVIEW", image: "media/overview.png?v=20261127", alt: "移液器教学七关总览截图" },
   ];
   items.forEach(it => { const i = new Image(); i.src = it.image; });
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -59,4 +59,33 @@
   player.addEventListener("pointerleave", () => { paused = false; schedule(); });
   new IntersectionObserver(ents => { visible = ents[0].isIntersecting; visible ? schedule() : clearTimeout(timer); }, { threshold: 0.3 }).observe(player);
   if (reduce) player.classList.remove("is-auto");
+})();
+
+/* click the screenshot to view it full size */
+(() => {
+  const img = document.querySelector("[data-stage-image]");
+  if (!img) return;
+  const lb = document.createElement("div");
+  lb.className = "dm-lb";
+  lb.setAttribute("role", "dialog");
+  lb.setAttribute("aria-modal", "true");
+  lb.setAttribute("aria-label", "放大查看");
+  lb.innerHTML = '<button type="button" class="dm-lb-x" aria-label="关闭">×</button><img alt="">';
+  document.body.appendChild(lb);
+  const big = lb.querySelector("img");
+  const close = () => { lb.classList.remove("on"); document.body.style.overflow = ""; img.focus({ preventScroll: true }); };
+  const open = () => {
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    lb.classList.add("on");
+    document.body.style.overflow = "hidden";
+    lb.querySelector("button").focus();
+  };
+  img.tabIndex = 0;
+  img.setAttribute("role", "button");
+  img.setAttribute("aria-label", "放大查看截图");
+  img.addEventListener("click", open);
+  img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  lb.addEventListener("click", (e) => { if (e.target !== big) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lb.classList.contains("on")) close(); });
 })();
