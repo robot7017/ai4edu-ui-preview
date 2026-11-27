@@ -5,11 +5,11 @@ Two static previews of the redesigned LabMate AI website. Each has the project a
 
 | 版本 / Version | 地址 / Path | 说明 / Notes |
 | --- | --- | --- |
-| A 版 / Version A | `/` | 荧光黄绿配色、几何装饰与较多交互动效 / Lime accent, geometric decoration and more interaction effects |
+| A 版 / Version A | `/v1/` | 荧光黄绿配色、几何装饰与较多交互动效 / Lime accent, geometric decoration and more interaction effects |
 | B 版 / Version B | `/v2/` | 企业官网版式：顶部导航、整屏深色首屏、黑白灰通栏交替，面向商业路演 / Corporate layout: top navigation, full-screen dark hero and alternating black, white and grey bands, for business pitches |
-| C 版 / Version C | `/v3/` | 深色产品舞台：AR 眼镜示意渲染作为主视觉、随滚动切换的眼镜 HUD 演示、三端协同示意，经多轮“批判者—生成者”迭代 / Dark product stage: AR glasses render as the hero, a scroll-driven glasses HUD sequence and a three-device diagram, refined over several critic–generator rounds |
+| C 版 / Version C（正式 / live） | `/` | 深色产品舞台：AR 眼镜示意渲染作为主视觉、随滚动切换的眼镜 HUD 演示、三端协同示意，经多轮“批判者—生成者”迭代 / Dark product stage: AR glasses render as the hero, a scroll-driven glasses HUD sequence and a three-device diagram, refined over several critic–generator rounds |
 
-页面右下角的标签可在版本之间切换；C 版中的眼镜为示意渲染，之后将替换为实拍。 / The label in the bottom-right corner switches between versions; the glasses in Version C are an illustrative render to be replaced with photography.
+C 版为网站正式版本，位于根目录，旧的 `/v3/` 地址会自动跳转；A、B 版页面右下角的标签可在两版之间切换。C 版中的眼镜为示意渲染，之后将替换为实拍。 / Version C is the live site at the root, and old `/v3/` links redirect to it; the corner label switches between Versions A and B. The glasses in Version C are an illustrative render to be replaced with photography.
 
 - 本仓库只包含渲染后的预览页面，不包含网站源码、登录或部署配置。 / This repository holds only the rendered previews, not the website source, sign-in or deployment configuration.
 - 预览不连接 GitHub，工程工作区页面需在正式网站登录后使用。 / The previews do not connect to GitHub; the engineering workspace requires sign-in on the live site.

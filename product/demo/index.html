@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo · 产品演示 · LabMate AI</title>
+  <meta name="description" content="查看 LabMate AI 已实现的移液器训练界面、操作反馈和真实产品录屏。">
+  <meta name="theme-color" content="#05070a">
+  <link rel="icon" href="../../jw-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css?v=20261127-fx-3">
+  <link rel="stylesheet" href="../../site-shell.css?v=20261127-fx-1">
+  <link rel="stylesheet" href="demo.css?v=20261127-fx-1">
+</head>
+<body class="site subpage">
+  <a class="skip-link" href="#main">跳转到内容</a>
+  <header class="site-header is-solid">
+    <div class="site-header-inner">
+      <a class="site-logo" href="../../" aria-label="见微科技 LabMate AI 首页">
+        <svg class="jw-mark" aria-hidden="true" focusable="false" viewBox="-2 -2 92 104"><path d="M4 35V26A22 22 0 0 1 26 4H62A22 22 0 0 1 84 26V74A22 22 0 0 1 62 96H26A22 22 0 0 1 4 74V63" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7.5"/><circle cx="3.4" cy="49" r="5" fill="currentColor"/></svg>
+        <span class="site-logo-text"><b>见微科技</b><span>LabMate AI</span></span>
+      </a>
+      <nav class="site-nav" id="page-nav" aria-label="网站导航">
+        <a href="../../">项目介绍</a><a href="../../#zh-team">团队</a><a href="../../hackathon/">News</a><a href="../../product/demo/" aria-current="page">Demo</a>
+      </nav>
+      <div class="site-actions">
+        <a class="x-btn shell-cta" href="#playground">浏览训练界面</a>
+        <button class="site-menu" type="button" aria-controls="page-nav" aria-expanded="false" aria-label="打开菜单"><span class="site-burger" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="sp-hero">
+      <div class="x-wrap">
+        <p class="sp-lockup">Product / Demo <span>移液器训练</span></p>
+        <h1>移液器训练，<br><em>每一步都看得见。</em></h1>
+        <p class="sp-lead">从装吸头到收尾，查看已实现的训练界面与实际操作录屏，了解每一步的操作条件和反馈。</p>
+        <div class="sp-actions"><a class="x-btn" href="#playground">浏览训练界面</a><a class="x-link" href="#recordings">观看操作录屏</a></div>
+      </div>
+      <div class="x-wrap">
+        <div class="sp-hero-media dm-hero">
+          <div class="sp-device"><div class="sp-device-screen"><img src="media/level-3-rinse.png" alt="已实现的预润洗训练界面，包含操作条件和实时状态" fetchpriority="high"></div></div>
+          <div class="dm-chip dm-chip-a" aria-hidden="true"><span>LEVEL 3 / 7</span><b>预润洗</b></div>
+          <div class="dm-chip dm-chip-b" aria-hidden="true"><span>REAL BUILD</span><b>7 个关卡 · 3 段录屏</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-band" id="playground" aria-labelledby="playground-title" data-demo-player>
+      <div class="x-wrap">
+        <header class="sp-head split" data-reveal>
+          <div>
+            <p class="sp-chap"><b>01</b><em>训练界面</em><span>Explore the product</span></p>
+            <h2 id="playground-title">看看每一关怎么练。</h2>
+          </div>
+          <p>真实训练截图，会自动播放。点击关卡切换，或聚焦右侧画面后用左右方向键。</p>
+        </header>
+        <div class="dm-player is-auto" data-reveal>
+          <ol class="dm-steps" aria-label="训练关卡">
+            <li><button type="button" data-step="0" class="on" aria-pressed="true"><span class="dm-num">01</span><b>装吸头<small>Install tip</small></b><span class="dm-d">把移液器装上密封的吸头。对准、压入、确认密合。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="1" aria-pressed="false"><span class="dm-num">02</span><b>调体积<small>Set volume</small></b><span class="dm-d">把体积设定到 150.0 µL，持续看到当前值与目标值。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="2" aria-pressed="false"><span class="dm-num">03</span><b>预润洗<small>Pre-rinse</small></b><span class="dm-d">吸一次，再打回原管；动作、深度和复位同时呈现。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="3" aria-pressed="false"><span class="dm-num">06</span><b>退吸头<small>Eject tip</small></b><span class="dm-d">对准桶口、按下退吸头，完成这一关。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="4" aria-pressed="false"><span class="dm-num">OV</span><b>完整路径<small>Overview</small></b><span class="dm-d">七个关卡串起来，查看每关的目标与完成状态。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+          </ol>
+          <div class="dm-stage" data-demo-stage tabindex="0" aria-label="可切换的训练截图">
+            <div class="sp-device">
+              <div class="sp-device-screen dm-screen">
+                <img data-stage-image src="media/level-1-install.png" alt="装吸头训练界面截图">
+              </div>
+            </div>
+            <div class="dm-ctrl">
+              <button type="button" data-prev aria-label="上一张截图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <span data-stage-count aria-live="polite">01 / 05</span>
+              <button type="button" data-next aria-label="下一张截图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+              <span class="dm-kicker" data-stage-kicker>LEVEL 1 / 7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-band alt" id="recordings" aria-labelledby="recordings-title">
+      <div class="x-wrap">
+        <header class="sp-head split" data-reveal>
+          <div>
+            <p class="sp-chap"><b>02</b><em>实际操作</em><span>Real recordings</span></p>
+            <h2 id="recordings-title">看实际操作如何进行。</h2>
+          </div>
+          <p>三段产品实录：左侧是佩戴者视角，右侧是系统给出的提示。点击播放，可全屏查看细节。</p>
+        </header>
+        <ol class="dm-recs">
+          <li data-reveal style="--i:0"><figure class="cam" data-cam-rec="REC" data-cam="01 · 0:18"><video playsinline preload="none" poster="media/pipette-demo-01-poster.jpg" src="media/pipette-demo-01.mp4" aria-label="播放录屏 01：从操作提示开始"></video></figure><span class="news-step-k">Recording 01</span><h3>从操作提示开始</h3><p>看到当前步骤、目标和需要确认的条件。</p></li>
+          <li data-reveal style="--i:1"><figure class="cam" data-cam-rec="REC" data-cam="02 · 0:12"><video playsinline preload="none" poster="media/pipette-demo-02-poster.jpg" src="media/pipette-demo-02.mp4" aria-label="播放录屏 02：把动作变成反馈"></video></figure><span class="news-step-k">Recording 02</span><h3>把动作变成反馈</h3><p>每个动作都有状态，错误不会被藏到最后。</p></li>
+          <li data-reveal style="--i:2"><figure class="cam" data-cam-rec="REC" data-cam="03 · 0:40"><video playsinline preload="none" poster="media/pipette-demo-03-poster.jpg" src="media/pipette-demo-03.mp4" aria-label="播放录屏 03：一条完整训练路径"></video></figure><span class="news-step-k">Recording 03</span><h3>一条完整训练路径</h3><p>从装吸头到退吸头，连续走完七个关卡。</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="x-band x-cta sp-cta">
+      <div class="x-wrap x-cta-inner" data-reveal>
+        <h2>产品背后，是一次次现场尝试。</h2>
+        <p>从黑客松上的第一个原型，到今天的七个训练关卡。</p>
+        <div class="x-hero-actions"><a class="x-btn" href="../../hackathon/">看黑客松现场</a><a class="x-link" href="../../">回到项目介绍</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer"><div class="x-wrap page-footer-inner"><span>见微科技 · LabMate AI</span><nav aria-label="页脚导航"><a href="../../">项目介绍</a><a href="../../#zh-team">团队</a><a href="../../hackathon/">News</a><a href="../../product/demo/">Demo</a></nav><span>Team from HKUST(GZ)</span></div></footer>
+  <script src="../../site-shell.js?v=20261127-fx-1" defer></script>
+  <script src="demo.js?v=20261127-fx-1"></script>
+</body>
+</html>
