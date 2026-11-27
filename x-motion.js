@@ -386,6 +386,40 @@
     });
     size();
     tick();
+
+    /* click the 01-05 bar or a step to jump there (inverse of tick's mapping) */
+    const goTo = (sc, k) => {
+      size();
+      const span = sec.offsetHeight - innerHeight;
+      const top0 = sec.getBoundingClientRect().top + scrollY;
+      const n = counts[sc];
+      const st = k < 0 ? 0 : (Math.min(k, n - 1) + 0.5) / n;
+      const q = k < 0 ? lead[sc] * 0.5 + 0.01 : lead[sc] + 0.04 + st * (1 - lead[sc] - 0.1);
+      const p = Math.min(0.999, B[sc] + q * W[sc]);
+      scrollTo({ top: Math.round(top0 + p * span), behavior: reduce ? "auto" : "smooth" });
+    };
+    const bar = sec.querySelector(".xj-bar");
+    if (bar) {
+      bar.removeAttribute("aria-hidden");
+      [...bar.children].forEach((el, i) => {
+        el.setAttribute("role", "button");
+        el.tabIndex = 0;
+        el.addEventListener("click", () => goTo(i, -1));
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goTo(i, -1); }
+        });
+      });
+    }
+    caps.forEach((c, i) => {
+      c.querySelectorAll("[data-step]").forEach((li, j) => {
+        li.setAttribute("role", "button");
+        li.tabIndex = 0;
+        li.addEventListener("click", () => goTo(i, j));
+        li.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goTo(i, j); }
+        });
+      });
+    });
   }
 
   function init() {

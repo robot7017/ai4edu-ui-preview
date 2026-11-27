@@ -5828,3 +5828,20 @@ html:lang(zh) .xj-cap h2 {
 }
 .xj-hud { background: rgba(6, 12, 18, .86); }
 .fx-sub { background: rgba(6, 12, 18, .86); }
+
+/* ===================== journey: clickable bar + steps, no duplicate captions ===================== */
+.xj-bar > span { cursor: pointer; }
+.xj-bar > span:hover { color: #dfe7ee; }
+.xj-bar > span:focus-visible, .xj-steps li:focus-visible { outline: 2px solid var(--x-cyan); outline-offset: 3px; border-radius: 4px; }
+.xj-steps li { cursor: pointer; }
+.xj-steps li:not(.on):hover { color: #c9d3dc; }
+.xj-steps li:not(.on):hover::before { color: #8a96a3; }
+/* the typed subtitle, chapter/step counter and floating zoom card repeated the step list */
+.fx-sub, .fx-meta, .xj-zoom { display: none !important; }
+/* hero: three entries, no mid-word wrapping */
+.hero-actions3 { flex-wrap: wrap; row-gap: 18px; }
+.hero-actions3 > a { white-space: nowrap; }
+@media (max-width: 600px) {
+  .hero-actions3 { gap: 16px 28px; }
+  .hero-actions3 .x-btn { flex: 1 0 100%; justify-content: center; }
+}

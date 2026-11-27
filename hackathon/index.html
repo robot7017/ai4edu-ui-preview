@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>News · 黑客松现场 · LabMate AI</title>
+  <title>News · 项目动态 · LabMate AI</title>
   <meta name="description" content="LabMate AI 黑客松现场记录：从实验教学问题出发，把想法做成可演示的训练原型。">
   <meta name="theme-color" content="#05070a">
   <link rel="icon" href="../jw-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261127-perf-1">
+  <link rel="stylesheet" href="../styles.css?v=20261127-r12b">
   <link rel="stylesheet" href="../site-shell.css?v=20261127-fx-1">
-  <link rel="stylesheet" href="hackathon.css?v=20261127-fx-1">
+  <link rel="stylesheet" href="hackathon.css?v=20261127-r12">
 </head>
 <body class="site subpage">
   <a class="skip-link" href="#main">跳转到内容</a>
@@ -23,22 +23,44 @@
         <a href="../">项目介绍</a><a href="../#zh-team">团队</a><a href="../hackathon/" aria-current="page">News</a><a href="../product/demo/">Demo</a>
       </nav>
       <div class="site-actions">
-        <a class="x-btn shell-cta" href="../product/demo/">查看 Demo</a>
+        <a class="x-btn shell-cta" href="../product/demo/">产品界面演示</a>
         <button class="site-menu" type="button" aria-controls="page-nav" aria-expanded="false" aria-label="打开菜单"><span class="site-burger" aria-hidden="true"><i></i><i></i></span></button>
       </div>
     </div>
   </header>
   <main class="page-main" id="main">
-    <section class="sp-hero">
+    <section class="sp-hero news-index">
       <div class="x-wrap">
-        <p class="sp-lockup">News <span>黑客松 · 港科大（广州）</span></p>
-        <h1>从一个教学问题，<br><em>到现场运行的原型。</em></h1>
-        <p class="sp-lead">把实验课里的真实问题带到黑客松。我们一起拆解操作流程、搭建训练界面，让每一步的目标与反馈都看得见。</p>
-        <div class="sp-actions"><a class="x-btn" href="#story">看黑客松现场</a><a class="x-link" href="../product/demo/">查看 Product / Demo</a></div>
+        <p class="sp-lockup">News <span>项目动态</span></p>
+        <h1>LabMate 的最新进展。</h1>
+        <p class="sp-lead">试点、比赛与用户反馈，都会在这里更新。</p>
       </div>
       <div class="x-wrap">
-        <figure class="cam sp-hero-media news-cover" data-cam="HKUST(GZ) · 第一届创新创业黑客松">
-          <img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt="LabMate 团队在港科大（广州）第一届创新创业黑客松颁奖现场" fetchpriority="high">
+        <ol class="news-list" aria-label="动态列表">
+          <li>
+            <a class="news-item" href="#hackathon">
+              <figure><img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt="LabMate 团队在港科大（广州）第一届创新创业黑客松颁奖现场" fetchpriority="high"></figure>
+              <div>
+                <span class="news-tag">比赛</span>
+                <h2>港科大（广州）第一届创新创业黑客松，获三等奖</h2>
+                <p>把实验课里的真实问题带到黑客松，现场拆解操作流程、搭出训练界面原型。</p>
+                <span class="news-more">阅读全文</span>
+              </div>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sp-band news-article" id="hackathon" aria-labelledby="hk-title">
+      <div class="x-wrap">
+        <header class="sp-head" data-reveal>
+          <p class="sp-chap"><em>比赛</em><span>港科大（广州）第一届创新创业黑客松</span></p>
+          <h2 id="hk-title">从一个教学问题，到现场运行的原型。</h2>
+          <p>把实验课里的真实问题带到黑客松。我们一起拆解操作流程、搭建训练界面，让每一步的目标与反馈都看得见。</p>
+        </header>
+        <figure class="cam news-cover" data-cam="HKUST(GZ) · 第一届创新创业黑客松" data-reveal>
+          <img src="../photos/hackathon-stage.jpg" width="1400" height="788" alt="颁奖现场" loading="lazy">
           <figcaption class="cam-tag"><span>HACKATHON · AWARD</span><b>三等奖</b></figcaption>
         </figure>
       </div>
@@ -47,13 +69,12 @@
     <section class="sp-band" id="story" aria-labelledby="story-title">
       <div class="x-wrap">
         <header class="sp-head" data-reveal>
-          <p class="sp-chap"><b>01</b><em>现场</em><span>From idea to prototype</span></p>
+          <p class="sp-chap"><b>01</b><em>现场</em></p>
           <h2 id="story-title">把课堂里的关键动作，一步步跑通。</h2>
           <p>装吸头、调体积、预润洗、吸液、排液、退吸头、收尾。我们把真实实验课拆成可观察的步骤，为每一步设计目标、反馈和错误状态。</p>
         </header>
-        <ul class="sp-stats" data-counts data-reveal>
+        <ul class="sp-stats two" data-counts data-reveal>
           <li><strong data-count="7">7</strong><span>个训练关卡</span></li>
-          <li><strong data-count="3">3</strong><span>段操作录屏</span></li>
           <li><strong data-count="1">1</strong><span>条完整训练路径</span></li>
         </ul>
       </div>
@@ -62,7 +83,7 @@
     <section class="sp-band alt" aria-labelledby="build-title">
       <div class="x-wrap">
         <header class="sp-head" data-reveal>
-          <p class="sp-chap"><b>02</b><em>过程</em><span>The build</span></p>
+          <p class="sp-chap"><b>02</b><em>过程</em></p>
           <h2 id="build-title">从发现问题，到验证体验。</h2>
           <p>一次集中协作，让课堂观察与产品实现接上。</p>
         </header>
@@ -92,7 +113,7 @@
     <section class="sp-band news-gallery-band" aria-label="现场照片">
       <div class="x-wrap">
         <header class="sp-head" data-reveal>
-          <p class="sp-chap"><b>03</b><em>照片</em><span>On site</span></p>
+          <p class="sp-chap"><b>03</b><em>照片</em></p>
           <h2>在实验台前，也在舞台上。</h2>
         </header>
       </div>
@@ -117,8 +138,8 @@
     <section class="x-band x-cta sp-cta">
       <div class="x-wrap x-cta-inner" data-reveal>
         <h2>看看这些想法，在产品里是什么样。</h2>
-        <p>七个训练关卡的真实界面，以及三段实际操作录屏。</p>
-        <div class="x-hero-actions"><a class="x-btn" href="../product/demo/">查看 Product / Demo</a><a class="x-link" href="../">回到项目介绍</a></div>
+        <p>七个训练关卡的真实界面，以及每一步的操作反馈。</p>
+        <div class="x-hero-actions"><a class="x-btn" href="../product/demo/">查看产品演示</a><a class="x-link" href="../">回到项目介绍</a></div>
       </div>
     </section>
   </main>

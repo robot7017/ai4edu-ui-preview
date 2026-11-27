@@ -180,8 +180,8 @@
       const top = el("div", "fx-ar-top", ar);
       el("b", "fx-rec", top).textContent = "AR";
       el("span", "", top).textContent = zh
-        ? "LabMate · PCR 第 1/9 项"
-        : "LabMate · PCR item 1/9";
+        ? "LabMate · PCR 第 1/9 步"
+        : "LabMate · PCR step 1/9";
       const clk = el("span", "fx-clock", top);
       clocks.add(clk);
       new IntersectionObserver(
@@ -280,7 +280,7 @@
 
   function scan() {
     /* hero particle network and rainbow title sheen removed: too busy */
-    document.querySelectorAll(".lb").forEach(hud);
+    /* camera-style HUD on the lab illustration removed: it read as a security feed */
     document.querySelectorAll(".xj-stage").forEach(story);
     document
       .querySelectorAll(".x-head, .x-cta-inner, .x-hand-copy, .x-foot")
