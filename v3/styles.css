@@ -5742,3 +5742,70 @@ html:lang(zh) .xj-cap h2 {
   /* photo grid: drop the orphan */
   .x-gallery-track > .x-gallery-item:nth-child(7) { display: none; }
 }
+
+/* ===================== step list: quiet editorial version ===================== */
+/* replaces the rail + circles + glowing active box, which collided with each other */
+.xj-steps::before, .xj-steps::after { display: none; }
+.xj-steps li {
+  position: relative;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: baseline;
+  margin: 0;
+  padding: 15px 0 15px;
+  border-top: 1px solid var(--x-line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #5b6876;
+  font-weight: 400;
+  text-shadow: none;
+  transition: color .35s;
+}
+.xj-steps li:last-child { border-bottom: 1px solid var(--x-line); }
+.xj-steps li::before,
+.xj-steps li.done::before,
+.xj-steps li.on::before {
+  content: counter(xs, decimal-leading-zero);
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #3e4a57;
+  font: 500 12px/1 "Geist Mono", ui-monospace, monospace;
+  letter-spacing: .04em;
+  animation: none;
+  transition: color .35s;
+}
+.xj-steps li.done { color: #8a96a3; }
+.xj-steps li.done::before { color: #5b6876; }
+.xj-steps li.on {
+  padding-left: 0;
+  background: none;
+  box-shadow: none;
+  color: #f2f4f7;
+  font-weight: 500;
+  text-shadow: none;
+}
+.xj-steps li.on::before { color: var(--x-cyan); }
+/* progress: a hairline drawn across the active step's top rule */
+.xj-steps li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 0;
+  height: 1px;
+  background: var(--x-cyan);
+  transition: width .6s cubic-bezier(.2, .8, .2, 1);
+}
+.xj-steps li.on::after { width: 100%; }
+@media (min-width: 861px) { .xj-steps li { display: grid; } }
+@media (max-width: 860px) {
+  .xj-steps li.on { display: grid; padding: 10px 0 0; border: 0; }
+  .xj-steps li.on::after { display: none; }
+  .xj-steps li.on::before { content: "0" attr(data-num); }
+}
