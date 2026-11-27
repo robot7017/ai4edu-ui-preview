@@ -5990,3 +5990,64 @@ html:lang(zh) .xj-cap h2 {
   visibility: visible;
   transform: none !important;
 }
+
+/* r18: evidence — show where each method looked */
+.ev3-seg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ev3-seg path { fill: rgba(255, 122, 217, .18); stroke: #ff7ad9; stroke-width: 5; stroke-linejoin: round; }
+.ev3-pt.miss i { width: 30px; height: 30px; margin: -9px; background: none; border: 2px dashed #ffd36b; box-shadow: none; }
+.ev3-pt.miss em { margin-left: 6px; color: #ffd36b; }
+.ev3-pt.wrong i { background: #ff7ad9; box-shadow: none; }
+.ev3-pt.wrong em { color: #ffb6ea; }
+.ev3-why { margin: 12px 0 0; color: var(--x-mute); font-size: 14px; line-height: 1.65; }
+.ev3-grid li.us .ev3-why { color: #c9d3dc; }
+
+/* r18: step list as a stepper, echoing the level list in the app */
+@media (min-width: 861px) {
+  .xj-steps { margin-top: 24px; }
+  .xj-steps li, .xj-steps li:last-child {
+    display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 14px; align-items: center;
+    margin: 4px 0; padding: 10px 14px 10px 10px;
+    border: 1px solid transparent; border-radius: 10px;
+    color: #5b6876; font-size: 16px; font-weight: 400;
+    transition: color .3s, background-color .3s, border-color .3s;
+  }
+  .xj-steps li::before, .xj-steps li.done::before, .xj-steps li.on::before {
+    content: attr(data-num); position: relative; z-index: 1;
+    display: grid; place-items: center; width: 26px; height: 26px;
+    border: 1.5px solid #2f3c4c; border-radius: 50%; background: #0b1117;
+    color: #5b6876; font: 600 12px/1 "Geist Mono", ui-monospace, monospace;
+    transition: all .3s;
+  }
+  .xj-steps li::after {
+    content: ""; display: block; position: absolute; left: 22.5px; top: calc(50% + 13px);
+    width: 1.5px; height: calc(100% - 26px + 8px); background: #223040; transition: background-color .3s;
+  }
+  .xj-steps li:last-child::after { display: none; }
+  .xj-steps li.done { color: #8a96a3; }
+  .xj-steps li.done::before { content: "✓"; border-color: #5b7593; background: #141d27; color: #93b4d8; }
+  .xj-steps li.done::after { background: #5b7593; }
+  .xj-steps li.on { background: #101821; border-color: #2a3a4c; color: #f2f4f7; font-weight: 600; font-size: 17px; }
+  .xj-steps li.on::before { border-color: #93b4d8; background: #93b4d8; color: #0b1117; }
+  .xj-steps li:not(.on):hover { color: #c9d3dc; background: #0d141c; }
+}
+@media (max-width: 860px) {
+  .xj-steps li.on {
+    display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 12px; align-items: center;
+    padding: 10px 12px; border: 1px solid #2a3a4c; border-radius: 10px; background: #101821;
+    color: #f2f4f7; font-weight: 600;
+  }
+  .xj-steps li.on::before {
+    content: attr(data-num); position: static; display: grid; place-items: center; width: 26px; height: 26px;
+    border-radius: 50%; background: #93b4d8; color: #0b1117; font: 600 12px/1 "Geist Mono", ui-monospace, monospace;
+  }
+}
+@media (min-width: 861px) {
+  .xj .xj-steps li, .xj .xj-steps li.on, .xj .xj-steps li.done { padding: 10px 14px 10px 10px; grid-template-columns: 26px minmax(0, 1fr); align-items: center; }
+  .xj .xj-steps li::before, .xj .xj-steps li.on::before, .xj .xj-steps li.done::before { top: auto; left: auto; margin: 0; animation: none; box-shadow: none; }
+  .xj .xj-steps li::after, .xj .xj-steps li.on::after, .xj .xj-steps li.done::after { left: 22.5px; top: calc(50% + 13px); width: 1.5px; height: calc(100% - 26px + 8px); transition: background-color .3s; }
+  .xj .xj-steps li:last-child::after { display: none; }
+}
+@media (max-width: 860px) {
+  .xj .xj-copy { min-height: 200px; }
+  .xj .xj-steps li.on { font-size: 16px; padding: 8px 12px; }
+}
