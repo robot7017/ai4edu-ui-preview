@@ -21,7 +21,6 @@
 
   /* ---------- global overlays ---------- */
   const bar = el("div", "fx-progress", document.body);
-  el("div", "fx-grain", document.body);
   bar.setAttribute("aria-hidden", "true");
 
   const onScroll = () => {
@@ -35,7 +34,7 @@
   const clocks = new Set();
   let t0 = performance.now();
   function loop(t) {
-    if (t - t0 > 80) {
+    if (t - t0 > 250 && !document.hidden) {
       t0 = t;
       const d = new Date();
       const s =
@@ -237,18 +236,7 @@
       const num = (cap.querySelector(".x-chap b") || {}).textContent || "";
       const title = (cap.querySelector("h2") || {}).textContent || "";
       if (s !== lastScene) {
-        if (lastScene !== null && !reduce) {
-          cn.textContent = num;
-          ct.textContent = title;
-          card.classList.remove("is-play");
-          void card.offsetWidth;
-          card.classList.add("is-play");
-          flash.classList.remove("is-play");
-          view.classList.remove("fx-cut");
-          void flash.offsetWidth;
-          flash.classList.add("is-play");
-          view.classList.add("fx-cut");
-        }
+        /* chapter card + flash on scene change removed: too jumpy */
         lastScene = s;
         stage.dataset.fxScene = s;
       }
@@ -313,7 +301,6 @@
       scan();
     });
   }).observe(document.body, {
-    childList: true,
     subtree: true,
     attributes: true,
     attributeFilter: ["hidden"],

@@ -43,9 +43,8 @@
     const d = new Date();
     const t = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}:${pad(Math.floor(d.getMilliseconds() / 40))}`;
     clocks.forEach(c => (c.textContent = t));
-    if (!reduce) requestAnimationFrame(tick);
   };
-  if (clocks.length) tick();
+  if (clocks.length) { tick(); if (!reduce) setInterval(() => { if (!document.hidden) tick(); }, 100); }
 
   const countUp = el => {
     const to = parseFloat(el.dataset.count);

@@ -101,7 +101,7 @@ function mount(host) {
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
   } catch { return; }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
@@ -270,9 +270,11 @@ function mount(host) {
   const t0 = performance.now();
   let raf = 0;
   const ease = (x) => 1 - Math.pow(1 - Math.min(Math.max(x, 0), 1), 3);
-  let lastPhase = -1, lastPower = -1;
+  let lastPhase = -1, lastPower = -1, lastSig = "";
   function frame(now) {
-    const t = reduce ? 9 : (now - t0) / 1000;
+    const tReal = reduce ? 9 : (now - t0) / 1000;
+    /* motion settles after the intro; afterwards we only redraw when something changes */
+    const t = Math.min(tReal, 2.6);
     const intro = ease(t / 2.2);
     px += (tx - px) * 0.05; py += (ty - py) * 0.05;
     const yaw = variant === "hero" ? -0.62 + 0.14 * Math.sin(t * 0.32) : -0.6 + 0.3 * Math.sin(t * 0.25);
@@ -315,17 +317,26 @@ function mount(host) {
       const on = ease((t - 1.6) / 0.8);
       const flicker = t < 2.6 && !reduce ? (Math.sin(t * 60) > 0 ? 1 : 0.6) : 1;
       const power = on * flicker;
-      const phase = reduce || sp > 0.2 ? 0 : Math.floor((t - 1.6) / 3.2) % 2 === 1 ? 1 : 0;
+      const phase = reduce || sp > 0.2 ? 0 : Math.floor((tReal - 1.6) / 3.2) % 2 === 1 ? 1 : 0;
       if (phase !== lastPhase || Math.abs(power - lastPower) > 0.02) {
         hud.draw(phase, power); lastPhase = phase; lastPower = power;
       }
     }
+    const sig = [glasses.rotation.x, glasses.rotation.y, glasses.position.x, glasses.position.y, glasses.position.z,
+      shadow.material.opacity, canvas.style.opacity, lastPhase, lastPower, sp].map((v) => (+v).toFixed(4)).join();
+    if (sig === lastSig) return;
+    lastSig = sig;
     renderer.render(scene, camera);
   }
   function loop() {
     cancelAnimationFrame(raf);
+    let lastDraw = 0;
     const step = (now) => {
-      if (!jStage || jStage.dataset.g3d === "on") frame(now);
+      /* 30 fps is plenty for the slow float; halves GPU work */
+      if (now - lastDraw >= 32 && (!jStage || jStage.dataset.g3d === "on")) {
+        lastDraw = now;
+        frame(now);
+      }
       if (visible && !reduce) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);

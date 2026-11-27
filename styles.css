@@ -5815,3 +5815,16 @@ html:lang(zh) .xj-cap h2 {
 .x-chap b, .fx-chapter b { background: none; -webkit-text-fill-color: currentColor; filter: none; }
 .x-chap b { color: var(--x-cyan); }
 .fx-chapter b { color: #f2f4f7; }
+
+/* ===================== performance + calmer scene changes ===================== */
+.fx-grain, .fx-spot, .fx-chapter, .fx-flash { display: none !important; }
+.xj-view.fx-cut { animation: none !important; }
+/* reveal: fade + slide only; animating blur on many elements is expensive */
+.xf .fx-rv { filter: none; transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1); }
+/* no frosted-glass blur on cards that move with the scroll; slightly more opaque instead */
+.xj-hud, .xj-bench .xj-hud, .rc-act, .rc-task, .rc-read, .rc-say, .fx-sub, .x-hud-ev, .x-hud-say, .x-hud-task, .x-hud-steps li, .x-readout {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.xj-hud { background: rgba(6, 12, 18, .86); }
+.fx-sub { background: rgba(6, 12, 18, .86); }

@@ -317,6 +317,12 @@
     };
     let last = "";
     const clamp = (v) => Math.min(1, Math.max(0, v));
+    const prev = {};
+    const setVar = (name, val) => {
+      if (prev[name] === val) return;
+      prev[name] = val;
+      stage.style.setProperty(name, val);
+    };
     const tick = () => {
       const r = sec.getBoundingClientRect();
       const span = r.height - innerHeight;
@@ -327,13 +333,13 @@
       const st = clamp((q - lead[s] - 0.04) / (1 - lead[s] - 0.1));
       const k =
         q < lead[s] ? -1 : Math.min(counts[s] - 1, Math.floor(st * counts[s]));
-      stage.style.setProperty("--p", p.toFixed(4));
-      stage.style.setProperty("--q", q.toFixed(4));
+      setVar("--p", p.toFixed(4));
+      setVar("--q", q.toFixed(4));
       for (let i = 1; i < W.length; i++) {
-        stage.style.setProperty("--x" + i, clamp((p - (B[i] - T)) / (2 * T)).toFixed(4));
+        setVar("--x" + i, clamp((p - (B[i] - T)) / (2 * T)).toFixed(4));
       }
       for (let i = 0; i < W.length; i++) {
-        stage.style.setProperty("--b" + i, clamp((p - B[i]) / W[i]).toFixed(4));
+        setVar("--b" + i, clamp((p - B[i]) / W[i]).toFixed(4));
       }
       /* bench -> flagged card on the teacher screen, measured */
       if (bench && fcard && view && s >= 3) {
@@ -344,10 +350,10 @@
         const by = v.top + bench.offsetTop;
         const f = fcard.getBoundingClientRect();
         const sc = f.width / bw;
-        stage.style.setProperty("--tx", (f.left + f.width / 2 - bx).toFixed(1) + "px");
-        stage.style.setProperty("--ty", (f.top + f.height / 2 - by).toFixed(1) + "px");
-        stage.style.setProperty("--ts", sc.toFixed(4));
-        stage.style.setProperty(
+        setVar("--tx", (f.left + f.width / 2 - bx).toFixed(1) + "px");
+        setVar("--ty", (f.top + f.height / 2 - by).toFixed(1) + "px");
+        setVar("--ts", sc.toFixed(4));
+        setVar(
           "--tc",
           Math.max(0, ((1 - f.height / (bh * sc)) / 2) * 100).toFixed(2) + "%",
         );
