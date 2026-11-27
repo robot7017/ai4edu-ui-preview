@@ -10,7 +10,7 @@
 .news-steps .sp-device-screen { flex: 1; border-radius: 14px; }
 .news-steps .sp-device-screen img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
 .news-steps .cam-top span:not(.cam-clock), .news-steps .cam-ticks { display: none; }
-.news-step-k { padding-top: 22px; border-top: 1px solid transparent; border-image: linear-gradient(90deg, #7fdbff, transparent) 1; color: var(--x-cyan); font: 600 13px/1 "Geist Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.news-step-k { padding-top: 22px; border-top: 1px solid transparent; border-image: linear-gradient(90deg, #93b4d8, transparent) 1; color: var(--x-cyan); font: 600 13px/1 "Geist Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 .news-steps h3 { margin: 14px 0 0; font-size: 24px; font-weight: 650; }
 .news-steps p { margin: 12px 0 0; color: var(--x-mute); font-size: 16px; line-height: 1.75; }
 .news-gallery-band { padding-bottom: clamp(72px, 7vw, 112px); }
@@ -27,7 +27,7 @@
 .news-item figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 14px; border: 1px solid var(--x-line); }
 .news-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--x-ease); }
 .news-item:hover img { transform: scale(1.03); }
-.news-tag { display: inline-block; padding: 3px 10px; border: 1px solid rgba(127, 219, 255, .45); border-radius: 999px; color: var(--x-cyan); font-size: 13px; }
+.news-tag { display: inline-block; padding: 3px 10px; border: 1px solid rgba(147, 180, 216, .45); border-radius: 999px; color: var(--x-cyan); font-size: 13px; }
 .news-item h2 { margin: 14px 0 0; font-size: clamp(20px, 2vw, 26px); font-weight: 650; line-height: 1.4; }
 .news-item p { margin: 10px 0 0; color: var(--x-mute); font-size: 15px; line-height: 1.75; }
 .news-more { display: inline-block; margin-top: 16px; padding-bottom: 3px; border-bottom: 1px solid #ffffff40; font-size: 14px; transition: border-color .2s; }

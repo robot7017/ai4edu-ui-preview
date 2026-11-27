@@ -9,10 +9,10 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
 .subpage .page-hero { position: relative; padding: clamp(72px, 8vw, 120px) 0 88px; isolation: isolate; }
 .subpage .page-hero::before {
   content: ""; position: absolute; inset: -64px -20vw 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(ellipse at 72% 35%, rgba(127, 219, 255, .09), transparent 62%);
+  background: radial-gradient(ellipse at 72% 35%, rgba(147, 180, 216, .09), transparent 62%);
 }
 .subpage .page-kicker { margin: 0 0 22px; color: var(--x-cyan); font: 500 13px/1.5 "Geist Mono", monospace; letter-spacing: .12em; }
-.subpage .page-kicker span { display: inline-block; margin-left: 14px; padding-left: 14px; border-left: 1px solid rgba(127, 219, 255, .35); letter-spacing: .04em; }
+.subpage .page-kicker span { display: inline-block; margin-left: 14px; padding-left: 14px; border-left: 1px solid rgba(147, 180, 216, .35); letter-spacing: .04em; }
 .subpage .page-title { margin: 0; color: #f2f4f7; font-size: clamp(38px, 4.6vw, 68px); font-weight: 700; line-height: 1.14; letter-spacing: -.03em; text-wrap: balance; }
 .subpage .page-title em { color: var(--x-cyan); font-style: normal; }
 .subpage .page-lead { max-width: 38em; margin: 26px 0 0; color: var(--x-mute); font-size: 18px; line-height: 1.85; }
@@ -25,7 +25,7 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
 .subpage .page-media { margin: 0; overflow: hidden; border: 1px solid var(--x-line); border-radius: 20px; background: var(--x-panel); box-shadow: 0 28px 80px rgba(0, 0, 0, .3); }
 .subpage .page-media img { display: block; width: 100%; height: auto; }
 .subpage .page-media figcaption { padding: 16px 20px; border-top: 1px solid var(--x-line); color: var(--x-mute); font-size: 14px; line-height: 1.6; }
-.subpage .page-cta { margin: 0 0 96px; padding: clamp(28px, 5vw, 56px); border: 1px solid var(--x-line); border-radius: 24px; background: radial-gradient(ellipse at 100% 0, rgba(127, 219, 255, .09), transparent 70%), var(--x-panel); }
+.subpage .page-cta { margin: 0 0 96px; padding: clamp(28px, 5vw, 56px); border: 1px solid var(--x-line); border-radius: 24px; background: radial-gradient(ellipse at 100% 0, rgba(147, 180, 216, .09), transparent 70%), var(--x-panel); }
 .subpage .page-cta h2 { max-width: 23em; }
 .subpage .page-footer { display: block; padding: 0; border-top: 1px solid var(--x-line); background: var(--x-base); color: var(--x-mute); }
 .subpage .page-footer-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 28px; padding-top: 32px; padding-bottom: 32px; font-size: 14px; }
@@ -53,10 +53,10 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
 
 /* ===================== Subpage visual layer (matches the v3 project page) ===================== */
 /* hero: same glow + grid as the project hero, centred copy, wide media below */
-.subpage .sp-hero { position: relative; isolation: isolate; padding: clamp(80px, 9vw, 128px) 0 clamp(72px, 8vw, 112px); text-align: center; background: radial-gradient(60% 50% at 50% 30%, rgba(127, 219, 255, .1), transparent 70%), var(--x-base); }
-.subpage .sp-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(127, 219, 255, .05) 1px, transparent 0), linear-gradient(90deg, rgba(127, 219, 255, .05) 1px, transparent 0); background-size: 64px 64px; mask-image: radial-gradient(55% 50% at 50% 35%, #000, transparent); pointer-events: none; }
+.subpage .sp-hero { position: relative; isolation: isolate; padding: clamp(80px, 9vw, 128px) 0 clamp(72px, 8vw, 112px); text-align: center; background: radial-gradient(60% 50% at 50% 30%, rgba(147, 180, 216, .1), transparent 70%), var(--x-base); }
+.subpage .sp-hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(147, 180, 216, .05) 1px, transparent 0), linear-gradient(90deg, rgba(147, 180, 216, .05) 1px, transparent 0); background-size: 64px 64px; mask-image: radial-gradient(55% 50% at 50% 35%, #000, transparent); pointer-events: none; }
 .subpage .sp-lockup { display: inline-flex; align-items: center; gap: 12px; margin: 0; color: var(--x-cyan); font: 500 14px/1.4 "Geist Mono", ui-monospace, monospace; letter-spacing: .2em; text-transform: uppercase; }
-.subpage .sp-lockup span { padding-left: 12px; border-left: 1px solid rgba(127, 219, 255, .4); letter-spacing: .04em; text-transform: none; font-family: Geist, "PingFang SC", sans-serif; }
+.subpage .sp-lockup span { padding-left: 12px; border-left: 1px solid rgba(147, 180, 216, .4); letter-spacing: .04em; text-transform: none; font-family: Geist, "PingFang SC", sans-serif; }
 .subpage .sp-hero h1 { max-width: 18em; margin: 20px auto 0; color: #f2f4f7; font-size: clamp(38px, 4.6vw, 68px); font-weight: 700; line-height: 1.12; letter-spacing: -.03em; text-wrap: balance; }
 .subpage .sp-hero h1 em { color: var(--x-cyan); font-style: normal; }
 .subpage .sp-lead { max-width: 36em; margin: 22px auto 0; color: var(--x-mute); font-size: 18px; line-height: 1.75; }
@@ -66,29 +66,29 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
 .subpage .sp-hero > :nth-child(2) { animation-delay: .15s; }
 
 /* camera / AR frame: same treatment as the glasses view on the project page */
-.subpage .cam { position: relative; margin: 0; overflow: hidden; border-radius: 28px; background: #000; box-shadow: 0 0 0 1px rgba(127, 219, 255, .28), 0 0 90px rgba(127, 219, 255, .12), 0 40px 120px rgba(0, 0, 0, .6); }
+.subpage .cam { position: relative; margin: 0; overflow: hidden; border-radius: 28px; background: #000; box-shadow: 0 0 0 1px rgba(147, 180, 216, .28), 0 0 90px rgba(147, 180, 216, 0.04), 0 40px 120px rgba(0, 0, 0, .6); }
 .subpage .cam > img, .subpage .cam > video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.subpage .cam-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: #c9f1ff; font: 600 clamp(10px, .9vw, 12px)/1 "Geist Mono", ui-monospace, monospace; letter-spacing: .08em; background: radial-gradient(80% 75% at 50% 50%, transparent 60%, rgba(4, 18, 28, .5) 100%), linear-gradient(180deg, rgba(4, 12, 18, .55), transparent 22%, transparent 80%, rgba(4, 12, 18, .5)); }
-.subpage .cam-c { position: absolute; width: 5.5%; aspect-ratio: 1; border: 0 solid rgba(170, 235, 255, .85); }
+.subpage .cam-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: #d0dcea; font: 600 clamp(10px, .9vw, 12px)/1 "Geist Mono", ui-monospace, monospace; letter-spacing: .08em; background: radial-gradient(80% 75% at 50% 50%, transparent 60%, rgba(4, 18, 28, .5) 100%), linear-gradient(180deg, rgba(4, 12, 18, .55), transparent 22%, transparent 80%, rgba(4, 12, 18, .5)); }
+.subpage .cam-c { position: absolute; width: 5.5%; aspect-ratio: 1; border: 0 solid rgba(190, 208, 228, .85); }
 .subpage .cam-c.tl { left: 3.2%; top: 5%; border-width: 2px 0 0 2px; }
 .subpage .cam-c.tr { right: 3.2%; top: 5%; border-width: 2px 2px 0 0; }
 .subpage .cam-c.bl { left: 3.2%; bottom: 6%; border-width: 0 0 2px 2px; }
 .subpage .cam-c.br { right: 3.2%; bottom: 6%; border-width: 0 2px 2px 0; }
-.subpage .cam-top { position: absolute; left: 6.5%; right: 6.5%; top: 6.2%; display: flex; align-items: center; gap: 1.2em; text-shadow: 0 0 8px rgba(92, 214, 255, .8); }
-.subpage .cam-top b { display: inline-flex; align-items: center; gap: .5em; padding: .35em .6em; border: 1px solid rgba(92, 214, 255, .7); border-radius: 4px; color: #bff0ff; }
-.subpage .cam-top b::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: #5cd6ff; box-shadow: 0 0 8px #5cd6ff; animation: lm-blink 1.4s infinite; }
+.subpage .cam-top { position: absolute; left: 6.5%; right: 6.5%; top: 6.2%; display: flex; align-items: center; gap: 1.2em; text-shadow: 0 0 8px rgba(122, 159, 200, .8); }
+.subpage .cam-top b { display: inline-flex; align-items: center; gap: .5em; padding: .35em .6em; border: 1px solid rgba(122, 159, 200, .7); border-radius: 4px; color: #c9d7e7; }
+.subpage .cam-top b::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: #7a9fc8; box-shadow: 0 0 8px #7a9fc8; animation: lm-blink 1.4s infinite; }
 .subpage .cam-top .cam-clock { margin-left: auto; }
-.subpage .cam-scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(127, 219, 255, .6), transparent); opacity: 0; animation: sp-scan 5s linear 1s infinite; }
+.subpage .cam-scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(147, 180, 216, .6), transparent); opacity: 0; animation: sp-scan 5s linear 1s infinite; }
 @keyframes sp-scan { 0% { top: 4%; opacity: 0 } 8% { opacity: .9 } 70% { opacity: .5 } 100% { top: 96%; opacity: 0 } }
 .subpage .cam-ticks { position: absolute; left: 32%; right: 32%; bottom: 4.5%; display: flex; justify-content: space-between; align-items: flex-end; }
-.subpage .cam-ticks i { width: 1px; height: 6px; background: rgba(170, 235, 255, .6); }
-.subpage .cam-ticks i:nth-child(5n+1) { height: 12px; background: #dff6ff; box-shadow: 0 0 6px #5cd6ff; }
-.subpage .cam-tag { position: absolute; z-index: 3; left: 6.5%; bottom: 9%; display: grid; gap: 4px; padding: 12px 16px; border: 1px solid rgba(127, 219, 255, .35); border-radius: 12px; background: rgba(6, 12, 18, .7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.subpage .cam-ticks i { width: 1px; height: 6px; background: rgba(190, 208, 228, .6); }
+.subpage .cam-ticks i:nth-child(5n+1) { height: 12px; background: #e3eaf2; box-shadow: 0 0 6px #7a9fc8; }
+.subpage .cam-tag { position: absolute; z-index: 3; left: 6.5%; bottom: 9%; display: grid; gap: 4px; padding: 12px 16px; border: 1px solid rgba(147, 180, 216, .35); border-radius: 12px; background: rgba(6, 12, 18, .7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .subpage .cam-tag span { color: var(--x-cyan); font: 600 12px/1.2 "Geist Mono", monospace; letter-spacing: .08em; }
 .subpage .cam-tag b { color: #fff; font-size: clamp(14px, 1.4vw, 18px); font-weight: 650; }
 
 /* tablet bezel: same as the student-app device on the project page */
-.subpage .sp-device { margin: 0; padding: 14px; border-radius: 32px; background: linear-gradient(160deg, #1d2530, #0b0f14); box-shadow: 0 0 0 1px #2c3644, 0 50px 120px rgba(0, 0, 0, .6), 0 0 80px rgba(127, 219, 255, .08); }
+.subpage .sp-device { margin: 0; padding: 14px; border-radius: 32px; background: linear-gradient(160deg, #1d2530, #0b0f14); box-shadow: 0 0 0 1px #2c3644, 0 50px 120px rgba(0, 0, 0, .6), 0 0 80px rgba(147, 180, 216, 0.02); }
 .subpage .sp-device-screen { position: relative; overflow: hidden; border-radius: 20px; background: #f4f3ee; }
 .subpage .sp-device-screen img { display: block; width: 100%; height: auto; }
 
@@ -102,7 +102,7 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
 .subpage .sp-head h2 + p { margin-top: 18px; color: var(--x-mute); font-size: 17px; line-height: 1.75; }
 .subpage .sp-chap { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 18px; color: var(--x-cyan); font-size: 15px; font-weight: 600; }
 .subpage .sp-chap b { font: 700 44px/1 Geist, sans-serif; font-variant-numeric: tabular-nums; color: var(--x-cyan); }
-.subpage .sp-chap em { padding: 4px 10px; border: 1px solid rgba(127, 219, 255, .45); border-radius: 999px; font-style: normal; font-size: 13px; white-space: nowrap; }
+.subpage .sp-chap em { padding: 4px 10px; border: 1px solid rgba(147, 180, 216, .45); border-radius: 999px; font-style: normal; font-size: 13px; white-space: nowrap; }
 .subpage .sp-chap span { color: var(--x-mute); font-weight: 500; }
 
 /* big numbers row */
@@ -137,8 +137,8 @@ html:has(.subpage) { background: #05070a; scroll-behavior: smooth; scroll-paddin
   .subpage [data-reveal] { opacity: 1; transform: none; }
   .subpage .cam-scan, .subpage .cam-top b::before, .subpage .sp-hero > * { animation: none; }
 }
-.subpage .cam-play { position: absolute; z-index: 4; left: 50%; top: 50%; display: grid; place-items: center; width: 68px; height: 68px; translate: -50% -50%; border: 1px solid rgba(127, 219, 255, .6); border-radius: 50%; background: rgba(6, 12, 18, .72); color: var(--x-cyan); cursor: pointer; box-shadow: 0 0 0 8px rgba(127, 219, 255, .1), 0 0 40px rgba(127, 219, 255, .25); transition: transform .3s var(--x-ease), background .3s; }
+.subpage .cam-play { position: absolute; z-index: 4; left: 50%; top: 50%; display: grid; place-items: center; width: 68px; height: 68px; translate: -50% -50%; border: 1px solid rgba(147, 180, 216, .6); border-radius: 50%; background: rgba(6, 12, 18, .72); color: var(--x-cyan); cursor: pointer; box-shadow: 0 0 0 8px rgba(147, 180, 216, .1), 0 0 40px rgba(147, 180, 216, 0.07); transition: transform .3s var(--x-ease), background .3s; }
 .subpage .cam-play svg { width: 26px; height: 26px; margin-left: 4px; fill: currentColor; }
-.subpage .cam-play:hover { transform: scale(1.08); background: rgba(127, 219, 255, .18); }
+.subpage .cam-play:hover { transform: scale(1.08); background: rgba(147, 180, 216, .18); }
 .subpage .cam.is-playing .cam-play, .subpage .cam.is-playing .cam-hud { opacity: 0; pointer-events: none; }
 .subpage .cam.is-playing .cam-hud { transition: opacity .3s; }

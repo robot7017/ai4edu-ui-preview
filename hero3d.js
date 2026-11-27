@@ -54,17 +54,17 @@ function hudTexture(lang) {
   }
   function draw(phase, power) {
     g.clearRect(0, 0, c.width, c.height);
-    g.globalAlpha = power; g.shadowColor = "#7fdbff"; g.shadowBlur = 14;
+    g.globalAlpha = power; g.shadowColor = "#93b4d8"; g.shadowBlur = 14;
     const ok = phase === 1;
     const col = ok ? "#3ddc97" : "#ff6b5e";
     // header
-    panel(40, 40, 944, 140, "rgba(127,219,255,0.8)");
-    g.fillStyle = "#7fdbff"; g.font = font(800, 54); g.fillText("1/9", 84, 132);
+    panel(40, 40, 944, 140, "rgba(147,180,216,0.8)");
+    g.fillStyle = "#93b4d8"; g.font = font(800, 54); g.fillText("1/9", 84, 132);
     g.fillStyle = "#f2fbff"; g.font = font(800, 66); g.fillText(T("加水 · 20 µL", "Water · 20 µL"), 210, 136);
     // progress
     for (let i = 0; i < 5; i++) {
       g.beginPath(); g.roundRect(40 + i * 192, 210, 176, 16, 8);
-      g.fillStyle = i === 0 ? "#7fdbff" : "rgba(127,219,255,0.18)"; g.fill();
+      g.fillStyle = i === 0 ? "#93b4d8" : "rgba(147,180,216,0.18)"; g.fill();
     }
     // reading
     panel(40, 262, 600, 250, col);
@@ -185,7 +185,7 @@ function mount(host) {
   const camLens = new THREE.Mesh(new THREE.CircleGeometry(0.13, 48), camGlass);
   camLens.position.set(5.6, 1.92, 0.41);
   front.add(camLens);
-  const glint = new THREE.Mesh(new THREE.CircleGeometry(0.035, 16), new THREE.MeshBasicMaterial({ color: 0x8ad8ff, toneMapped: false }));
+  const glint = new THREE.Mesh(new THREE.CircleGeometry(0.035, 16), new THREE.MeshBasicMaterial({ color: 0x93b4d8, toneMapped: false }));
   glint.position.set(5.64, 1.96, 0.43);
   front.add(glint);
   const led = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshBasicMaterial({ color: 0x3ddc97, toneMapped: false }));
@@ -224,8 +224,8 @@ function mount(host) {
   }
 
   // lights: a cool rim from behind, a warm key, soft fill
-  const rim = new THREE.SpotLight(0x7fd8ff, 260, 60, 0.6, 0.6); rim.position.set(-6, 8, -14); scene.add(rim);
-  const rim2 = new THREE.DirectionalLight(0x7fd8ff, 1.4); rim2.position.set(9, 3, -8); scene.add(rim2);
+  const rim = new THREE.SpotLight(0x93b4d8, 260, 60, 0.6, 0.6); rim.position.set(-6, 8, -14); scene.add(rim);
+  const rim2 = new THREE.DirectionalLight(0x93b4d8, 1.4); rim2.position.set(9, 3, -8); scene.add(rim2);
   const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(-5, 12, 10); scene.add(key);
   scene.add(new THREE.HemisphereLight(0xbfdcff, 0x0a0d12, 0.35));
 
