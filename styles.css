@@ -5881,3 +5881,15 @@ html:lang(zh) .xj-cap h2 {
   .x-gallery .x-gallery-photo img { width: 100%; height: 100%; object-fit: cover; }
   .gal-ctrl { padding: 0 20px; }
 }
+
+/* ===================== round 14 ===================== */
+/* collaboration: people in one row on top, the four areas below */
+.tm-collab { grid-template-columns: 1fr !important; gap: 28px; }
+.tm-crowd { position: static; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; }
+.tm-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 900px) { .tm-crowd { grid-template-columns: repeat(4, minmax(0, 1fr)); } .tm-areas { grid-template-columns: 1fr; } }
+/* header carries page navigation only */
+.site-cta, .shell-cta { display: none !important; }
+/* scenario photos: cropped to fill, never stretched */
+.x-site-img { margin: -6px -4px 18px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; }
+.x-site-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }

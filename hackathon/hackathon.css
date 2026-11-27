@@ -38,3 +38,5 @@
   .news-item { grid-template-columns: 1fr; gap: 18px; }
   .sp-stats.two { grid-template-columns: 1fr; }
 }
+.news-index { padding-top: clamp(64px, 7vw, 96px); }
+.news-h1 { margin: 0 auto; font-size: clamp(30px, 3.4vw, 46px) !important; }
