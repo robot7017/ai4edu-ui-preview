@@ -5893,3 +5893,38 @@ html:lang(zh) .xj-cap h2 {
 /* scenario photos: cropped to fill, never stretched */
 .x-site-img { margin: -6px -4px 18px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; }
 .x-site-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+
+/* ===================== 识别效果 (outcomes only) ===================== */
+.ev2-claims { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 48px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--x-line); }
+.ev2-claims li { padding: 28px 32px 30px 0; }
+.ev2-claims li + li { padding-left: 32px; border-left: 1px solid var(--x-line); }
+.ev2-k { color: var(--x-cyan); font-size: 14px; font-weight: 600; }
+.ev2-claims h3 { margin: 10px 0 0; font-size: 22px; font-weight: 650; line-height: 1.35; }
+.ev2-claims p { margin: 12px 0 0; color: var(--x-mute); font-size: 15px; line-height: 1.8; }
+.ev2-compare { margin-top: 64px; }
+.ev2-compare h3 { margin: 0 0 18px; font-size: 18px; font-weight: 600; }
+.ev2-scroll { overflow-x: auto; }
+.ev2-compare table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; }
+.ev2-compare th, .ev2-compare td { padding: 15px 16px; border-bottom: 1px solid var(--x-line); text-align: center; font-weight: 400; }
+.ev2-compare thead th { color: var(--x-mute); font-size: 14px; }
+.ev2-compare tbody th { color: var(--x-text); text-align: left; padding-left: 0; }
+.ev2-compare th.us { color: var(--x-cyan); font-weight: 600; }
+.ev2-compare td.y { color: var(--x-cyan); font-size: 17px; }
+.ev2-compare td.n { color: #3e4a57; }
+.ev2-compare td.w { color: #8a96a3; font-size: 13px; }
+.ev2-compare td:last-child, .ev2-compare th.us { background: rgba(127, 219, 255, .05); }
+.ev2-compare .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.ev2 .x-foot { margin-top: 14px; }
+@media (max-width: 860px) {
+  .ev2-claims { grid-template-columns: 1fr; }
+  .ev2-claims li, .ev2-claims li + li { padding: 24px 0; border-left: 0; }
+  .ev2-claims li + li { border-top: 1px solid var(--x-line); }
+}
+@media (max-width: 600px) {
+  .ev2-compare table { min-width: 0; table-layout: fixed; font-size: 13px; }
+  .ev2-compare th, .ev2-compare td { padding: 12px 4px; }
+  .ev2-compare thead th { font-size: 12px; line-height: 1.35; }
+  .ev2-compare thead th:first-child, .ev2-compare tbody th { width: 40%; }
+  .ev2-compare td.w { font-size: 11px; }
+}
+.ev2-compare thead th { word-break: keep-all; }
