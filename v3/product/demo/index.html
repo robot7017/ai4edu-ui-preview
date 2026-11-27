@@ -3,45 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product Demo · LabMate AI</title>
+  <title>Demo · 产品演示 · LabMate AI</title>
+  <meta name="description" content="查看 LabMate AI 已实现的移液器训练界面、操作反馈和真实产品录屏。">
+  <meta name="theme-color" content="#05070a">
   <link rel="icon" href="../../jw-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="demo.css?v=20261127203000">
+  <link rel="stylesheet" href="../../styles.css?v=20261127213000">
+  <link rel="stylesheet" href="../../site-shell.css?v=20261127-unified-1">
+  <link rel="stylesheet" href="demo.css?v=20261127-unified-1">
 </head>
-<body>
-  <header class="demo-header">
-    <a class="brand" href="../../">LabMate <span>AI</span></a>
-    <nav aria-label="Demo navigation">
-      <a href="../../">项目介绍</a>
-      <a href="../../hackathon/">Hackathon / New session</a>
-    </nav>
+<body class="site subpage">
+  <a class="skip-link" href="#main">跳转到内容</a>
+  <header class="site-header is-solid">
+    <div class="site-header-inner">
+      <a class="site-logo" href="../../" aria-label="见微科技 LabMate AI 首页">
+        <svg class="jw-mark" aria-hidden="true" focusable="false" viewBox="-2 -2 92 104"><path d="M4 35V26A22 22 0 0 1 26 4H62A22 22 0 0 1 84 26V74A22 22 0 0 1 62 96H26A22 22 0 0 1 4 74V63" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7.5"/><circle cx="3.4" cy="49" r="5" fill="currentColor"/></svg>
+        <span class="site-logo-text"><b>见微科技</b><span>LabMate AI</span></span>
+      </a>
+      <nav class="site-nav" id="page-nav" aria-label="网站导航">
+        <a href="../../">项目介绍</a><a href="../../#zh-team">团队</a><a href="../../hackathon/">News</a><a href="../../product/demo/" aria-current="page">Demo</a>
+      </nav>
+      <div class="site-actions">
+        <a class="x-btn shell-cta" href="#playground">浏览训练界面</a>
+        <button class="site-menu" type="button" aria-controls="page-nav" aria-expanded="false" aria-label="打开菜单"><span class="site-burger" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="demo-hero">
+  <main class="page-main" id="main">
+    <div class="x-wrap">
+    <section class="page-hero demo-hero">
       <div>
-        <p class="eyebrow">PRODUCT / DEMO</p>
-        <h1>把一套移液器训练，<br><em>做成可以真的玩起来的流程。</em></h1>
-        <p class="hero-copy">这里展示 LabMate 已经做出来的交互：关卡、操作条件、错误提示和完成反馈。点击关卡，或用键盘方向键慢慢翻看；移动端需要明显滑动才会切换。</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#playground">开始体验</a>
-          <a class="button ghost" href="#recordings">看真实录屏</a>
+        <p class="page-kicker">PRODUCT / DEMO</p>
+        <h1 class="page-title">移液器训练，<br><em>每一步都看得见。</em></h1>
+        <p class="page-lead">从装吸头到收尾，查看已实现的训练界面与实际操作录屏，了解每一步的操作条件和反馈。</p>
+        <div class="page-actions">
+          <a class="x-btn" href="#playground">浏览训练界面</a>
+          <a class="x-link" href="#recordings">观看操作录屏</a>
         </div>
       </div>
-      <div class="hero-proof">
-        <span class="proof-number">7</span>
-        <span class="proof-label">levels<br>from install to home</span>
-        <span class="proof-line"></span>
-        <span class="proof-note">真实课堂流程 · 不是静态概念图</span>
-      </div>
+      <figure class="page-media demo-preview">
+        <div class="preview-topline"><span>移液器训练</span><span>7 个关卡</span></div>
+        <img src="media/level-3-rinse.png" alt="已实现的预润洗训练界面，包含操作条件和实时状态" fetchpriority="high">
+        <figcaption>操作目标、步骤提示、状态反馈，在同一个界面里。</figcaption>
+      </figure>
     </section>
 
-    <section class="playground" id="playground" aria-labelledby="playground-title" data-demo-player>
-      <div class="section-heading">
+    <section class="page-section playground" id="playground" aria-labelledby="playground-title" data-demo-player>
+      <div class="page-heading">
         <div>
-          <p class="eyebrow">PLAY WITH IT</p>
-          <h2 id="playground-title">一套可操作的训练路径</h2>
+          <p class="page-kicker">EXPLORE THE PRODUCT</p>
+          <h2 id="playground-title">看看每一关怎么练</h2>
         </div>
-        <p class="section-note">点击卡片切换；也可以按 ← / →。触摸需要滑过一段距离才会切换。</p>
+        <p class="page-note">浏览真实训练截图。点击关卡切换，或聚焦展示区后使用左右方向键。</p>
       </div>
 
       <div class="demo-player">
@@ -58,26 +71,26 @@
           <figure class="stage-image">
             <img data-stage-image src="media/level-1-install.png" alt="装吸头训练界面截图">
           </figure>
-          <div class="stage-caption">
+          <div class="stage-caption" aria-live="polite" aria-atomic="true">
             <div><strong data-stage-caption>把移液器装上密封的吸头。</strong><span data-stage-detail>对准、压入、确认密合；系统给出下一步提示。</span></div>
             <span class="stage-count" data-stage-count>01 / 05</span>
           </div>
           <div class="stage-controls">
-            <button type="button" class="round-control" data-prev aria-label="上一关">←</button>
+            <button type="button" class="round-control" data-prev aria-label="上一张截图">‹</button>
             <div class="stage-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i><i></i></div>
-            <button type="button" class="round-control" data-next aria-label="下一关">→</button>
+            <button type="button" class="round-control" data-next aria-label="下一张截图">›</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="recordings" id="recordings" aria-labelledby="recordings-title">
-      <div class="section-heading">
+    <section class="page-section recordings" id="recordings" aria-labelledby="recordings-title">
+      <div class="page-heading">
         <div>
-          <p class="eyebrow">REAL RECORDINGS</p>
-          <h2 id="recordings-title">已经做出来的东西</h2>
+          <p class="page-kicker">REAL RECORDINGS</p>
+          <h2 id="recordings-title">看实际操作如何进行</h2>
         </div>
-        <p class="section-note">这三段视频是实际操作录屏，用来把 demo 从“看起来像”变成“真的能演示”。</p>
+        <p class="page-note">三段产品实录，展示操作过程与界面反馈。点击播放，可全屏查看细节。</p>
       </div>
       <div class="recording-grid">
         <article class="recording-card"><video controls playsinline preload="metadata" src="media/pipette-demo-01.mp4"></video><div><span>RECORDING 01</span><h3>从操作提示开始</h3><p>看到当前步骤、目标和需要确认的条件。</p></div></article>
@@ -86,13 +99,15 @@
       </div>
     </section>
 
-    <section class="demo-cta">
-      <p class="eyebrow">NEXT</p>
-      <h2>Demo 是产品证据，Hackathon 是我们把它做出来的现场。</h2>
-      <a class="button primary" href="../../hackathon/">进入 Hackathon / New session →</a>
+    <section class="page-cta">
+      <p class="page-kicker">BEHIND THE BUILD</p>
+      <h2 class="page-h2">产品背后，<br>是一次次现场尝试。</h2>
+      <div class="page-actions"><a class="x-btn" href="../../hackathon/">看黑客松现场</a><a class="x-link" href="../../">回到项目介绍</a></div>
     </section>
+    </div>
   </main>
-  <footer class="demo-footer"><a href="../../">← 返回 LabMate AI 主站</a><span>见微科技 · LabMate AI</span></footer>
-  <script src="demo.js?v=20261127203000"></script>
+  <footer class="page-footer"><div class="x-wrap page-footer-inner"><span>见微科技 · LabMate AI</span><nav aria-label="页脚导航"><a href="../../">项目介绍</a><a href="../../#zh-team">团队</a><a href="../../hackathon/">News</a><a href="../../product/demo/">Demo</a></nav><span>Team from HKUST(GZ)</span></div></footer>
+  <script src="../../site-shell.js?v=20261127-unified-1" defer></script>
+  <script src="demo.js?v=20261127-unified-1"></script>
 </body>
 </html>
