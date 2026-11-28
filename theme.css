@@ -1,7 +1,7 @@
 /* =====================================================================
    theme.css — type system and light zone (reference: ginkgo.bio)
-   · hero (and the team page) stay dark; everything after the hero is light
-   · footer stays black, with a faint lab photo behind it
+   · everything is light except the closing statement block (.x-cta, dark
+     with a faint lab photo behind it) and the footer (black)
    · type: serif display headings, sans body, Ginkgo sizes
    (light-zone colours are generated into light.css)
    ===================================================================== */
@@ -87,8 +87,8 @@
 .lt .x-btn::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbfaf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
 .lt h1, .lt h2, .lt h3 { color: var(--t-ink); }
 .lt .x-kicker, .lt .dm-field-kicker, .lt .sp-lockup { color: var(--t-ink) !important; }
-.lt .x-band, .lt .xj, .lt .sp-band, .lt .x-cta { background: transparent !important; }
-.lt .x-cta::before, .lt .x-cta::after, .lt .xj-ambient { display: none !important; }
+.lt .x-band, .lt .xj, .lt .sp-band { background: transparent !important; }
+.lt .xj-ambient, .lt .x-hero-light, .lt .xj-view::before { display: none !important; }
 .lt *:not(img):not(video) { text-shadow: none !important; }
 /* steps list: navy instead of blue */
 .lt .xj .xj-steps li.on { background: var(--t-paper) !important; border-color: var(--t-ink) !important; color: var(--t-ink) !important; }
@@ -99,17 +99,8 @@
 .lt .x-site-img, .lt .x-site-img img, .lt .x-gallery img, .lt .dm-field-grid img { border-radius: 3px !important; }
 .lt .x-site { background: transparent !important; border: 0 !important; border-top: 1px solid var(--t-line) !important; border-radius: 0 !important; box-shadow: none !important; padding-left: 0 !important; padding-right: 0 !important; }
 
-/* ---------------- footer: black, faint lab photo behind ---------------- */
-.site-footer { position: relative; isolation: isolate; overflow: hidden; background: #141414 !important; }
-.site-footer::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url(bp/footer-lab.jpg?v=1) center 45% / cover no-repeat;
-  opacity: 0.2;
-}
-.site-footer::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(90deg, rgba(20, 20, 20, 0.85) 0%, rgba(20, 20, 20, 0.35) 55%, rgba(20, 20, 20, 0.6) 100%);
-}
+/* ---------------- footer: plain black ---------------- */
+.site-footer { background: #141414 !important; }
 
 /* ---------------- phones ---------------- */
 @media (max-width: 600px) {
@@ -119,13 +110,9 @@
   .x-hero-lead, .x-head > p:not(.x-kicker), .sp-head h2 + p, .sp-head.split > p, .site-hero-lead, .sp-lead, .x-cta p { font-size: 16px !important; }
   .x-head h2::after, .sp-head h2::after, .tm-head h2::after { margin-top: 18px; width: 160px; height: 3px; }
   .x-btn { height: 46px !important; font-size: 16px !important; }
-  .site-footer::before { background-position: 60% 45%; }
+  .x-cta::before { background-position: 30% 45% !important; }
 }
 
-/* header: solid dark everywhere (it sits over the light zone too) */
-.site .site-header, .site .site-header.is-solid, .subpage .site-header {
-  background: rgba(5, 7, 10, 0.96) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
-}
 .lt .xj-cap::before { -webkit-background-clip: text !important; background-clip: text !important; }
 
 /* AR camera view: keep the HUD bright (it sits on a photo, not on the light page) */
@@ -136,3 +123,50 @@
 .lt .xj-bench .xj-hud-read strong { color: #ff7b70 !important; }
 .lt .xj-bench .xj-hud-read em { color: #ffc4bd !important; }
 .lt .xj-bench .xj-ret, .lt .xj-bench .xj-ret * { color: #fff !important; }
+
+/* ---------------- closing statement block: dark, faint lab photo behind ---------------- */
+.lt .x-cta {
+  --btn-ink: #f2f4f7; --btn-on: #05070a;
+  --x-text: #e8edf2; --x-mute: #b8c2cc; --x-cyan: #93b4d8;
+  position: relative; isolation: isolate; overflow: hidden;
+  background: #141414 !important; color: #fcfcfc !important;
+}
+.lt .x-cta::before {
+  content: "" !important; display: block !important; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url(bp/footer-lab.jpg?v=1) center 45% / cover no-repeat !important;
+  opacity: 0.28 !important; filter: none !important; transform: none !important; animation: none !important;
+}
+.lt .x-cta::after {
+  content: "" !important; display: block !important; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 70% at 50% 50%, rgba(20, 20, 20, 0.72), rgba(20, 20, 20, 0.35)) !important;
+  opacity: 1 !important; animation: none !important;
+}
+.lt .x-cta h2, .lt .x-cta p { color: #fcfcfc !important; }
+.lt .x-cta .x-link { color: #fcfcfc !important; }
+.lt .x-cta .x-btn::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2305070a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") !important; }
+
+/* ---------------- header on light ---------------- */
+.lt .site-header, .lt .site-header.is-solid {
+  background: rgba(244, 241, 238, 0.95) !important; color: var(--t-ink) !important;
+  border-bottom: 1px solid var(--t-line) !important; box-shadow: none !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+.lt .site-header .site-nav a, .lt .site-header .site-logo { color: var(--t-ink) !important; }
+
+/* ---------------- 02/03 tablet: no clipped frame around it ---------------- */
+.xj-live .xj-stage:is([data-scene="1"], [data-scene="2"]) .xj-view { overflow: visible !important; border-radius: 0 !important; }
+.xj-live .xj-stage:is([data-scene="1"], [data-scene="2"]) .xj-lab { opacity: 0 !important; transition: none !important; }
+
+/* ---------------- team: clean white cards, clear photos ---------------- */
+.lt .tm-card-in { background: #fff !important; border: 1px solid rgba(11, 31, 48, 0.12) !important; box-shadow: 0 1px 2px rgba(11, 31, 48, 0.04) !important; }
+.lt .tm-card-in::after, .lt .tm-photo::after { display: none !important; }
+.lt .tm-photo { background: #f3f4f6 !important; }
+.lt .tm-photo img { filter: none !important; }
+.lt .tm-av-img, .lt .tm-crowd img, .lt [class*="tm-av"] img { background: #f3f4f6 !important; filter: none !important; }
+.lt .tm-core {
+  background: #0b1f30 !important; border: 0 !important; box-shadow: 0 8px 24px rgba(11, 31, 48, 0.18) !important;
+  color: #fff !important;
+}
+.lt .tm-core *, .lt .tm-core .jw-mark { color: #fff !important; }
+.lt .tm-core::before, .lt .tm-core::after { display: none !important; }
+.lt .tm-orbit-line.r2::after { background: var(--t-ink) !important; box-shadow: none !important; }

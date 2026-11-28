@@ -40,7 +40,7 @@ function lensPath(w, h, cx, cy, path, side = 1) {
 
 function hudTexture(lang) {
   const c = document.createElement("canvas");
-  c.width = 1024; c.height = 768;
+  c.width = 2048; c.height = 1536;
   const g = c.getContext("2d");
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
@@ -50,30 +50,33 @@ function hudTexture(lang) {
   const font = (w, s) => `${w} ${s}px "Geist","PingFang SC","Noto Sans SC",sans-serif`;
   function panel(x, y, w, h, stroke) {
     g.beginPath(); g.roundRect(x, y, w, h, 18);
-    g.lineWidth = 3; g.strokeStyle = stroke; g.shadowColor = stroke; g.shadowBlur = 18; g.stroke(); g.shadowBlur = 14;
+    g.fillStyle = "rgba(4,10,16,0.9)"; g.fill();
+    g.lineWidth = 4; g.strokeStyle = stroke; g.stroke();
   }
   function draw(phase, power) {
-    g.clearRect(0, 0, c.width, c.height);
-    g.globalAlpha = power; g.shadowColor = "#93b4d8"; g.shadowBlur = 14;
+    g.setTransform(2, 0, 0, 2, 0, 0);
+    g.clearRect(0, 0, 1024, 768);
+    g.globalAlpha = power; g.shadowBlur = 0;
     const ok = phase === 1;
-    const col = ok ? "#3ddc97" : "#ff6b5e";
+    const col = ok ? "#2ee88f" : "#ff4b3e";
     // header
-    panel(40, 40, 944, 140, "rgba(147,180,216,0.8)");
-    g.fillStyle = "#93b4d8"; g.font = font(800, 54); g.fillText("1/9", 84, 132);
-    g.fillStyle = "#f2fbff"; g.font = font(800, 66); g.fillText(T("加水 · 20 µL", "Water · 20 µL"), 210, 136);
+    panel(40, 40, 944, 140, "#4da3ff");
+    g.fillStyle = "#6cb8ff"; g.font = font(800, 54); g.fillText("1/9", 84, 132);
+    g.fillStyle = "#ffffff"; g.font = font(800, 66); g.fillText(T("加水 · 20 µL", "Water · 20 µL"), 210, 136);
     // progress
     for (let i = 0; i < 5; i++) {
       g.beginPath(); g.roundRect(40 + i * 192, 210, 176, 16, 8);
-      g.fillStyle = i === 0 ? "#93b4d8" : "rgba(147,180,216,0.18)"; g.fill();
+      g.fillStyle = i === 0 ? "#4da3ff" : "rgba(4,10,16,0.75)"; g.fill();
     }
     // reading
     panel(40, 262, 600, 250, col);
-    g.fillStyle = "#b4c6d4"; g.font = font(600, 40); g.fillText(T("移液器读数", "Pipette reading"), 84, 332);
+    g.fillStyle = "#e3edf6"; g.font = font(700, 42); g.fillText(T("移液器读数", "Pipette reading"), 84, 332);
     g.fillStyle = col; g.font = font(800, 120); g.fillText(ok ? "20.0" : "201.6", 80, 468);
     g.font = font(700, 54); g.fillText("µL", ok ? 360 : 440, 468);
     // bracket
-    g.strokeStyle = col; g.lineWidth = 8; g.lineCap = "round";
     const bx = 704, by = 262, bw = 280, bh = 250, k = 50;
+    g.beginPath(); g.roundRect(bx, by, bw, bh, 18); g.fillStyle = "rgba(4,10,16,0.9)"; g.fill();
+    g.strokeStyle = col; g.lineWidth = 8; g.lineCap = "round";
     g.beginPath();
     g.moveTo(bx, by + k); g.lineTo(bx, by); g.lineTo(bx + k, by);
     g.moveTo(bx + bw - k, by); g.lineTo(bx + bw, by); g.lineTo(bx + bw, by + k);
@@ -84,9 +87,9 @@ function hudTexture(lang) {
     g.fillText(ok ? "✓" : "!", bx + bw / 2, by + bh / 2 + 26); g.textAlign = "left";
     // prompt
     panel(40, 550, 944, 170, ok ? "rgba(61,220,151,0.85)" : "rgba(255,107,94,0.85)");
-    g.fillStyle = ok ? "#3ddc97" : "#ffd6d1"; g.font = font(800, 56);
+    g.fillStyle = ok ? "#2ee88f" : "#ff6a5e"; g.font = font(800, 56);
     g.fillText(ok ? T("读数正确", "Reading correct") : T("超出量程", "Out of range"), 84, 626);
-    g.fillStyle = "#e6f2fa"; g.font = font(600, 44);
+    g.fillStyle = "#ffffff"; g.font = font(700, 44);
     g.fillText(ok ? T("下一步：装枪头", "Next: attach a tip") : T("朝减小方向调整旋钮", "Turn the dial down"), 84, 690);
     g.globalAlpha = 1;
     tex.needsUpdate = true;
@@ -216,7 +219,7 @@ function mount(host) {
   if (variant === "hero") {
     hud = hudTexture(lang);
     hud.draw(0, 0);
-    const mat = new THREE.MeshBasicMaterial({ map: hud.tex, transparent: true, depthWrite: false, toneMapped: false, blending: THREE.AdditiveBlending });
+    const mat = new THREE.MeshBasicMaterial({ map: hud.tex, transparent: true, depthWrite: false, toneMapped: false });
     hudMat = mat;
     const plane = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 2.55), mat);
     plane.position.set(LX + 0.55, LY + 0.25, 0.16);
