@@ -338,3 +338,8 @@ html, body { overflow-x: clip; }
 @media (max-width: 760px) {
   .dm-hero .sp-device-screen img { aspect-ratio: 1.22 !important; object-fit: cover !important; object-position: 52% 0 !important; }
 }
+
+/* hero: no zoom-into-the-lab transition; go straight to the journey */
+.x-hero-track { height: auto !important; }
+.x-hero-track > .x-hero { position: relative !important; height: auto !important; min-height: 100svh; }
+.x-hero .x-pov, .x-hero .x-labpov { display: none !important; }
