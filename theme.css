@@ -5,8 +5,8 @@
    · type: serif display headings, sans body, Ginkgo sizes
    (light-zone colours are generated into light.css)
    ===================================================================== */
-@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-500.woff2) format("woff2"); font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-600.woff2) format("woff2"); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-500.woff2?v=2) format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-600.woff2?v=2) format("woff2"); font-weight: 600 700; font-display: swap; }
 
 :root {
   --t-serif: "LM Serif", "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif;
@@ -398,3 +398,51 @@ html, body { overflow-x: clip; }
 .lt .lb-dim-a { background: radial-gradient(ellipse 22% 36% at 31% 50%, transparent 55%, rgba(251, 243, 236, 0.75) 100%) !important; }
 .lt .lb-dim-b { background: radial-gradient(ellipse 18% 32% at 51% 44%, transparent 60%, rgba(251, 243, 236, 0.75) 100%) !important; }
 .lb-glasses { display: none !important; }
+
+/* ================= navigation: 项目介绍 · 最新动态 · 关于我们 (with sub-links) ================= */
+.site-nav .nv-g { position: relative; display: flex; align-items: center; }
+.site-nav .nv-sub { display: none; }
+@media (min-width: 860px) {
+  .site-nav .nv-sub {
+    position: absolute; top: 100%; left: -14px; z-index: 80; min-width: 190px;
+    display: grid; padding: 8px; background: #fbfaf8; border: 1px solid rgba(11, 31, 48, 0.12); border-radius: 6px;
+    box-shadow: 0 14px 32px -12px rgba(11, 31, 48, 0.28);
+    opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .18s, transform .18s, visibility .18s;
+  }
+  .site-nav .nv-g:hover .nv-sub, .site-nav .nv-g:focus-within .nv-sub { opacity: 1; visibility: visible; transform: none; }
+  .site-nav .nv-sub a { display: block; padding: 9px 12px !important; border-radius: 4px; font-size: 14px !important; color: #0b1f30 !important; white-space: nowrap; height: auto !important; line-height: 1.3 !important; }
+  .site-nav .nv-sub a::after { display: none !important; }
+  .site-nav .nv-sub a:hover { background: #eef1ee; }
+  .site-nav .nv-top::after { content: ""; }
+}
+@media (max-width: 859px) {
+  .site-nav .nv-g { display: block; border-bottom: 1px solid rgba(11, 31, 48, 0.12); padding: 6px 0 12px; }
+  .site-nav .nv-g > .nv-top { display: block; border: 0 !important; font-size: 20px; padding: 12px 0 6px !important; }
+  .site-nav .nv-sub { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .site-nav .nv-sub a { border: 0 !important; padding: 4px 0 !important; font-size: 14px !important; color: #3c4b58 !important; }
+}
+/* footer mirrors the header */
+.site-footer-col h2 a { color: inherit !important; }
+
+/* ================= small fixes ================= */
+.lt .xj-steps li:not(.on):hover { background: rgba(11, 31, 48, 0.04) !important; color: var(--t-ink) !important; }
+/* stronger dim on the lab drawing */
+.lt .lb-dim-a { background: radial-gradient(ellipse 20% 34% at 31% 50%, transparent 55%, rgba(244, 241, 236, 0.86) 100%) !important; }
+.lt .lb-dim-b { background: radial-gradient(ellipse 17% 30% at 51% 45%, transparent 62%, rgba(244, 241, 236, 0.86) 100%) !important; }
+/* collaboration map: clearer selected state */
+.lt .tm-areas button { background: #fbfaf8 !important; border: 1px solid rgba(11, 31, 48, 0.12) !important; opacity: 0.55; transition: opacity .25s, box-shadow .25s, border-color .25s; }
+.lt .tm-areas button.on { opacity: 1; background: #fff !important; border-color: #1f6f5c !important; box-shadow: inset 4px 0 0 #1f6f5c, 0 10px 24px -14px rgba(11, 31, 48, 0.35) !important; }
+.lt .tm-crowd-p { opacity: 0.4; transition: opacity .25s; }
+.lt .tm-collab.has-active .tm-crowd-p.on, .lt .tm-crowd-p.on { opacity: 1; background: #fff !important; border-color: #1f6f5c !important; }
+.lt .tm-crowd-p.on b { color: #0b1f30 !important; }
+/* comparison table: ✗ */
+.lt .ev2-compare td.n { color: #b4561a !important; font-weight: 600; }
+/* demo: screenshot fills the tablet screen; field photo not upscaled */
+.dm-screen img { height: 100% !important; aspect-ratio: auto !important; }
+.dm-field-wide { max-width: 1100px; margin-left: auto !important; margin-right: auto !important; padding: 0 20px; }
+.dm-field-wide img { height: auto !important; max-height: 620px; aspect-ratio: 3 / 2; border-radius: 3px; }
+.dm-field-wide figcaption { padding: 0 !important; }
+/* News: list item no longer a link */
+.news-item { cursor: default; }
+.ev4-pics li:nth-child(3) figure { background: #fff; }
+.ev4-pics li:nth-child(3) img { object-fit: contain !important; object-position: 50% 50% !important; padding: 6px; }

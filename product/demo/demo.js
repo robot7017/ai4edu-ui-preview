@@ -86,6 +86,6 @@
   img.setAttribute("aria-label", "放大查看截图");
   img.addEventListener("click", open);
   img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
-  lb.addEventListener("click", (e) => { if (e.target !== big) close(); });
+  lb.addEventListener("click", close);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lb.classList.contains("on")) close(); });
 })();
