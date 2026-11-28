@@ -446,3 +446,8 @@ html, body { overflow-x: clip; }
 .news-item { cursor: default; }
 .ev4-pics li:nth-child(3) figure { background: #fff; }
 .ev4-pics li:nth-child(3) img { object-fit: contain !important; object-position: 50% 50% !important; padding: 6px; }
+
+/* footnotes and section intros: don't wrap a few characters onto a new line */
+.x-foot { max-width: none !important; }
+#zh-project--partners .x-head { max-width: none !important; }
+#zh-project--partners .x-head > p:not(.x-kicker) { max-width: none !important; }
