@@ -454,3 +454,6 @@ html, body { overflow-x: clip; }
 
 /* team role badges (CEO / CTO / 技术骨干 / 顾问): solid, readable on photos */
 .lt .tm-badge { background: #0b1f30 !important; color: #fff !important; border: 0 !important; box-shadow: 0 2px 6px rgba(11, 31, 48, 0.25) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; font-weight: 600 !important; letter-spacing: 0.04em; z-index: 2; }
+.lt .news-more { color: #0b1f30 !important; border-bottom: 1px solid #0b1f30 !important; font-size: 15px; }
+.lt .news-more::after { content: " ↗"; }
+.lt .news-more:hover { color: #1f6f5c !important; border-color: #1f6f5c !important; }
