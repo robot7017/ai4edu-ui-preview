@@ -314,6 +314,7 @@
     const lead = [0, 0, 0, phone ? 0.12 : 0.36, 0.08]; /* part of a scene before its steps start */
     /* phones: more scroll per step, and gentle snap points so one flick lands on one step */
     const snaps = [];
+    let raf = 0;
     const size = () => {
       const per = innerWidth < 860 ? Math.max(340, Math.round(innerHeight * 0.62)) : 260;
       sec.style.height = Math.round(innerHeight + total * per) + "px";
@@ -342,10 +343,40 @@
       prev[name] = val;
       stage.style.setProperty(name, val);
     };
+    /* phones: hold each step for a while (plateaus between step centres) and ease toward the
+       scroll position, so a small flick no longer jumps through steps */
+    const centres = [];
+    counts.forEach((n, sc) => {
+      for (let k = 0; k < n; k++) {
+        const q = lead[sc] + 0.04 + ((k + 0.5) / n) * (1 - lead[sc] - 0.1);
+        centres.push(B[sc] + q * W[sc]);
+      }
+    });
+    const hold = (p) => {
+      for (let i = 0; i < centres.length - 1; i++) {
+        const a = centres[i], b = centres[i + 1];
+        if (p >= a && p <= b) {
+          let t = clamp(((p - a) / (b - a) - 0.3) / 0.4);
+          t = t * t * (3 - 2 * t);
+          return a + t * (b - a);
+        }
+      }
+      return p;
+    };
+    let ps = -1;
     const tick = () => {
       const r = sec.getBoundingClientRect();
       const span = r.height - innerHeight;
-      const p = clamp(-r.top / (span || 1));
+      const raw = clamp(-r.top / (span || 1));
+      let p = raw;
+      if (innerWidth < 860) {
+        const target = hold(raw);
+        if (ps < 0 || Math.abs(target - ps) > 0.25) ps = target;
+        else ps += (target - ps) * 0.12;
+        if (Math.abs(target - ps) > 0.0004) raf = requestAnimationFrame(tick);
+        else ps = target;
+        p = ps;
+      }
       let s = 0;
       while (s < W.length - 1 && p >= B[s + 1]) s++;
       const q = clamp((p - B[s]) / W[s]);
@@ -393,7 +424,6 @@
         });
       }
     };
-    let raf = 0;
     const req = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(tick);

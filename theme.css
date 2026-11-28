@@ -285,3 +285,9 @@
   .lt .xj-bar > span:first-child { margin-right: 8px; }
   .lt .xj-bar > span:first-child small::after, .lt .xj-bar > span:nth-child(2) small::before { content: none; }
 }
+
+/* hero: don't flash the flat fallback drawing while the 3D glasses load */
+.g3d-hero:not(.is-3d) > .glasses-art { opacity: 0; animation: g3d-fallback 0.4s ease 3.5s forwards; }
+@keyframes g3d-fallback { to { opacity: 1; } }
+.g3d-hero.is-3d > canvas { animation: g3d-in 0.6s ease; }
+@keyframes g3d-in { from { opacity: 0; } to { opacity: 1; } }
