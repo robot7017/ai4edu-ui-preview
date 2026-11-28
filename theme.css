@@ -1,0 +1,129 @@
+/* =====================================================================
+   theme.css — type system and light zone (reference: ginkgo.bio)
+   · hero (and the team page) stay dark; everything after the hero is light
+   · footer stays black, with a faint lab photo behind it
+   · type: serif display headings, sans body, Ginkgo sizes
+   (light-zone colours are generated into light.css)
+   ===================================================================== */
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-500.woff2) format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-600.woff2) format("woff2"); font-weight: 600 700; font-display: swap; }
+
+:root {
+  --t-serif: "LM Serif", "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif;
+  --t-sans: Geist, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  --t-ink: #0b1f30;
+  --t-ink-2: #3c4b58;
+  --t-paper: #fbfaf8;
+  --t-line: rgba(11, 31, 48, 0.16);
+  --btn-ink: #f2f4f7;      /* dark zones: light outline button */
+  --btn-on: #05070a;
+}
+
+/* ---------------- type scale (Ginkgo: 72 / 52 / 26, lead 20, body 18) ---------------- */
+.site h1, .site h2, .x-cta h2, .xj-cap h2, .sp-head h2, .tm-head h2 {
+  font-family: var(--t-serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+}
+.site h1, .x-hero h1, .subpage .sp-hero h1, .tm-hero h1 { font-size: clamp(40px, 5vw, 72px) !important; line-height: 1.14 !important; }
+.x-head h2, .sp-head h2, .tm-head h2, .x-cta h2 { font-size: clamp(32px, 3.6vw, 52px) !important; line-height: 1.18 !important; }
+.xj-cap h2 { font-size: clamp(28px, 2.8vw, 40px) !important; line-height: 1.2 !important; }
+.site h3 { font-family: var(--t-serif); font-weight: 600; letter-spacing: 0; }
+.ev3-grid li b, .ev3-num { font-family: var(--t-serif) !important; font-weight: 500 !important; }
+.x-hero-lead, .x-head > p:not(.x-kicker), .sp-head h2 + p, .sp-head.split > p, .site-hero-lead, .sp-lead, .x-cta p {
+  font-size: 18px !important; line-height: 1.6 !important;
+}
+.xj-p { font-size: 16px !important; line-height: 1.7 !important; }
+.site .site-nav a { font-size: 16px; font-weight: 400; }
+
+/* thick short rule under section headings */
+.x-head h2::after, .sp-head h2::after, .tm-head h2::after {
+  content: ""; display: block; width: min(100%, 360px); height: 4px; margin-top: 28px; background: currentColor;
+}
+.sp-head.split h2::after { width: 200px; }
+
+/* eyebrow / tagline: small semibold text with an underline */
+.x-kicker, .site-hero-kicker, .sp-lockup, .dm-field-kicker {
+  display: inline-block !important; width: auto !important;
+  padding-bottom: 8px; border-bottom: 2px solid currentColor;
+  font-family: var(--t-sans) !important; font-size: 15px !important; font-weight: 600 !important;
+  letter-spacing: 0.02em !important; text-transform: none !important;
+}
+.site-hero-kicker::before { display: none !important; }
+
+/* ---------------- buttons: outlined pill with a round arrow ---------------- */
+.x-btn {
+  display: inline-flex !important; align-items: center; gap: 14px;
+  height: 50px !important; padding: 0 6px 0 24px !important;
+  border: 2px solid var(--btn-ink) !important; border-radius: 999px !important;
+  background: transparent !important; color: var(--btn-ink) !important;
+  font-size: 17px !important; font-weight: 400 !important; letter-spacing: 0.01em;
+  box-shadow: none !important; transform: none !important;
+  transition: background-color .2s, color .2s !important;
+}
+.x-btn::after {
+  content: ""; flex: none; width: 34px; height: 34px; border-radius: 50%;
+  background-color: var(--btn-ink);
+  -webkit-mask: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2305070a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  background-position: center; background-size: 16px; background-repeat: no-repeat;
+}
+.x-btn:hover { background: var(--btn-ink) !important; color: var(--btn-on) !important; }
+.x-link {
+  display: inline-flex !important; align-items: center; gap: 10px;
+  padding-bottom: 2px !important; border-bottom: 1px solid currentColor !important;
+  font-size: 16px !important; font-weight: 400 !important;
+}
+.x-link::after { content: "→"; font-family: var(--t-sans); transition: transform .2s; }
+.x-link:hover::after { transform: translateX(3px); }
+
+/* ---------------- light zone ---------------- */
+.lt {
+  --btn-ink: var(--t-ink); --btn-on: var(--t-paper);
+  position: relative;
+  background: linear-gradient(#f2eeeb 0%, #f9f9f9 30%, #f7f0f0 75%, #f2f2f1 100%);
+  color: var(--t-ink);
+}
+.lt .x-btn::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbfaf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+.lt h1, .lt h2, .lt h3 { color: var(--t-ink); }
+.lt .x-kicker, .lt .dm-field-kicker, .lt .sp-lockup { color: var(--t-ink) !important; }
+.lt .x-band, .lt .xj, .lt .sp-band, .lt .x-cta { background: transparent !important; }
+.lt .x-cta::before, .lt .x-cta::after, .lt .xj-ambient { display: none !important; }
+.lt *:not(img):not(video) { text-shadow: none !important; }
+/* steps list: navy instead of blue */
+.lt .xj .xj-steps li.on { background: var(--t-paper) !important; border-color: var(--t-ink) !important; color: var(--t-ink) !important; }
+.lt .xj .xj-steps li.on::before { background: var(--t-ink) !important; border-color: var(--t-ink) !important; color: var(--t-paper) !important; }
+.lt .xj .xj-steps li.done::before { color: var(--t-ink) !important; border-color: var(--t-ink-2) !important; background: transparent !important; }
+.lt .xj .xj-steps li.done::after { background: var(--t-ink-2) !important; }
+/* photo corners like Ginkgo (3px), scenario items as plain columns */
+.lt .x-site-img, .lt .x-site-img img, .lt .x-gallery img, .lt .dm-field-grid img { border-radius: 3px !important; }
+.lt .x-site { background: transparent !important; border: 0 !important; border-top: 1px solid var(--t-line) !important; border-radius: 0 !important; box-shadow: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+
+/* ---------------- footer: black, faint lab photo behind ---------------- */
+.site-footer { position: relative; isolation: isolate; overflow: hidden; background: #141414 !important; }
+.site-footer::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url(bp/footer-lab.jpg?v=1) center 45% / cover no-repeat;
+  opacity: 0.2;
+}
+.site-footer::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0.85) 0%, rgba(20, 20, 20, 0.35) 55%, rgba(20, 20, 20, 0.6) 100%);
+}
+
+/* ---------------- phones ---------------- */
+@media (max-width: 600px) {
+  .site h1, .x-hero h1, .subpage .sp-hero h1, .tm-hero h1 { font-size: 34px !important; line-height: 1.22 !important; }
+  .x-head h2, .sp-head h2, .tm-head h2, .x-cta h2 { font-size: 28px !important; line-height: 1.25 !important; }
+  .xj-cap h2 { font-size: 24px !important; }
+  .x-hero-lead, .x-head > p:not(.x-kicker), .sp-head h2 + p, .sp-head.split > p, .site-hero-lead, .sp-lead, .x-cta p { font-size: 16px !important; }
+  .x-head h2::after, .sp-head h2::after, .tm-head h2::after { margin-top: 18px; width: 160px; height: 3px; }
+  .x-btn { height: 46px !important; font-size: 16px !important; }
+  .site-footer::before { background-position: 60% 45%; }
+}
+
+/* header: solid dark everywhere (it sits over the light zone too) */
+.site .site-header, .site .site-header.is-solid, .subpage .site-header {
+  background: rgba(5, 7, 10, 0.96) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+.lt .xj-cap::before { -webkit-background-clip: text !important; background-clip: text !important; }
