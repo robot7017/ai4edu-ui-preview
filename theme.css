@@ -495,3 +495,10 @@ html, body { overflow-x: clip; }
 .lt .ev4 .ev4-k.lm-tag { border-bottom: 0 !important; padding-bottom: 0 !important; margin-bottom: 8px !important; }
 @media (prefers-reduced-motion: reduce) { .lm-tag { animation: none !important; opacity: 1 !important; transform: none !important; } }
 @media (max-width: 600px) { .lt .lm-tag > span { height: 34px; font-size: 13px !important; padding: 0 28px 0 14px; } }
+
+/* labels: flat 2D tag */
+.lt .lm-tag { filter: none !important; }
+.lt .lm-tag > span { background: #0b1f30 !important; color: #fff !important; box-shadow: none !important; height: 34px; padding: 0 28px 0 14px; font-size: 14px !important; letter-spacing: 0.06em;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%) !important; }
+.lt .lm-tag > span::after { content: none !important; }
+@media (max-width: 600px) { .lt .lm-tag > span { height: 30px; font-size: 13px !important; padding: 0 24px 0 12px; } }
