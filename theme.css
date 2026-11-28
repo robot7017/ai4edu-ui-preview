@@ -393,3 +393,8 @@ html, body { overflow-x: clip; }
   .ev4-call em::before { width: 16px; }
   .ev4-call.l em { margin-right: 22px; }
 }
+/* colour lab drawings */
+.lt .lb { background: #fbf3ec !important; }
+.lt .lb-dim-a { background: radial-gradient(ellipse 22% 36% at 31% 50%, transparent 55%, rgba(251, 243, 236, 0.75) 100%) !important; }
+.lt .lb-dim-b { background: radial-gradient(ellipse 18% 32% at 51% 44%, transparent 60%, rgba(251, 243, 236, 0.75) 100%) !important; }
+.lb-glasses { display: none !important; }
