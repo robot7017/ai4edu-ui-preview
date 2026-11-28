@@ -259,3 +259,29 @@
 .lt .ev2-k { color: var(--t-teal) !important; }
 .lt .ev2-compare td.y, .lt .ev2-compare th.us, .lt .ev2-compare td:last-child { color: var(--t-teal) !important; }
 .ev4-fig figcaption { margin-top: 30px !important; }
+
+/* ---------------- phones: journey ---------------- */
+.xj-snap { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; visibility: hidden; scroll-snap-align: start; }
+@media (max-width: 859px) {
+  html:has(.xj.xj-live) { scroll-snap-type: y proximity; }
+  .xj.xj-live { position: relative; }
+  /* skip the 3D glasses inside the journey on phones; go straight to the camera view */
+  .xj.xj-live .xj-stage .xj-glasses { display: none !important; }
+  .xj.xj-live .xj-stage[data-scene="3"] .xj-bench { --g: clamp(0, calc((var(--q) - 0.02) / 0.08), 1) !important; }
+}
+
+/* ---------------- 01 (today) vs 02–05 (with LabMate) in the chapter bar ---------------- */
+.lt .xj-bar { gap: 0 !important; position: relative; }
+.lt .xj-bar > span { padding-top: 10px !important; }
+.lt .xj-bar > span:first-child { background: #fbeee4 !important; border-radius: 6px 0 0 6px; margin-right: 14px; }
+.lt .xj-bar > span:first-child i { background: #b4561a !important; }
+.lt .xj-bar > span:not(:first-child) { background: #e3efe9 !important; }
+.lt .xj-bar > span:nth-child(2) { border-radius: 6px 0 0 6px; }
+.lt .xj-bar > span:last-child { border-radius: 0 6px 6px 0; }
+.lt .xj-bar > span:not(:first-child) i { background: #1f6f5c !important; }
+.lt .xj-bar > span:first-child small::after { content: " · 传统实验课"; }
+.lt .xj-bar > span:nth-child(2) small::before { content: "LabMate · "; color: #1f6f5c; font-weight: 600; }
+@media (max-width: 859px) {
+  .lt .xj-bar > span:first-child { margin-right: 8px; }
+  .lt .xj-bar > span:first-child small::after, .lt .xj-bar > span:nth-child(2) small::before { content: none; }
+}

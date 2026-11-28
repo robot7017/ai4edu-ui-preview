@@ -310,10 +310,29 @@
     const B = [0];
     W.forEach((w, i) => B.push(B[i] + w));
     const T = 0.035; /* half-width of each scene change, in p */
-    const lead = [0, 0, 0, 0.36, 0.08]; /* part of a scene before its steps start */
+    const phone = innerWidth < 860;
+    const lead = [0, 0, 0, phone ? 0.12 : 0.36, 0.08]; /* part of a scene before its steps start */
+    /* phones: more scroll per step, and gentle snap points so one flick lands on one step */
+    const snaps = [];
     const size = () => {
-      const per = innerWidth < 860 ? 200 : 260;
+      const per = innerWidth < 860 ? Math.max(340, Math.round(innerHeight * 0.62)) : 260;
       sec.style.height = Math.round(innerHeight + total * per) + "px";
+      if (innerWidth >= 860) { snaps.forEach((el) => el.remove()); snaps.length = 0; return; }
+      const span = sec.offsetHeight - innerHeight;
+      const tops = [];
+      counts.forEach((n, sc) => {
+        for (let k = 0; k < n; k++) {
+          const st = (k + 0.5) / n;
+          const q = lead[sc] + 0.04 + st * (1 - lead[sc] - 0.1);
+          tops.push(Math.round((B[sc] + q * W[sc]) * span));
+        }
+      });
+      while (snaps.length < tops.length) {
+        const el = document.createElement("i");
+        el.className = "xj-snap"; el.setAttribute("aria-hidden", "true");
+        sec.appendChild(el); snaps.push(el);
+      }
+      snaps.forEach((el, i) => { el.style.top = tops[i] + "px"; });
     };
     let last = "";
     const clamp = (v) => Math.min(1, Math.max(0, v));
