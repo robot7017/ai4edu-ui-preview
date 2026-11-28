@@ -291,3 +291,50 @@
 @keyframes g3d-fallback { to { opacity: 1; } }
 .g3d-hero.is-3d > canvas { animation: g3d-in 0.6s ease; }
 @keyframes g3d-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------------- phones: no forced snap (it pulled the page back into the journey) ---------------- */
+@media (max-width: 859px) { html:has(.xj.xj-live) { scroll-snap-type: none !important; } }
+html, body { overflow-x: clip; }
+.tm-orbit, .tm-hero { overflow-x: clip; }
+
+/* breathing room after the comparison table, and a soft hand-over to the next band */
+.lt #zh-project--evidence { padding-bottom: clamp(120px, 14vw, 200px) !important; }
+.lt #zh-project--partners { position: relative; }
+.lt #zh-project--partners::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -120px; height: 120px; pointer-events: none;
+  background: linear-gradient(#e9eef200, #e7ece6);
+}
+.lt .x-head, .lt .ev4, .lt .ev4-pics, .lt .ev2-claims, .lt .ev2-compare, .lt .x-sites {
+  transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.lt [data-inview]:not(.is-in) .x-sites, .lt [data-inview]:not(.is-in).ev4, .lt [data-inview]:not(.is-in).ev4-pics,
+.lt [data-inview]:not(.is-in).ev2-claims, .lt [data-inview]:not(.is-in).ev2-compare { opacity: 0; transform: translateY(28px); }
+
+/* ---------------- mobile menu: light panel, dark text ---------------- */
+@media (max-width: 859px) {
+  .lt .site-nav, .lt .site-header.is-open .site-nav { background: #f6f3ee !important; color: #0b1f30 !important; border-bottom: 1px solid rgba(11,31,48,.12) !important; }
+  .lt .site-nav a { color: #0b1f30 !important; border-color: rgba(11,31,48,.12) !important; }
+  body.nav-open::after { background: rgba(11, 31, 48, 0.25) !important; }
+}
+
+/* ---------------- real photos: cooler, less yellow, to sit with the navy/teal palette ---------------- */
+.lt .x-gallery img, .lt .dm-field-grid img, .lt .dm-field-wide img, .lt .ev4-pics img, .lt .ev4-fig img,
+.lt .x-site-img img, .lt .xj-bench > img, .lt .news-cover img, .lt .hk-cover img, .lt .news-list img {
+  filter: saturate(0.92);
+}
+
+/* ---------------- News: cover photo centred, fits the column ---------------- */
+.subpage .lt img { max-width: 100%; }
+
+/* Demo hero: show the whole overview screenshot at its own proportions */
+.dm-hero .sp-device-screen img { aspect-ratio: 2994 / 1760 !important; object-fit: contain !important; height: auto !important; }
+@media (max-width: 760px) {
+  .dm-hero { width: calc(100% + 24px) !important; margin-left: -12px !important; }
+  .dm-hero .sp-device { padding: 6px !important; border-radius: 16px !important; }
+}
+/* News: card stays inside the column */
+.news-list, .news-item, .news-item figure, .news-item h2 { max-width: 100%; min-width: 0; }
+.news-item h2 { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .dm-hero .sp-device-screen img { aspect-ratio: 1.22 !important; object-fit: cover !important; object-position: 52% 0 !important; }
+}
