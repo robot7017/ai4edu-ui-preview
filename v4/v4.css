@@ -1,0 +1,145 @@
+/* =====================================================================
+   v4 — light, editorial look (reference: ginkgo.bio/automation-product)
+   warm off-white ground, deep navy ink, serif display type, mono labels,
+   outlined buttons, no glow, no gradients.
+   ===================================================================== */
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-500.woff2) format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "LM Serif"; src: url(fonts/lm-serif-600.woff2) format("woff2"); font-weight: 600 700; font-display: swap; }
+
+:root {
+  --v4-ink: #0b1f30;
+  --v4-ink-2: #3c4b58;
+  --v4-mute: #5d6973;
+  --v4-line: rgba(11, 31, 48, 0.16);
+  --v4-ground: #f4f1ee;
+  --v4-paper: #fbfaf8;
+  --v4-dark: #141414;
+  --v4-serif: "LM Serif", "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif;
+  --v4-sans: Geist, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  --v4-mono: "Geist Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+html { background: var(--v4-ground); }
+.site, body.site {
+  --x-base: transparent; --x-panel: rgba(11, 31, 48, 0.035); --x-panel-2: rgba(11, 31, 48, 0.05);
+  --x-line: var(--v4-line); --x-text: var(--v4-ink); --x-mute: var(--v4-mute); --x-cyan: var(--v4-ink);
+  --fx-a: var(--v4-ink);
+  background: linear-gradient(#f2eeeb 0%, #f9f9f9 30%, #f7f0f0 75%, #f2f2f1 100%) fixed, var(--v4-ground);
+  color: var(--v4-ink);
+  font-family: var(--v4-sans);
+}
+.site ::selection { background: rgba(11, 31, 48, 0.14); }
+
+/* ---------- kill the "AI" effects ---------- */
+.x-hero-light, .xj-ambient, .fx-grain, .fx-amb, .x-cta::before, .x-cta::after,
+.subpage .sp-hero::after { display: none !important; }
+.x-cta, .subpage .sp-hero { background: none !important; }
+.site *:not(img):not(video) { text-shadow: none !important; }
+
+/* ---------- type scale (Ginkgo: h1 72 / h2 52 / h3 26 / lead 20 / body 18) ---------- */
+.site h1, .site h2, .x-head h2, .xj-cap h2, .sp-head h2, .tm-head h2, .x-cta h2 {
+  font-family: var(--v4-serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--v4-ink);
+}
+.site h1 { font-size: clamp(40px, 5vw, 72px) !important; line-height: 1.14 !important; }
+.x-head h2, .sp-head h2, .tm-head h2, .x-cta h2 { font-size: clamp(32px, 3.6vw, 52px) !important; line-height: 1.18 !important; }
+.xj-cap h2 { font-size: clamp(28px, 2.8vw, 40px) !important; line-height: 1.2 !important; }
+.site h3 { font-family: var(--v4-serif); font-weight: 600; letter-spacing: 0; }
+.x-head > p:not(.x-kicker), .sp-head h2 + p, .site-hero-lead, .x-hero p.x-lead, .sp-lead {
+  font-size: 18px !important; line-height: 1.56 !important; letter-spacing: -0.01em; color: var(--v4-ink-2) !important;
+}
+
+/* thick short rule under section headings */
+.x-head h2::after, .sp-head h2::after, .tm-head h2::after {
+  content: ""; display: block; width: min(100%, 360px); height: 4px; margin-top: 28px; background: var(--v4-ink);
+}
+.sp-head.split h2::after { width: 200px; }
+
+/* eyebrow / tagline: small semibold text with an underline */
+.x-kicker, .site-hero-kicker, .sp-lockup, .dm-field-kicker {
+  display: inline-block !important; width: auto !important;
+  padding-bottom: 8px; border-bottom: 2px solid var(--v4-ink);
+  font-family: var(--v4-sans) !important; font-size: 15px !important; font-weight: 600 !important;
+  letter-spacing: 0.02em !important; text-transform: none !important; color: var(--v4-ink) !important;
+}
+.sp-lockup span { color: var(--v4-mute); font-weight: 400; }
+
+/* ---------- buttons ---------- */
+.x-btn, .subpage .x-btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  height: 50px; padding: 0 6px 0 24px;
+  border: 2px solid var(--v4-ink); border-radius: 999px;
+  background: transparent !important; color: var(--v4-ink) !important;
+  font-size: 17px; font-weight: 400; letter-spacing: 0.01em;
+  box-shadow: none !important; transform: none !important;
+  transition: background-color .2s, color .2s;
+}
+.x-btn::after {
+  content: ""; flex: none; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--v4-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbfaf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+.x-btn:hover { background: var(--v4-ink) !important; color: var(--v4-paper) !important; }
+.x-btn:hover::after { background-color: var(--v4-paper); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b1f30' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+.x-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding-bottom: 2px; border-bottom: 1px solid var(--v4-ink) !important;
+  color: var(--v4-ink) !important; font-size: 16px; font-weight: 400;
+}
+.x-link::after { content: "→"; font-family: var(--v4-sans); transition: transform .2s; }
+.x-link:hover::after { transform: translateX(3px); }
+
+/* ---------- header ---------- */
+.site .site-header, .site .site-header.is-solid, .subpage .site-header {
+  background: rgba(244, 241, 238, 0.94) !important; color: var(--v4-ink) !important;
+  border-bottom: 1px solid var(--v4-line) !important; box-shadow: none !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+.site .site-nav a { font-size: 16px; font-weight: 400; color: var(--v4-ink) !important; opacity: 1; }
+.site .site-nav a[aria-current="page"], .site .site-nav a.is-active { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 2px; }
+.site .site-nav a::after, .site .site-nav a::before { display: none !important; }
+
+/* ---------- hero ---------- */
+.x-hero .x-foot, .x-foot { border-left-color: var(--v4-line); color: var(--v4-mute); }
+.x-foot::before { color: var(--v4-ink-2); }
+
+/* ---------- journey chapter bar & steps ---------- */
+.xj-bar > span { color: var(--v4-mute); }
+.xj-bar > span i { background: var(--v4-line) !important; box-shadow: none !important; }
+.x-chap b, .xj-bar b { font-family: var(--v4-mono); }
+.xj .xj-steps li.on { background: var(--v4-paper) !important; border-color: var(--v4-ink) !important; color: var(--v4-ink) !important; }
+.xj .xj-steps li.on::before { background: var(--v4-ink) !important; border-color: var(--v4-ink) !important; color: var(--v4-paper) !important; }
+.xj .xj-steps li.done::before { color: var(--v4-ink) !important; border-color: var(--v4-ink-2) !important; background: transparent !important; }
+.xj .xj-steps li.done::after { background: var(--v4-ink-2) !important; }
+
+/* ---------- evidence ---------- */
+.ev3 h3, .ev3-q { font-family: var(--v4-serif); }
+.ev3-grid li b, .ev3-num { font-family: var(--v4-serif) !important; font-weight: 500 !important; }
+
+/* ---------- dark band (Ginkgo uses #141414 for one statement block) ---------- */
+.x-cta { background: var(--v4-dark) !important; color: #fcfcfc; }
+.x-cta h2, .x-cta p { color: #fcfcfc !important; }
+.x-cta .x-btn { border-color: rgba(252, 252, 252, 0.85); color: #fcfcfc !important; }
+.x-cta .x-btn::after { background-color: #fcfcfc; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+.x-cta .x-btn:hover { background: #fcfcfc !important; color: var(--v4-dark) !important; }
+.x-cta .x-link { color: #fcfcfc !important; border-color: #fcfcfc !important; }
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--v4-dark) !important; color: #fcfcfc !important; border-top: 0 !important; }
+.site-footer * { color: inherit; }
+.site-footer a, .site-footer p, .site-footer-col h2 { color: rgba(252, 252, 252, 0.82) !important; }
+.site-footer a:hover { color: #fff !important; }
+.site-footer-col h2 { font-family: var(--v4-sans) !important; font-size: 14px !important; font-weight: 400 !important; letter-spacing: 0.02em !important; opacity: .7; }
+.site-footer .site-footer-inner, .site-footer-bottom { border-color: rgba(252, 252, 252, 0.15) !important; }
+
+/* ---------- photos & media: square-ish corners like Ginkgo (3px) ---------- */
+.x-site-img, .x-site-img img, .x-gallery img, .dm-field-grid img { border-radius: 3px !important; }
+.x-site { background: transparent !important; border: 0 !important; border-top: 1px solid var(--v4-line) !important; border-radius: 0 !important; box-shadow: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+.site-footer .site-logo, .site-footer .site-logo-text b, .site-footer .site-logo-text span { color: #fcfcfc !important; }
+.site-footer { border-top: 1px solid rgba(252, 252, 252, 0.12) !important; }
+@media (max-width: 600px) {
+  .site h1 { font-size: 32px !important; line-height: 1.22 !important; }
+  .x-head h2, .sp-head h2, .tm-head h2, .x-cta h2 { font-size: 28px !important; }
+  .xj-cap h2 { font-size: 24px !important; }
+  .x-btn { height: 46px; font-size: 16px; }
+}

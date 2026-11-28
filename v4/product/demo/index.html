@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo · 产品界面演示 · LabMate AI</title>
+  <meta name="description" content="查看 LabMate AI 已实现的移液器教学界面与每一步的操作反馈。">
+  <meta name="theme-color" content="#f4f1ee">
+  <link rel="icon" href="../../jw-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css?v=20261128-r19">
+  <link rel="stylesheet" href="../../site-shell.css?v=20261128-r17">
+  <link rel="stylesheet" href="demo.css?v=20261128-r20">
+  <link rel="stylesheet" href="../../v4.css?v=1">
+</head>
+<body class="site subpage">
+  <a class="skip-link" href="#main">跳转到内容</a>
+  <header class="site-header is-solid">
+    <div class="site-header-inner">
+      <a class="site-logo" href="../../" aria-label="见微科技 LabMate AI 首页">
+        <svg class="jw-mark" aria-hidden="true" focusable="false" viewBox="-2 -2 92 104"><path d="M4 35V26A22 22 0 0 1 26 4H62A22 22 0 0 1 84 26V74A22 22 0 0 1 62 96H26A22 22 0 0 1 4 74V63" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7.5"/><circle cx="3.4" cy="49" r="5" fill="currentColor"/></svg>
+        <span class="site-logo-text"><b>见微科技</b><span>LabMate AI</span></span>
+      </a>
+      <nav class="site-nav" id="page-nav" aria-label="网站导航">
+        <a href="../../">项目介绍</a><a href="../../#zh-team">团队</a><a href="../../hackathon/">News</a><a href="../../product/demo/" aria-current="page">Demo</a>
+      </nav>
+      <div class="site-actions">
+        
+        <button class="site-menu" type="button" aria-controls="page-nav" aria-expanded="false" aria-label="打开菜单"><span class="site-burger" aria-hidden="true"><i></i><i></i></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="sp-hero">
+      <div class="x-wrap">
+        <p class="sp-lockup">Product / Demo <span>移液器教学</span></p>
+        <h1>移液器教学，<br><em>每一步都看得见。</em></h1>
+        <p class="sp-lead">从装吸头到收尾，查看已实现的教学界面，了解每一步的操作条件和反馈。</p>
+        <div class="sp-actions"><a class="x-btn" href="#playground">浏览教学界面</a></div>
+      </div>
+      <div class="x-wrap">
+        <div class="sp-hero-media dm-hero">
+          <div class="sp-device"><div class="sp-device-screen"><img src="media/overview.png?v=20261127" alt="移液器教学七关总览界面" fetchpriority="high"></div></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="sp-band" id="playground" aria-labelledby="playground-title" data-demo-player>
+      <div class="x-wrap">
+        <header class="sp-head split" data-reveal>
+          <div>
+            
+            <h2 id="playground-title">看看每一关怎么练。</h2>
+          </div>
+          <p>七个关卡里选了四个关键关卡，加上完整路径总览。截图会自动播放；点击关卡切换，点画面可放大查看。</p>
+        </header>
+        <div class="dm-player is-auto" data-reveal>
+          <ol class="dm-steps" aria-label="教学关卡">
+            <li><button type="button" data-step="0" class="on" aria-pressed="true"><span class="dm-num">01</span><b>装吸头<small>Install tip</small></b><span class="dm-d">把移液器装上密封的吸头。对准、压入、确认密合。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="1" aria-pressed="false"><span class="dm-num">02</span><b>调体积<small>Set volume</small></b><span class="dm-d">把体积设定到 150.0 µL，持续看到当前值与目标值。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="2" aria-pressed="false"><span class="dm-num">03</span><b>预润洗<small>Pre-rinse</small></b><span class="dm-d">吸一次，再打回原管；动作、深度和复位同时呈现。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="3" aria-pressed="false"><span class="dm-num">06</span><b>退吸头<small>Eject tip</small></b><span class="dm-d">对准桶口、按下退吸头，完成这一关。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+            <li><button type="button" data-step="4" aria-pressed="false"><span class="dm-num">OV</span><b>完整路径<small>Overview</small></b><span class="dm-d">七个关卡串起来，查看每关的目标与完成状态。</span><i class="dm-bar" aria-hidden="true"></i></button></li>
+          </ol>
+          <div class="dm-stage" data-demo-stage tabindex="0" aria-label="可切换的教学截图">
+            <div class="sp-device">
+              <div class="sp-device-screen dm-screen">
+                <img data-stage-image src="media/level-1-install.png" alt="装吸头教学界面截图">
+              </div>
+            </div>
+            <div class="dm-ctrl">
+              <button type="button" data-prev aria-label="上一张截图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <span data-stage-count aria-live="polite">01 / 05</span>
+              <button type="button" data-next aria-label="下一张截图"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+              <span class="dm-kicker" data-stage-kicker>LEVEL 1 / 7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="sp-band dm-field" id="field" aria-labelledby="field-title">
+      <figure class="dm-field-wide"><img src="media/field/cycler.jpg?v=20261128" width="1280" height="853" alt="同学戴着眼镜，在热循环仪上设置程序" loading="lazy" decoding="async"><figcaption class="x-wrap">在热循环仪上设置程序</figcaption></figure>
+      <div class="x-wrap">
+        <header class="sp-head split" data-reveal>
+          <div><p class="dm-field-kicker">实验室试用</p><h2 id="field-title">戴上眼镜，照常做实验。</h2></div>
+          <p>同学们戴着眼镜在实验室里完成移液和上机。提示出现在眼镜里，手不用离开实验台。</p>
+        </header>
+        <div class="dm-field-grid" data-reveal>
+          <figure><img src="media/field/tip-pick.jpg?v=20261128" width="1200" height="1500" alt="同学戴着眼镜，从枪头盒取枪头" loading="lazy" decoding="async"><figcaption>从枪头盒取枪头</figcaption></figure>
+          <figure><img src="media/field/tip-ready.jpg?v=20261128" width="1200" height="1500" alt="同学戴着眼镜，装好枪头准备吸液" loading="lazy" decoding="async"><figcaption>装好枪头，准备吸液</figcaption></figure>
+          <figure><img src="media/field/dispense.jpg?v=20261128" width="1200" height="1500" alt="同学戴着眼镜，把液体加到离心管里" loading="lazy" decoding="async"><figcaption>把液体加到离心管里</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-brand"><span class="site-logo"><svg aria-hidden="true" class="jw-mark" focusable="false" viewBox="-2 -2 92 104"><path d="M4 35V26A22 22 0 0 1 26 4H62A22 22 0 0 1 84 26V74A22 22 0 0 1 62 96H26A22 22 0 0 1 4 74V63" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7.5"></path><circle cx="3.4" cy="49" fill="currentColor" r="5"></circle></svg><span class="site-logo-text"><b>见微科技</b><span>LabMate AI</span></span></span><p>LabMate AI：面向真实操作学习的多终端 AI 平台。</p></div><div class="site-footer-col"><h2>产品</h2><ul><li><a href="../../#zh-project">一节实验课</a></li><li><a href="../../#zh-project">识别效果</a></li><li><a href="../../product/demo/">产品界面演示</a></li></ul></div><div class="site-footer-col"><h2>项目</h2><ul><li><a href="../../#zh-project">应用场景</a></li><li><a href="../../hackathon/">最新动态</a></li></ul></div><div class="site-footer-col"><h2>团队</h2><ul><li><a href="../../#zh-team">顾问与技术骨干</a></li><li><a href="../../#zh-team">产品与商业化负责人</a></li><li><a href="../../#zh-team">项目成员协作分工</a></li></ul></div></div><div class="site-footer-bottom"><span>团队来自港科大（广州）</span></div></footer>
+  <script src="../../site-shell.js?v=20261127-perf-1" defer></script>
+  <script src="demo.js?v=20261127-r13"></script>
+</body>
+</html>
