@@ -170,3 +170,19 @@
 .lt .tm-core *, .lt .tm-core .jw-mark { color: #fff !important; }
 .lt .tm-core::before, .lt .tm-core::after { display: none !important; }
 .lt .tm-orbit-line.r2::after { background: var(--t-ink) !important; box-shadow: none !important; }
+
+/* teacher-screen step markers (01/02/03): white numbers on navy */
+.lt .xj-tgt { background: #0b1f30 !important; color: #fff !important; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.85), 0 2px 8px rgba(11, 31, 48, 0.35) !important; font-weight: 700 !important; }
+
+/* very small phones (≤ 360px wide, e.g. iPhone SE) */
+@media (max-width: 360px) {
+  .x-hero-copy { width: 100% !important; max-width: 100% !important; min-width: 0 !important; margin-left: 0 !important; margin-right: 0 !important; }
+  .site h1, .x-hero h1, .subpage .sp-hero h1, .tm-hero h1 { font-size: 29px !important; }
+  .x-head h2, .sp-head h2, .tm-head h2, .x-cta h2 { font-size: 25px !important; }
+  .x-btn { font-size: 15px !important; padding-left: 18px !important; }
+}
+@media (max-width: 360px) {
+  .x-hero .x-lockup { font-size: 10px !important; letter-spacing: 0.06em !important; white-space: nowrap; margin-top: 18px !important; }
+  .x-hero { padding-top: 96px !important; }
+}
+@media (max-width: 360px) { .x-hero .x-lockup { display: none !important; } }
