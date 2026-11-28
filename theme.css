@@ -127,3 +127,12 @@
   background: rgba(5, 7, 10, 0.96) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
 }
 .lt .xj-cap::before { -webkit-background-clip: text !important; background-clip: text !important; }
+
+/* AR camera view: keep the HUD bright (it sits on a photo, not on the light page) */
+.lt .xj-bench { --x-cyan: #cfe3f7; --x-mute: #d6dde4; --x-text: #fff; }
+.lt .xj-bench .xj-hud { background: rgba(6, 12, 18, 0.9) !important; border-color: rgba(207, 227, 247, 0.55) !important; color: #fff !important; }
+.lt .xj-bench .xj-hud-task b { background: rgba(207, 227, 247, 0.22) !important; color: #e6f1fc !important; }
+.lt .xj-bench .xj-hud-read span { color: #e2e8ee !important; }
+.lt .xj-bench .xj-hud-read strong { color: #ff7b70 !important; }
+.lt .xj-bench .xj-hud-read em { color: #ffc4bd !important; }
+.lt .xj-bench .xj-ret, .lt .xj-bench .xj-ret * { color: #fff !important; }
